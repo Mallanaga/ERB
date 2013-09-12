@@ -2,30 +2,6 @@ class BoxesController < ApplicationController
 
   def show
     @box = Box.find(params[:id])
-    @locations = @box.locations
-
-    @markers = @locations.to_gmaps4rails do |loc, marker|
-      marker.picture({picture: ActionController::Base.helpers.asset_path('map_icon.png'),
-                      width: 52,
-                      height: 45,
-                      marker_anchor: [11,30],
-                      shadow_picture: ActionController::Base.helpers.asset_path('map_icon_shadow.png'),
-                      shadow_width: 110,
-                      shadow_height: 110,
-                      shadow_anchor: [12,34]})
-    end
-
-    @marker_options = { data: @markers,
-                        options: { do_clustering: false,
-                                   raw: "{ animation: google.maps.Animation.DROP}" } }
-    
-    @map_options = { disableDefaultUI: true,
-                     center_on_user: false,
-                     disableDoubleClickZoom: true,
-                     auto_adjust: true,
-                     auto_zoom: true,
-                     minZoom: 2,
-                     maxZoom: 10 }
   end
 
   def track
