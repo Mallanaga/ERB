@@ -1,0 +1,10 @@
+<div class='headercontent'>
+  <%= link_to "Export CSV", locations_path(format: "csv") %> | 
+  <%= form_tag import_locations_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import UPS CSV" %>
+  <% end %>
+
+  <%= render @locations %>
+  <%= paginate @locations %>
+</div>

@@ -1,0 +1,42 @@
+<% provide(:title, 'Cost Savings Analysis') %>
+<div class="headercontent">
+  <div class="hero-unit">
+    <h1>Cost Savings</h1>
+    <p>Analysis</p>
+  </div>
+  <div class="row">
+    <div class="span8 costInput">
+      &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="turn_time" /> <span class='bold_green'>days</span>
+      for turnaround time (days between shipments)
+      <br>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="deliveries_week" /> <span class='bold_green'>boxes</span> 
+      delivered per week
+      <br><span class='bold_green'>$</span> <input type="text" id="cost_cardboard" />
+      per current cardboard box
+      <br><span class='bold_green'>$</span> <input type="text" id="cost_erb" />
+      per Eco ReBox package
+    </div>
+    <div class="span4">
+      <p>Based on the numbers you gave us, you’ll need <span id='box_quantity'></span> Eco ReBox boxes for the first year. Each box will ship <span id='ship_quantity'></span> times or more, saving you up to $<span id='erb_savings'></span> over cardboard per year.</p>
+      <p>Eco ReBox products are more durable than cardboard, last longer than typical shipping boxes, and are nonporous. Feel free to <%= link_to 'contact us', contact_path %> for more information or to receive a custom quote for your specific needs.</p>
+    </div>
+  </div>
+  <hr>
+  <div class='row'>
+    <div class="span6">
+      <h3>Cost of Cardboard</h3>
+      <p>Boxes needed for 1 year: <span id='cbox_quantity'></span></p>
+      <p>Cost of boxes: $<span id='cb_cost'></span></p>
+      <h3>Cost of ERB</h3>
+      <p>Boxes needed for 1 year: <span id='box_quantity'></span></p>
+      <p>Cost of boxes: $<span id='erb_cost'></span></p>
+      <p>Savings: <span id='erb_percent'></span>% off of your cardboard costs</p>
+    </div>
+    <div class="span6">
+      <h3>Resource Savings</h3>
+      <p>Based on a 1 lb box, you could be helping the planet by eliminating the need for the resources necessary to produce that much cardboard in a year...</p>
+      <p><span id='cst'></span> trees!</p>
+      <p><span id='csw'></span> gallons of water!</p>
+      <p><span id='cse'></span> kWh of energy!</p>
+    </div>
+  </div>
+</div>

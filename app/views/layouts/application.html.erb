@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= favicon_link_tag       'favicon.ico' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+    <%= auto_discovery_link_tag :atom, "/news.atom" %>
+    <%= auto_discovery_link_tag :rss, "/news.rss" %>
+    <%= render 'layouts/shim' %>
+    <% if Rails.env.production? %>
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-42828235-1', 'ecorebox.com');
+        ga('send', 'pageview');
+      </script>
+    <% end %>
+  </head>
+  <body>
+    <div class='wrapper'>
+      <%= render 'layouts/header' %>
+      <%= yield :carousel %>
+      <div class='content'>
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: 'alert alert-#{key}') %>
+        <% end %>
+        <%= yield %>
+        <%= debug(params) if Rails.env.development? %>
+      </div>
+    </div>
+    <%= render 'layouts/footer' %>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<%= form_for(@box) do |f| %>
+  <div class='span4'>
+    <%= render 'shared/error_messages', object: f.object %>
+    <%= f.label :company_id %>
+    <%= f.collection_select :company_id, @companies, :id, :name,
+                            {selected: @selected_company}, {} %>
+
+    <%= label_tag :number, "Quantity of boxes" %>  
+    <%= text_field_tag :number %>
+
+    <%= f.label :trips, "Average number of trips per box" %>
+    <%= f.text_field :trips %>
+
+    <%= f.label :cost, "Cost per box" %>
+    <%= f.text_field :cost %>
+  </div>
+  <div class='span4'>
+    <%= f.label :length %>
+    <%= f.text_field :length %>
+
+    <%= f.label :width %>
+    <%= f.text_field :width %>
+
+    <%= f.label :height %>
+    <%= f.text_field :height %>
+
+    <%= f.label :weight %>
+    <%= f.text_field :weight %>
+  </div>
+  <div class='span12'>
+    <br/>
+    <%= f.submit "Add Boxes", class: "btn btn-large btn-primary" %>
+  </div>
+<% end %>

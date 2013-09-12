@@ -1,0 +1,29 @@
+<% provide(:title, "Reset password") %>
+<div class="headercontent">
+  <div class="hero-unit">
+    <h1>Reset your Password</h1>
+  </div>
+  <div class="row">
+    <div class="span12">
+      <%= form_for @user, url: password_reset_path(params[:id]) do |f| %>
+        <% if @user.errors.any? %>
+          <div class="error_messages">
+            <h2>Form is invalid</h2>
+            <ul>
+              <% for message in @user.errors.full_messages %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="field">
+          <%= f.password_field :password, placeholder: 'New password' %>
+        </div>
+        <div class="field">
+          <%= f.password_field :password_confirmation, placeholder: 'Confirm password' %>
+        </div>
+        <div class="actions"><%= f.submit "Update Password" %></div>
+      <% end %>
+    </div>
+  </div>
+</div>

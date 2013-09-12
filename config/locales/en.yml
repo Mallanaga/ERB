@@ -1,0 +1,24 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  hello: "Hello world"
+
+  activerecord:
+    errors:
+      messages:
+        carrierwave_processing_error: "Cannot resize image."
+        carrierwave_integrity_error: "Not an image."
+        carrierwave_download_error: "Couldn't download image."
+        extension_white_list_error: "You are not allowed to upload %{extension} files, allowed types: %{allowed_types}"
+        extension_black_list_error: "You are not allowed to upload %{extension} files, prohibited types: %{prohibited_types}"
+  attributes:
+    user:
+      password_digest: "Password"
+  ckeditor:
+    page_title: "Eco ReBox File Manager"
+    confirm_delete: "Delete file?"
+    buttons:
+      cancel: "Cancel"
+      upload: "Upload"
+      delete: "Delete"

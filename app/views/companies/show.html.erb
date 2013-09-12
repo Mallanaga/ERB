@@ -1,0 +1,18 @@
+<% provide(:title, "#{@company.name}") %>
+<div class="headercontent">
+  <div class="hero-unit">
+    <h1><%= @company.name %></h1>
+    <p><%= raw @company.address %></p>
+  </div>
+  <div class="row">
+    <div class="span12">
+      <h3>Case Study</h3>
+        <p><%= raw @company.about %></p>
+      <h3>Total Resources Saved</h3>
+      <p><%= @company.name %> has <%= pluralize(@box_count, 'box') %> from Eco ReBox.</p>
+      <p><%= raw "Their boxes have saved #{pluralize(number_with_delimiter(@company.trees, delimiter: ','), 'tree')}, #{pluralize(number_with_delimiter(@company.water, delimiter: ','), 'gallon')} of water, and #{number_with_delimiter(@company.electricity, delimiter: ',')} kW&#8226;h of electricity since they started using Eco ReBox products in #{@company.acquired.strftime('%B of %Y')}." %></p>
+    </div>
+  </div>
+</div>
+
+

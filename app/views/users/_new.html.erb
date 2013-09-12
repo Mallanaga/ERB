@@ -1,0 +1,35 @@
+<div class='tab-pane' id='add_user'>
+  <div class="span3 well">
+    <table class="table table-hover">
+      <thead><h2>Add User</h2></thead>
+      <tbody>
+        <tr><td>Total Users: <%= User.all.size %></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="span7 well">
+    <%= form_for User.new do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      User is an Admin? <%= f.check_box :admin %>
+
+      <%= f.label :company_id %>
+      <%= f.collection_select :company_id, @companies, :id, :name,
+                                      {include_blank: true, selected: @selected_company}, {} %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Confirm Password" %>
+      <%= f.password_field :password_confirmation %>
+      <br/><br/>
+      <%= f.submit "Create User!", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+

@@ -1,0 +1,59 @@
+<div class='tab-pane' id='roi'>
+  <div class="span3 well">
+    <table class="table table-hover">
+      <thead><h2>ROI Overview</h2></thead>
+      <tbody>
+        <tr><td><strong>Yearly</strong></td></tr>
+        <tr><td>Savings: <%= @percent %>% off</td></tr>
+        <tr><td>ERB Costs: <%= number_to_currency(@yearly, precision: 0) %></td></tr>
+        <tr><td>Cardboard Costs: <%= number_to_currency(@yearly_cb, precision: 0) %></td></tr>
+        <tr><td><strong>Totals</strong></td></tr>
+        <tr><td>Member since: <%= @company.acquired.strftime('%m/%d/%Y') %></td></tr>
+        <tr><td>ERB Cost: <%= number_to_currency(@cost, precision: 0) %></td></tr>
+        <tr><td>Cardboard Cost: <%= number_to_currency(@paper_cost, precision: 0) %></td></tr>
+        <tr><td><strong>ROI: <%= number_to_currency(@roi, precision: 0) %></strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="span7 well">
+    <strong>Yearly costs</strong>
+    <br/><br/>
+    <div id="placeholder" style="width:575px;height:300px;"></div>
+    <p id='plotV'></p>
+
+    <script type="text/javascript">
+      $(function () {
+        var erb = <%= @purchase_array %>;
+        var cb = [[<%= (Date.today-1.year).to_time.to_i %>000, 0],
+                  [<%= Date.today.to_time.to_i %>000, <%= @yearly_cb %>]]
+        $.plot($("#placeholder"), 
+          [ { data: erb, label: "Eco ReBox Cost", lines: {steps: true}, color: "#b8d18f" }, 
+            { data: cb, label: "Cardboard Cost", color: "#d18f8f" } ], {
+          yaxis: {
+            tickFormatter: function (v, axis) { 
+              return '$' + v
+            },
+            labelWidth: 40,
+            labelHeight: 20,
+            reserveSpace: true
+          },
+          xaxis: {
+            mode: "time",
+            timeformat: "%m/%Y",
+            minTickSize: [1, "month"],
+            min: (new Date(<%= (Date.today-1.year).year %>, <%= (Date.today-1.year-1.month).month %>, <%= (Date.today-1.year).day %>)).getTime(),
+            max: (new Date()).getTime()
+          },
+          grid: {
+            backgroundColor: { colors: ["#fff", "#eee"] }
+          },
+          legend: { 
+            position: 'nw' 
+          }
+        });
+      });
+
+    </script>
+
+  </div>
+</div>

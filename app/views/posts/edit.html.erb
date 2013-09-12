@@ -1,0 +1,19 @@
+<% provide(:title, "Edit News Entry") %>
+<div class='headercontent'>
+  <h1>Edit Blog Entry</h1>
+  <div class="row">
+    <div class="span12">
+      <%= form_for(@post) do |f| %>
+        <%= render 'fields', f: f %>
+        <br/>
+        <%= f.submit "Submit Changes!", class: "btn btn-large btn-primary" %>
+        <%= f.submit "Cancel", data: { confirm: "All changes will be lost.  Are you sure?" } %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  $('.nav-pills li a.blog').addClass('active');
+</script>

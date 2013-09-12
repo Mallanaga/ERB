@@ -1,0 +1,45 @@
+<div class='tab-pane' id='boxes'>
+  <div class="span3 well">
+    <table class="table table-hover">
+      <thead><h2>Boxes</h2></thead>
+      <tbody>
+        <tr><td>Total Boxes purchased: <%= @count %></td></tr>
+        <tr><td>Active: <%= @active %></td></tr>
+        <tr><td>Retired: <%= @inactive %></td></tr>
+        <tr><td>Total Trips: <%= @trips %></td></tr>
+        <tr><td>Average Trips: <%= @avg %></td></tr>
+        <% if current_user.admin? %>
+        <tr><td><%= link_to "Export CSV", user_path(format: "csv", company_id: @company.id), class: 'btn' %></td></tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% if current_user.admin? %>        
+      <%= form_tag import_boxes_path, multipart: true do %>
+        <%= file_field_tag :file %>
+        <%= submit_tag "Import CSV" %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="span7 well">
+    <table id="companyBoxList" class="table table-striped table-bordered" data-source="<%= boxes_url(format: "json", user_id: @user.id, current_user_id: current_user.id, company_id: @company.id) %>">
+      <thead>
+        <tr>
+          <th>UID</th>
+          <th>Active</th>
+          <th>Retired</th>
+          <th>Avg Trips</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<% if params[:page] %>
+  <script>
+    $(document).ready(function () {
+      $('#myTab a[href="#boxes"]').tab('show');
+    })
+  </script>
+<% end %>

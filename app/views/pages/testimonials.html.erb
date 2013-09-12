@@ -1,0 +1,21 @@
+<% provide(:title, 'Testimonials') %>
+<div class="headercontent">
+  <div class="hero-unit">
+    <h1>What People Are Saying</h1>
+    <p>Here are a few things people are saying about Eco ReBox.</p>
+  </div>
+  <div class="row">
+    <div class="span12">
+      <% Company.all.each do |c| %>
+        <h3><strong><%= c.name %></strong></h3>
+        <p><%= raw c.testimonial %></p>
+        <%= link_to "View Case Study", c %>
+        <hr>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('.dropdown.second').addClass('active');
+</script>

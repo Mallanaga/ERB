@@ -1,0 +1,56 @@
+<div class="navbar-wrapper">
+  <div class="container">
+    <div class="masthead">
+      <%= link_to image_tag("logo.png", alt: "Eco Rebox"), root_path, class: "mainlogo" %>
+      <ul class="nav nav-pills pull-right">
+        <li><%= link_to 'Home', root_path, class: 'first' %></li>
+        <li><%= link_to 'News', posts_path, class: 'blog' %></li>
+        <li class="dropdown second">
+          <a href="about" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Company Profile', about_path %></li>
+            <li><%= link_to 'Our Customers', companies_path %></li>
+            <li><%= link_to 'What People Are Saying', testimonials_path %></li>
+          </ul>
+        </li>
+        <li class="dropdown third">
+          <a href="logistics" class="dropdown-toggle" data-toggle="dropdown">Solutions <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Software', software_path %></li>
+            <li><%= link_to 'Sustainability', rethink_path %></li>
+            <li><%= link_to 'Logistics & Methodology', restore_path %></li>
+          </ul>
+        </li>
+        <li class="dropdown fourth">
+          <a href="products" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Reusable Boxes', reuse_path %></li>
+            <li><%= link_to 'Shipping Containers', shipping_path %></li>
+          </ul>
+        </li>
+        <li><%= link_to "Contact", contact_path, class: 'fifth' %></li>
+        <% if signed_in? %>
+        <li class="dropdown sixth">
+          <a href="user" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Dashboard", current_user %></li>
+            <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+            <li class="divider"></li>
+            <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+          </ul>
+        </li> 
+        <% else %>  
+        <li><a href="#signinModal" role="button" data-toggle="modal">Sign in</a></li>
+        <% end %> 
+      </ul>
+    </div> <!--/.masthead -->
+  </div> <!--/.container -->
+</div> <!--/.navbar-wrapper -->
+
+<div id="signinModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="signinModallLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="signinModalLabel">Sign into ecorebox.com</h3>
+  </div>
+  <%= render 'sessions/signin' %>
+</div>

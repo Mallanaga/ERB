@@ -1,0 +1,28 @@
+<div class='tab-pane active' id='overview'>
+  <div class="span3 well">
+    <table class="table table-hover">
+      <thead><h2>Stats Overview</h2></thead>
+      <tbody>
+        <tr><td>Total Boxes: <%= @count %></td></tr>
+        <tr><td>Inactive Boxes: <%= @inactive %></td></tr>
+        <tr><td>Total Trips: <%= @trips %></td></tr>
+        <tr><td>Maxiumum Trips: <%= @max %></td></tr>
+        <tr><td>Minumum Trips: <%= @min %></td></tr>
+        <tr><td>Average Trips: <%= @avg %></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="span7 well">
+    <table class="table">
+      <thead><h2>Resource Savings</h2></thead>
+      <tr><td><%= image_tag 'res_trees.png', alt: 'trees', class: 'resource_pic' %></td>
+          <td><h1><%= "#{pluralize(number_with_delimiter(@company.trees, delimiter: ','), 'tree')}" %></h1></td></tr>
+      <tr><td><%= image_tag 'res_water.png', alt: 'trees', class: 'resource_pic' %></td>
+          <td><h1><%= "#{pluralize(number_with_delimiter(@company.water, delimiter: ','), 'gallon')} of water" %></h1></td></tr>
+      <tr><td><%= image_tag 'res_energy.png', alt: 'trees', class: 'resource_pic' %></td>
+          <td><h1><%= raw "#{number_with_delimiter(@company.electricity, delimiter: ',')} kW&#8226;h of electricity" %></h1></td></tr>
+    </table>
+  </div>
+</div>
+
+

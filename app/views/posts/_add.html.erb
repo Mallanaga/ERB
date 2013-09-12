@@ -1,0 +1,4 @@
+<%= form_for Feed.new do |f| %>
+  <%= text_field_tag :feed_url, nil, placeholder: 'New feed to add?', style: 'width:287px' %>
+  <%= f.submit 'Add feed', class: 'btn' %>
+<% end %>

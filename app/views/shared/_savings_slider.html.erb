@@ -1,0 +1,16 @@
+<div id="side_bar">
+  <h2>Savings Calculator</h2>
+  <p>
+    <label for="box_cost">Average Cost per Box:</label>
+    <span class='bold_green'>$</span> <input type="text" id="box_cost" style="border: 0; color: #B8CF8C; font-weight: bold;" />
+  </p>
+  <div id="cost_per_box"></div>
+  <br/>
+  <p>
+    <label for="amount">Boxes Shipped per Week:</label>
+    <span class='bold_green'>#</span> <input type="text" id="amount" style="border: 0; color: #B8CF8C; font-weight: bold;" />
+  </p>
+  <div id="boxes_per_week"></div>
+  <br/>
+  <p>Switching to Eco ReBox packaging could save you <strong>$<span id='erb_savings'></span></strong> per year! Feel free to <%= link_to 'contact us', contact_path %> for a more information.</p>
+</div>

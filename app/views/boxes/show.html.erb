@@ -1,0 +1,30 @@
+<% provide(:title, @box.uid) %>
+<div class='headercontent'>
+  <h1>Box <%= @box.uid %></h1>
+</div>
+<% if !@box.locations.blank? %>
+  <p>This box has saved <%= "#{pluralize(number_with_delimiter(@box.trees, delimiter: ','), 'tree')}" %>, <%= "#{pluralize(number_with_delimiter(@box.water, delimiter: ','), 'gallon')} of water" %>, and <%= raw "#{number_with_delimiter(@box.electricity, delimiter: ',')} kW&#8226;h of electricity" %>!</p>
+  <%= render @locations %>
+
+
+
+  <%= gmaps(map_options: @map_options,
+            markers: @marker_options) %>
+  <p class='text-center'>Map feature still in beta testing</p>
+
+
+  <%= content_for :scripts do %>
+
+  <script type="text/javascript" charset="utf-8">
+
+    Gmaps.map.callback = function() {
+      
+    };
+
+  </script>
+
+  <% end %>
+
+<% else %>
+  <p>This box hasn't had a chance to travel the world just yet... soon, though!</p>
+<% end %>
