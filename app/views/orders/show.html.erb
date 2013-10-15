@@ -1,0 +1,36 @@
+<% provide(:title, @order.invoice) %>
+<div class='headercontent'>
+  <div class="hero-unit">
+    <h1>Invoice <%= @order.invoice %></h1>
+    <p>ReThink. ReStore. ReUse.</p>
+  </div>
+</div> 
+<div class='row'>
+  <div class="span10 well offset1">
+    <table class="table">
+      <thead><h2>Details</h2></thead>
+      <tbody>
+        <tr>
+          <th>Box</th>
+          <th>Quantity</th>
+          <th>Box Price</th>
+          <th>Mould Fees</th>
+          <th>Totals</th>
+        </tr>
+        <%- @details.each do |d| %>
+          <tr>
+            <td><%= Box.find(d.box_id).uid %></td>
+            <td><%= number_with_delimiter(d.quantity) %></td>
+            <td><%= number_to_currency(d.box_price, precision: 2) %></td>
+            <td><%= number_to_currency(d.mould_fees, precision: 2) %></td>
+            <td><%= number_to_currency((d.quantity * d.box_price + d.mould_fees), precision: 0) %></td>
+          </tr>
+        <%- end %>
+          <tr>
+            <td></td><td></td><td></td><td></td>
+            <td><strong><%= number_to_currency(@order.cost, precision: 0) %></strong></td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -36,14 +36,16 @@ class UsersController < ApplicationController
     @electricity = @company.electricity
     @homes = (@electricity/12000).round(1)
 
+    @orders = @company.orders
+    @count = @orders.map{|o| o.order_details.map{|d| d.quantity}.sum}.sum
+
     @boxes = @company.boxes.order('created_at ASC')
-    @count = @boxes.collect { |box| box.in }.sum
-    @trips = @boxes.collect { |box| box.trips }.sum
-    @inactive = @boxes.collect { |box| box.out }.sum
+    @trips = @boxes.map { |b| b.trip_count }.sum
+    @inactive = @boxes.map { |b| b.out }.sum
     @active = @count - @inactive
     @avg = @trips / @count if @count > 0
-    @cost = @boxes.collect { |box| box.cost ? box.cost*box.in : 0 }.sum
-    @paper_cost = @boxes.collect { |box| box.cb_cost ? box.cb_cost*box.trips : 0 }.sum
+    @cost = @boxes.map { |b| b.cost*b.in }.sum
+    @paper_cost = @boxes.map { |b| b.cb_cost*b.trip_count }.sum
     @roi = @paper_cost - @cost
     @percent = (100 - @cost/@paper_cost * 100).round
 

@@ -18,11 +18,14 @@ private
 
   def data
     boxes.map do |box|
+      trips = box.trip_count
+      count = box.in
+      retired = box.out
       [
         link_to(box.uid, box, target: '_blank'),
-        box.in - box.out,
-        box.out,
-        box.trips / box.in
+        count - retired,
+        retired,
+        trips / count
       ]
     end
   end

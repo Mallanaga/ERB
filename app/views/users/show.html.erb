@@ -20,9 +20,10 @@
     
     <div class="span12">
       <ul class="nav nav-tabs" id='myTab'>
-        <li class='active'><a href="#overview">Stats</a></li>
-        <li><a href="#roi">ROI</a></li>
-        <li><a href="#boxes">Manage Boxes</a></li>
+        <li class='active'><a href="#overview">Resource Savings</a></li>
+        <li><a href="#roi">Cost Savings</a></li>
+        <li><a href="#boxes">Boxes</a></li>
+        <li><a href="#orders">Orders</a></li>
         <% if current_user.admin? %>
           <li><a href="#company_info">Company Info</a></li>
           <li><a href="#add_user">Add User</a></li>
@@ -34,6 +35,7 @@
     <%= render 'overview' %>
     <%= render 'roi' %>
     <%= render 'manage_boxes' %>
+    <%= render 'orders' %>
     <% if current_user.admin? %>
       <%= render 'companies/edit' %>
       <%= render 'new' %>

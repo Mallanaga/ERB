@@ -1,0 +1,26 @@
+// Place all the styles related to the trips controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+td.edit {
+  -webkit-transition: background-position 1s;
+  -moz-transition: background-position 1s;
+  -o-transition: background-position 1s;
+  -ms-transition: background-position 1s;
+  transition: background-position 1s;
+  &:hover {
+    background: url('/assets/edit.png') no-repeat;
+    background-size: 20px 20px;
+    background-position: 30% 45%;
+  }
+}
+
+.best_in_place {
+  input {
+    width: 37px;
+    margin-bottom: -12px;
+    position: relative;
+    top: -7px;
+    left: -7px;
+  }
+}

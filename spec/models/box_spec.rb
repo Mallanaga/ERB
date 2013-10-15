@@ -8,10 +8,9 @@
 #  length     :decimal(, )
 #  width      :decimal(, )
 #  height     :decimal(, )
-#  volume     :decimal(, )
 #  weight     :decimal(, )
-#  trips      :integer          default(0)
-#  distance   :decimal(, )
+#  cost       :decimal(6, 2)
+#  cb_cost    :decimal(6, 2)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

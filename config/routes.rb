@@ -14,9 +14,9 @@ ErbRevised::Application.routes.draw do
   resources :boxes do
     collection { post :import }
   end
-  resources :locations do
-    collection { post :import }
-  end
+  resources :orders
+  resources :order_details
+  resources :trips
   resources :sessions,    only: [:new, :create, :destroy]
   resources :password_resets
 

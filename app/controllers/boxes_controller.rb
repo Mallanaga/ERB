@@ -15,7 +15,7 @@ class BoxesController < ApplicationController
   def index
     @title = "Eco Reboxes"
     @export = Box.order(:uid)
-    @boxes = Box.page(params[:page]).per(50)
+    @boxes = Box.page(params[:page]).per(100)
     respond_to do |format|
       format.html
       format.csv { send_data @export.to_csv }

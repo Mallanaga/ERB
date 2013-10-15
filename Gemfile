@@ -24,6 +24,7 @@ gem 'mini_magick', github: 'minimagick/minimagick', ref: '6d0f8f953112cce6324a52
 gem 'fog'
 gem 'nokogiri', '~> 1.5.3'
 gem 'feedzirra', github: 'pauldix/feedzirra', ref: '80cd357'
+gem 'best_in_place'
 
 group :development, :test do
   gem 'sqlite3'

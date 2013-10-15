@@ -4,11 +4,32 @@
     <h1>Box <%= @box.uid %></h1>
     <p>ReThink. ReStore. ReUse.</p>
   </div>
-  <h3>Box properties</h3>
-    <p><%= @box.length %>in x <%= @box.width %>in x <%= @box.height %>in and <%= @box.weight %>lbs</p>
-  <h3>Status</h3>
-    <p><%= @box.in %> total purchased</p>
-    <p><%= @box.in - @box.out %> currently in rotation</p>
-  <h3>Do you have one of these boxes?</h3>
-  <p>Help that box along, so it can find its way home. [link to something witty]</p>
 </div>
+<h3>Box properties</h3>
+<p><%= @box.length %>in x <%= @box.width %>in x <%= @box.height %>in and <%= @box.weight %>lbs</p>
+<h3>Status</h3>
+<p><%= @box.in %> total purchased</p>
+<p><%= @box.in - @box.out %> currently in rotation</p>
+<div class='row'>
+  <div class="span8">
+    <table class="table table-hover trips">
+      <thead><h2>Trip History</h2></thead>
+      <tbody>
+        <tr>
+          <th>Month</th>
+          <th>Shipped</th>
+          <th>Retired</th>
+        </tr>
+        <%- @box.trips.order('month desc').each do |t| %>
+          <tr>
+            <td><%= t.month.strftime('%B %Y') %></td>
+            <td class='edit'><%= best_in_place_if (admin? || owner?), t, :quantity %></td>
+            <td class='edit'><%= best_in_place_if (admin? || owner?), t, :retired %></td>
+          </tr>
+        <%- end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<h3>Do you have one of these boxes?</h3>
+<p>Help that box along, so it can find its way home. [link to something witty]</p>

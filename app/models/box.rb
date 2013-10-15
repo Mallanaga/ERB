@@ -8,10 +8,9 @@
 #  length     :decimal(, )
 #  width      :decimal(, )
 #  height     :decimal(, )
-#  volume     :decimal(, )
 #  weight     :decimal(, )
-#  trips      :integer          default(0)
-#  distance   :decimal(, )
+#  cost       :decimal(6, 2)
+#  cb_cost    :decimal(6, 2)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -24,8 +23,7 @@ class Box < ActiveRecord::Base
                   :weight, :trips, :cost, :cb_cost, :created_at
                   
   belongs_to :company
-
-  before_save :t
+  has_many :trips
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
@@ -54,29 +52,45 @@ class Box < ActiveRecord::Base
     ct
   end
 
+  def in
+    OrderDetail.find_all_by_box_id(self.id).map{ |d| d.quantity }.sum
+  end
+
+  def out
+    self.trips.map{ |t| t.retired }.sum    
+  end
+
+  def trip_count
+    self.trips.map{ |t| t.quantity }.sum
+  end
+
+  def cost
+    OrderDetail.find_all_by_box_id(self.id).map{ |d| d.box_price }.sum
+  end
+
+  def cb_cost
+    OrderDetail.find_all_by_box_id(self.id).map{ |d| d.cb_price }.sum
+  end
+
   def date
     self.created_at.to_date
   end
 
   def trees
-    w = self.trips * self.weight
+    w = self.trips.map{ |t| t.quantity }.sum * self.weight
     (w * 0.00133).round(1)
   end
 
   def water
-    w = self.trips * self.weight
+    w = self.trips.map{ |t| t.quantity }.sum * self.weight
     (w * 5.3).round
   end
  
   def electricity
-    w = self.trips * self.weight
+    w = self.trips.map{ |t| t.quantity }.sum * self.weight
     (w * 8.687).round(1)
   end
 
   private
-    #make sure trips has a value
-    def t
-      self.trips = 0 if trips.nil?
-    end
-
+  
 end

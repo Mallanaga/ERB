@@ -2,11 +2,11 @@ class PagesController < ApplicationController
   
   def home
     @user = User.new
-    @trees = Company.all.map{|c| c.trees}.sum
+    @trees = Box.all.map{|b| b.trees}.sum
     @houses = (@trees/53).floor
-    @water = Company.all.map{|c| c.water}.sum
+    @water = Box.all.map{|b| b.water}.sum
     @pools = (@water/20000).floor
-    @electricity = Company.all.map{|c| c.electricity}.sum
+    @electricity = Box.all.map{|b| b.electricity}.sum
     @homes = (@electricity/12000).round(1)
   end
 

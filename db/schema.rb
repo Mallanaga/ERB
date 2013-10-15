@@ -11,22 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130904165123) do
+ActiveRecord::Schema.define(:version => 20131015204940) do
 
   create_table "boxes", :force => true do |t|
     t.integer  "company_id"
     t.string   "uid"
-    t.integer  "in"
-    t.integer  "out"
     t.decimal  "length"
     t.decimal  "width"
     t.decimal  "height"
     t.decimal  "weight"
-    t.integer  "trips",                                    :default => 0
     t.decimal  "cost",       :precision => 6, :scale => 2
     t.decimal  "cb_cost",    :precision => 6, :scale => 2
-    t.datetime "created_at",                                              :null => false
-    t.datetime "updated_at",                                              :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.integer  "frequency"
+    t.boolean  "active"
   end
 
   add_index "boxes", ["company_id"], :name => "index_boxes_on_company_id"
@@ -59,7 +58,6 @@ ActiveRecord::Schema.define(:version => 20130904165123) do
     t.string   "address"
     t.string   "postal_code"
     t.string   "website"
-    t.date     "acquired"
     t.text     "about"
     t.text     "testimonial"
     t.datetime "created_at",  :null => false
@@ -75,6 +73,27 @@ ActiveRecord::Schema.define(:version => 20130904165123) do
     t.string   "newest_entry_url"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "order_details", :force => true do |t|
+    t.integer  "order_id"
+    t.integer  "box_id"
+    t.integer  "quantity"
+    t.decimal  "box_price",  :precision => 8, :scale => 2
+    t.decimal  "cb_price",   :precision => 8, :scale => 2
+    t.decimal  "mould_fees", :precision => 8, :scale => 2
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+  end
+
+  create_table "orders", :force => true do |t|
+    t.integer  "company_id"
+    t.date     "ordered_on"
+    t.date     "delivered_on"
+    t.boolean  "paid"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "invoice"
   end
 
   create_table "posts", :force => true do |t|
@@ -98,6 +117,15 @@ ActiveRecord::Schema.define(:version => 20130904165123) do
     t.integer  "category_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "trips", :force => true do |t|
+    t.integer  "box_id"
+    t.date     "month"
+    t.integer  "quantity"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "retired",    :default => 0
   end
 
   create_table "users", :force => true do |t|

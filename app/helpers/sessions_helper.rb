@@ -8,6 +8,14 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def admin?
+    !current_user.nil? && current_user.admin?
+  end
+
+  def owner?
+    !current_user.nil? && current_user.company.boxes.find_by_uid(params[:id])
+  end
+
   def signed_in_user
     unless signed_in?
       store_location

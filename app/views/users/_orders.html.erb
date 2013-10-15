@@ -1,0 +1,29 @@
+<div class='tab-pane' id='orders'>
+  <div class="span3 well">
+    <table class="table table-hover">
+      <thead><h2>Order History</h2></thead>
+      <tbody>
+        <tr><td><strong>Totals</strong></td></tr>
+        <tr><td>Orders: <%= @orders.size %></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="span7 well">
+    <table class="table">
+      <tr>
+        <th>Invoice #</th>
+        <th>Date ordered</th>
+        <th>Date delivered</th>
+        <th>Paid</th>
+      </tr>
+      <%- @orders.each do |o| %>
+        <tr>
+          <td><%= link_to 'Invoice', o, target: '_blank' %></td>
+          <td><%= o.ordered_on %></td>
+          <td><%= o.delivered_on %></td>
+          <td><%= o.paid %></td>
+        </tr>
+      <%- end %>
+    </table>
+  </div>
+</div>

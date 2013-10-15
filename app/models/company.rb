@@ -6,6 +6,9 @@
 #  name        :string(255)
 #  address     :string(255)
 #  postal_code :string(255)
+#  website     :string(255)
+#  about       :text
+#  testimonial :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -15,33 +18,26 @@ class Company < ActiveRecord::Base
 
   has_many :boxes
   has_many :users
+  has_many :orders
 
   validates :name, presence: true
   validates :about, presence: true
 
-  def total_weight
-    self.boxes.map { |box| box.trips * box.weight }.sum  
-  end
-
-  def paper_cost
-    w = self.total_weight
-    # 0.95 is the avg U-line price per lb of cb.  Retailers usually pay 66-75% of that cost.
-    w * 0.9565 * 0.75
+  def acquired
+    # this is wrong... need to fix this.
+    Date.today-1.year
   end
 
   def trees
-    b = self.total_weight
-    (b * 0.00133).round(1)
+    self.boxes.map { |b| b.trees }.sum
   end
 
   def water
-    b = self.total_weight
-    (b * 5.3).round
+    self.boxes.map { |b| b.water }.sum
   end
 
   def electricity
-    b = self.total_weight
-    (b * 8.687).round
+    self.boxes.map { |b| b.electricity }.sum
   end
 
 end
