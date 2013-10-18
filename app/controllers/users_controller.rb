@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_filter :admin_user,        only: [:destroy]
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(params[:user].strip)
     @companies = Company.all
     if @user.save
       flash[:success] = "User created."

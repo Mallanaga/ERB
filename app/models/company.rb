@@ -24,8 +24,7 @@ class Company < ActiveRecord::Base
   validates :about, presence: true
 
   def acquired
-    # this is wrong... need to fix this.
-    Date.today-1.year
+    Order.order('ordered_on asc').find_all_by_company_id(self.id).first.ordered_on.to_date
   end
 
   def trees
