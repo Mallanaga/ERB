@@ -93,6 +93,12 @@ class Box < ActiveRecord::Base
     (w * 8.687).round(1)
   end
 
+  def self.update_trips
+    Box.where(active: true).each do |box| 
+      box.trips.build(month: (Date.today+3.days).strftime('%Y-%m-01'), quantity: box.frequency, retired: 10).save
+    end
+  end
+
   private
   
 end

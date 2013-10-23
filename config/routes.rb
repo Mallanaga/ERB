@@ -1,4 +1,4 @@
-ErbRevised::Application.routes.draw do
+Erbv2::Application.routes.draw do
   
   mount Ckeditor::Engine => '/ckeditor'
 
