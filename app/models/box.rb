@@ -13,14 +13,16 @@
 #  cb_cost    :decimal(6, 2)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  frequency  :integer
+#  active     :boolean
 #
 
 class Box < ActiveRecord::Base
   extend FriendlyId
   friendly_id :uid
   
-  attr_accessible :company_id, :uid, :in, :out, :length, :width, :height,
-                  :weight, :trips, :cost, :cb_cost, :created_at
+  attr_accessible :company_id, :uid, :length, :width, :height,
+                  :weight, :cost, :cb_cost, :created_at, :frequency, :active
                   
   belongs_to :company
   has_many :trips

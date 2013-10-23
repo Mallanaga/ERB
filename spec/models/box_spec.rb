@@ -13,6 +13,8 @@
 #  cb_cost    :decimal(6, 2)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  frequency  :integer
+#  active     :boolean
 #
 
 require 'spec_helper'

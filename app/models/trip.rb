@@ -8,6 +8,7 @@
 #  quantity   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  retired    :integer          default(0)
 #
 
 class Trip < ActiveRecord::Base
