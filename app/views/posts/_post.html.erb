@@ -1,4 +1,6 @@
-<div>
-  <h3><%= link_to post.title, post, class: 'green' %> <small>posted <%= time_ago_in_words(post.published_at ? post.published_at : post.created_at) %> ago by <%= @user %></small></h3> 
-  <p><%= raw truncate("#{parse_links(post.content)}", length: 140, separator: ' ') %></p>
+<div class='post_index'>
+  <h3><%= link_to post.title, post, class: 'green' %><br/>
+    <small>posted <%= time_ago_in_words(post.published_at ? post.published_at : post.created_at) %> ago by <%= post.user ? post.user.name : post.author %></small>
+  </h3> 
+  <p><%= raw truncate("#{strip_tags(post.content)}", length: 300, separator: ' ') %></p>
 </div>

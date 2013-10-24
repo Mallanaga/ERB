@@ -28,11 +28,11 @@ class PostsController < ApplicationController
   end
 
   def feed
-    before = Feed.all.size
+    before = Post.all.size
     Feed.all.reject{ |f|f.id == 1 }.each do |feed|
       Post.update_from_feed(feed.feed_url, feed.id)
     end
-    after = Feed.all.size
+    after = Post.all.size
     if after - before > 0
       flash[:success] = "Blog updated with #{after - before} entries!"
     else
@@ -45,7 +45,7 @@ class PostsController < ApplicationController
     # this will be the name of the feed displayed on the feed reader
     @title = "Eco ReBoxing"
     # the news items
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(10)
     # this will be our Feed's update timestamp
     @updated = @posts.first.updated_at unless @posts.empty?
 
