@@ -24,7 +24,6 @@ gem 'fog'
 gem 'nokogiri', '~> 1.5.3'
 gem 'feedzirra', github: 'pauldix/feedzirra', ref: '80cd357'
 gem 'best_in_place'
-gem 'rename'
 
 group :development, :test do
   gem 'sqlite3'

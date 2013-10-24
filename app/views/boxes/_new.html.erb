@@ -1,20 +1,27 @@
 <%= form_for(@box) do |f| %>
-  <div class='span4'>
+<div class='row'>
+  <div class='span6'>
     <%= render 'shared/error_messages', object: f.object %>
     <%= f.label :company_id %>
     <%= f.collection_select :company_id, @companies, :id, :name,
                             {selected: @selected_company}, {} %>
 
-    <%= label_tag :number, "Quantity of boxes" %>  
-    <%= text_field_tag :number %>
+    <%= f.label :uid, 'Box ID' %>
+    <%= f.text_field :uid %>
 
-    <%= f.label :trips, "Average number of trips per box" %>
-    <%= f.text_field :trips %>
-
-    <%= f.label :cost, "Cost per box" %>
+    <%= f.label :cost, 'Cost per box' %>
     <%= f.text_field :cost %>
+
+    <%= f.label :cb_cost, 'Cost of comparable cardboard box' %>
+    <%= f.text_field :cb_cost %>
+
+    <%= f.label :frequency, 'Shipments per month' %>
+    <%= f.text_field :frequency %>
+
+    <%= f.label :active %>
+    <%= f.check_box :active, {}, true, false %>
   </div>
-  <div class='span4'>
+  <div class='span6'>
     <%= f.label :length %>
     <%= f.text_field :length %>
 
@@ -26,9 +33,11 @@
 
     <%= f.label :weight %>
     <%= f.text_field :weight %>
-  </div>
-  <div class='span12'>
     <br/>
-    <%= f.submit "Add Boxes", class: "btn btn-large btn-primary" %>
+    <br/>
+    <%= f.submit 'Add Box', class: "btn btn-large btn-primary" %>
   </div>
+</div>
+  
+
 <% end %>

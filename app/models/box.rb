@@ -22,10 +22,14 @@ class Box < ActiveRecord::Base
   friendly_id :uid
   
   attr_accessible :company_id, :uid, :length, :width, :height,
-                  :weight, :cost, :cb_cost, :created_at, :frequency, :active
+                  :weight, :frequency, :active
                   
   belongs_to :company
   has_many :trips
+
+  before_save { |box| box.uid = uid.strip }
+
+  validates :uid, presence: true, length: { maximum: 20 }
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
@@ -95,7 +99,9 @@ class Box < ActiveRecord::Base
 
   def self.update_trips
     Box.where(active: true).each do |box| 
-      box.trips.build(month: (Date.today+3.days).strftime('%Y-%m-01'), quantity: box.frequency, retired: 10).save
+      if !box.trips.map{ |t| t.month.strftime('%Y-%m-01') }.include?("#{Date.today.year}-#{Date.today.month}-01")
+        box.trips.build(month: (Date.today+3.days).strftime('%Y-%m-01'), quantity: box.frequency, retired: 10).save
+      end
     end
   end
 

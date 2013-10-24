@@ -2,22 +2,14 @@ class BoxesController < ApplicationController
   respond_to :html, :json
 
   def create
-    number = params[:number].to_i
-    number.downto(1) do
-      uin = Box.last.uid.split(/B/)[1].to_i
-      uin += 1
-      uin = 'ERB000' + uin.to_s
-      Box.create(uid: uin,
-                 company_id: params[:box][:company_id],
-                 length: params[:box][:length],
-                 width: params[:box][:width],
-                 height: params[:box][:height],
-                 weight: params[:box][:weight],
-                 trips: params[:box][:trips],
-                 cost: params[:box][:cost])
+    @box = Box.new(params[:box])
+    if @box.save
+      @box.trips.build(month: Date.today.strftime('%Y-%m-01'), quantity: @box.frequency, retired: 0).save
+      flash[:success] = "Box #{@box.uid} added!"
+      redirect_to current_user
+    else
+      render 'boxes/new'
     end
-    flash[:success] = "#{number} boxes added!"
-    redirect_to current_user
   end
 
   def import

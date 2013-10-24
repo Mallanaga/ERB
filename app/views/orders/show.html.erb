@@ -7,9 +7,13 @@
 </div> 
 <div class='row'>
   <div class="span10 well offset1">
+    <p>Invoice # <span class='edit'><%= best_in_place_if (admin?), @order, :invoice %></span></p>
+    <p>Ordered on: <%= @order.ordered_on.to_formatted_s :long_ordinal %></p>
+    <p>Delivered on: <%= @order.delivered_on.to_formatted_s :long_ordinal %></p>
+
     <table class="table table-striped table-bordered">
-      <thead><h2>Details</h2></thead>
-      <tbody>
+      <h3>Details</h3>
+      <thead>
         <tr>
           <th>Box</th>
           <th>Quantity</th>
@@ -17,9 +21,11 @@
           <th>Mould Fees</th>
           <th>Totals</th>
         </tr>
+      </thead>
+      <tbody>
         <%- @details.each do |d| %>
           <tr>
-            <td><%= Box.find(d.box_id).uid %></td>
+            <td><%= link_to Box.find(d.box_id).uid, Box.find(d.box_id), target: '_blank' %></td>
             <td><%= number_with_delimiter(d.quantity) %></td>
             <td><%= number_to_currency(d.box_price, precision: 2) %></td>
             <td><%= number_to_currency(d.mould_fees, precision: 2) %></td>

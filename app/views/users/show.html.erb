@@ -9,10 +9,10 @@
     <% if current_user.admin? %>
       <div class="span6">
         <div class="btn-group pull-right">
-          <%= form_for user_path(current_user), html: {class: 'submit_on_change'}, method: 'get' do |f| %>
+          <%= form_for user_path(current_user), method: 'get' do |f| %>
             <%= f.label "Select Company" %>
             <%= f.collection_select :company_id, @companies, :id, :name,
-                                    {selected: @selected_company}, { name: "company_id" } %>
+                                    {selected: @selected_company}, { name: "company_id", onchange: "this.form.submit()" } %>
           <% end %>
         </div>
       </div>
@@ -51,13 +51,5 @@
     $(this).tab('show');
   });
 
-  $("form.submit_on_change").each(function(idx,form){
-    $(form).find("select,input").each(function(idx,element){
-      $(element).change(function(){
-        $(form).submit();
-        return false;
-      });
-    });
-  });
   $('.dropdown.sixth').addClass('active');
 </script>

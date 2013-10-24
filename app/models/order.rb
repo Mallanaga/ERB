@@ -13,7 +13,7 @@
 #
 
 class Order < ActiveRecord::Base
-  attr_accessible :company_id, :ordered_on, :delivered_on, :paid
+  attr_accessible :company_id, :ordered_on, :delivered_on, :paid, :invoice
 
   has_many :order_details
 

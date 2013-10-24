@@ -1,0 +1,59 @@
+<% provide(:title, 'New order') %>
+<div class='headercontent'>
+  <div class="hero-unit">
+    <h1>New Order</h1>
+    <p>ReThink. ReStore. ReUse.</p>
+  </div>
+</div> 
+<%= form_for @order do |f| %>
+<div class='row'>
+  <div class="span10 well offset1">
+    <%= f.submit "Don't push...", class: 'pull-right btn-primary btn-large', remote: true %>
+
+    <%= f.label :invoice, 'Invoice #' %>
+    <%= f.text_field :invoice %>
+
+    <%= f.label :ordered_on %>
+    <%= f.text_field :ordered_on %>
+
+    <%= f.label :delivered_on %>
+    <%= f.text_field :delivered_on %>
+
+
+    <table  id='order_form' class="table table-striped table-bordered">
+      <h3>Details</h3>
+      <thead>
+        <tr>
+          <th>Box</th>
+          <th>Quantity</th>
+          <th>Box Price</th>
+          <th>CB Price</th>
+          <th>Mould Fees</th>
+          <th>Totals</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class='row0'>
+          <td><%= select_tag :box_id, options_for_select(@boxes.map{ |b| [b.uid, b.id] }), include_blank: true %></td>
+          <td><%= text_field_tag :quantity %></td>
+          <td><%= text_field_tag :box_price %></td>
+          <td><%= text_field_tag :cb_price %></td>
+          <td><%= text_field_tag :mould_fees %></td>
+          <td>$$$</td>
+        </tr>
+
+        <tr class='box0'>
+          <td colspan="6">&#8594; <b><%= @b.uid %></b> | length: <%= @b.length %> | width: <%= @b.width %> | height: <%= @b.height %> | weight: <%= @b.weight %> | frequency: <%= @b.frequency %></td>
+        </tr>
+
+        <tr class='total'>
+          <td><%= link_to 'add line', '#', id: 'add_line', class: 'btn', remote: true %></td><td><%= link_to 'new box', '#', id: 'new_box', class: 'btn', remote: true %></td><td></td>
+          <td style='text-align:right;font-weight:bold;'>tax</td>
+          <td><%= text_field_tag :tax, nil, placeholder: '7.5' %></td>
+          <td><strong><%= number_to_currency(@order.cost, precision: 0) %></strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<% end %>
