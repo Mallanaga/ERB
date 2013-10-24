@@ -6,11 +6,12 @@
     <p>&nbsp;&nbsp;&nbsp;from <%= @post.feed.url %></p>
     <% end %>
     <p><small>
-      <% if @post.updated_at > @post.created_at %>
+      <% if @post.updated_at > @post.published_at %>
         updated <%= time_ago_in_words(@post.updated_at) %> ago
       <% else %>
         posted <%= time_ago_in_words(@post.created_at) %> ago
       <% end %>
+      by <%= @post.user ? @post.user.name : @post.author %>
     </small></p>
   </div>
   <div class="row">

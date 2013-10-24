@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find_by_id(params[:id]).name
-    @posts = Category.find(params[:id]).posts
+    @posts = Category.find(params[:id]).posts.page(params[:page]).per(10)
   end
 
 end
