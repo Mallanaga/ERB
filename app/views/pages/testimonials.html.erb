@@ -7,10 +7,11 @@
   <div class="row">
     <div class="span12">
       <% Company.all.each do |c| %>
-        <h3><strong><%= c.name %></strong></h3>
-        <p><%= raw c.testimonial %></p>
-        <%= link_to "View Case Study", c %>
-        <hr>
+        <div class='post_index'>
+          <h3><strong><%= c.name %></strong></h3>
+          <p><%= raw c.testimonial %></p>
+          <%= link_to "View Case Study", c %>
+        </div>
       <% end %>
     </div>
   </div>

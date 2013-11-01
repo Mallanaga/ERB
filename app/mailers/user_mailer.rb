@@ -9,7 +9,7 @@ class UserMailer < ActionMailer::Base
 
   def confirmation(user)
     @user = user
-    @url = "http://ecorebox.com/"
+    @url = "http://www.ecorebox.com/"
     mail to:          user.email, 
          subject:     "Welcome to Eco ReBox!"
   end
