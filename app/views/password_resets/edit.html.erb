@@ -5,7 +5,7 @@
   </div>
 </div>
 <div class='container'>
-  <%= form_for @user, url: password_reset_path(params[:id]), html: {class: 'form-horizontal' role: 'form' do |f| %>
+  <%= form_for @user, url: password_reset_path(params[:id]), html: {class: 'form-horizontal' role: 'form'} do |f| %>
     <% if @user.errors.any? %>
       <div class="error_messages">
         <h2>Form is invalid</h2>
