@@ -43,7 +43,6 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
     if @company.update_attributes(name: params[:company][:name],
                                   website: params[:company][:website],
-                                  acquired: params[:company][:acquired],
                                   about: params[:company][:about],
                                   testimonial: params[:company][:testimonial])
       flash[:success] = "Company updated"
