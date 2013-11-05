@@ -18,7 +18,7 @@
 //= require jquery.flot.min.js
 //= require jquery.tokeninput
 // Loads all Bootstrap javascripts
-//= require bootstrap
+//= require twitter/bootstrap
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
 //= require ckeditor/init

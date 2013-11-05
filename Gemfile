@@ -7,7 +7,7 @@ gem 'thin'
 gem 'memcachier'
 gem 'dalli'
 gem 'bcrypt-ruby', '3.0.1'
-gem 'bootstrap-sass', '~> 2.3.2.2'
+gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails', github: 'anjlab/bootstrap-rails'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'faker', '1.0.1'
@@ -21,8 +21,9 @@ gem 'ckeditor'
 gem 'carrierwave'
 gem 'mini_magick', github: 'minimagick/minimagick', ref: '6d0f8f953112cce6324a524d76c7e126ee14f392'
 gem 'fog'
-gem 'nokogiri', '~> 1.5.3'
-gem 'feedzirra', github: 'pauldix/feedzirra', ref: '80cd357'
+gem 'unf'
+gem 'nokogiri', '~> 1.6.0'
+gem 'feedzirra', github: 'pauldix/feedzirra'
 gem 'best_in_place'
 
 group :development, :test do
@@ -42,7 +43,7 @@ end
 group :test do
   gem 'capybara', '1.1.2'
   gem 'factory_girl_rails', '4.1.0'
-  gem 'cucumber-rails', '1.2.1', :require => false
+  gem 'cucumber-rails', '1.2.1', require: false
   gem 'database_cleaner', '0.7.0'
   
   # System-dependent gems

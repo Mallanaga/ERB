@@ -1,37 +1,38 @@
 <% provide(:title, "#{current_user.name}") %>
-<div class="headercontent">
-  <div class="row">
-    <div class="span6">
-      <h1><%= link_to "#{@company.name}", @company %></h1>
-      <h2><%= current_user.name %></h2>
-    </div>
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h1><%= link_to "#{@company.name}", @company %></h1>
+        <p><%= current_user.name %></p>
+      </div>
 
-    <% if current_user.admin? %>
-      <div class="span6">
-        <div class="btn-group pull-right">
-          <%= form_for user_path(current_user), method: 'get' do |f| %>
-            <%= f.label "Select Company" %>
-            <%= f.collection_select :company_id, @companies, :id, :name,
-                                    {selected: @selected_company}, { name: "company_id", onchange: "this.form.submit()" } %>
+      <% if current_user.admin? %>
+        <div class="col-sm-6 form-group">
+          <%= form_for user_path(current_user), method: 'get', html: {class: 'form-horizontal', role: 'form'} do |f| %>
+            <%= f.label "Select Company", class: 'col-sm-5 control-label' %>
+            <div class='col-sm-7'>
+              <%= f.collection_select :company_id, @companies, :id, :name,
+                                      {selected: @selected_company}, { name: "company_id", onchange: "this.form.submit()", class: 'form-control user_select_company'} %>
+            </div>
           <% end %>
         </div>
-      </div>
-    <% end %>
-    
-    <div class="span12">
-      <ul class="nav nav-tabs" id='myTab'>
-        <li class='active'><a href="#overview">Resource Savings</a></li>
-        <li><a href="#roi">Cost Savings</a></li>
-        <li><a href="#boxes">Boxes</a></li>
-        <li><a href="#orders">Orders</a></li>
-        <li><a href="#snippet">Snippet</a></li>
-        <% if current_user.admin? %>
-          <li><a href="#company_info">Company Info</a></li>
-          <li><a href="#add_user">Add User</a></li>
-        <% end %>
-      </ul>
+      <% end %>
     </div>
   </div>
+</div>      
+<div class='container'>
+  <ul class="nav nav-tabs" id='myTab'>
+    <li class='active'><a href="#overview">Resource Savings</a></li>
+    <li><a href="#roi">Cost Savings</a></li>
+    <li><a href="#boxes">Boxes</a></li>
+    <li><a href="#orders">Orders</a></li>
+    <li><a href="#snippet">Snippet</a></li>
+    <% if current_user.admin? %>
+      <li><a href="#company_info">Company Info</a></li>
+      <li><a href="#add_user">Add User</a></li>
+    <% end %>
+  </ul>
   <div class='tab-content'>
     <%= render 'overview' %>
     <%= render 'roi' %>
@@ -44,7 +45,6 @@
     <% end %>
   </div>
 </div>
-
 <script>
   $('#myTab a').click(function (e) {
     e.preventDefault();

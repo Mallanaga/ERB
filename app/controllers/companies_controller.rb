@@ -24,9 +24,9 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id])
-    b = @company.boxes.map { |box| box.trips * box.weight }.sum
     @box_count = @company.boxes.count
-    @current = @company.boxes.map { |box| box.locations.count > 0 ? 1 : 0 }.sum
+    @current = @company.orders.map{|o| o.order_details.map{|d| d.quantity}.sum}.sum
+    @trips = @company.boxes.map { |b| b.trip_count }.sum
   end
 
   def snippet

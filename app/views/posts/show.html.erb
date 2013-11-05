@@ -1,6 +1,6 @@
 <% provide(:title, "#{@post.title}") %>
-<div class="headercontent">
-  <div class="hero-unit">
+<div class="jumbotron">
+  <div class="container">
     <h1><%= @post.title %></h1>
     <% if @post.feed.id != 1 %>
     <p>&nbsp;&nbsp;&nbsp;from <%= @post.feed.url %></p>
@@ -14,19 +14,23 @@
       by <%= @post.user ? @post.user.name : @post.author %>
     </small></p>
   </div>
+</div>
+<div class="container">
   <div class="row">
-    <div class="span10">
+    <div class="col-sm-10">
       <p><%= raw parse_links(@post.content) %></p>
     </div>
-    <div class='span2'>
+    <div class='col-sm-2'>
       <%= render @categories %>
+      <% if signed_in? && current_user.admin? %>
+        <br/><br/>
+        <%= link_to "Edit Post", edit_post_path %> | <%= link_to "Delete Post", @post, method: :delete, data: { confirm: "You're sure you want to DELETE the post '#{@post.title}'?" } %>
+      <% end %>
     </div>
   </div>
-  <% if signed_in? && current_user.admin? %>
-    <%= link_to "Edit Post", edit_post_path %> | <%= link_to "Delete Post", @post, method: :delete, data: { confirm: "You're sure you want to DELETE the post '#{@post.title}'?" } %>
-  <% end %>
-
+  
 </div>
+
 
 <script>
   $('.nav-pills li a.blog').addClass('active');

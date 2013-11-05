@@ -1,21 +1,30 @@
 <%= render 'shared/error_messages', object: f.object %>
-<div class='span3 well'>
-  <%= f.label :name, "Name of Company" %>  
-  <%= f.text_field :name %>
+<div class='col-md-3 col-md-offset-1'>
+  <div class='well'>
+    <%= f.label :name, "Name of Company" %>  
+    <%= f.text_field :name %>
 
-  <%= f.label :website, "Website (include http://)" %>
-  <%= f.text_field :website %>
+    <%= f.label :website, "Website (include http://)" %>
+    <%= f.text_field :website %>
 
-  <%= f.label :acquired %>
-  <%= f.text_field :acquired %>
-</div>
-<div class='span7 well'>
-  <div class='span3'>
-    <%= f.label :about, "About (use HTML)" %>
-    <%= f.text_area :about %>
+    <%= f.label :acquired %>
+    <%= f.text_field :acquired %>
   </div>
-  <div class='span3'>
-    <%= f.label :testimonial, "Testimonial (use HTML)" %>
-    <%= f.text_area :testimonial %>
+  <div>
+    <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <%= button_tag "Reset", type: :reset, class: "btn" %>
+    <%= link_to "Add Company", new_company_path, class: "btn" %>
+  </div>
+</div>
+<div class='col-md-7'>
+  <div class='row'>
+    <div class='col-md-6'>
+      <%= f.label :about, "About (use HTML)" %>
+      <%= f.text_area :about %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.label :testimonial, "Testimonial (use HTML)" %>
+      <%= f.text_area :testimonial %>
+    </div>
   </div>
 </div>

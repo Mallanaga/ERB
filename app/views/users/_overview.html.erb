@@ -1,30 +1,32 @@
 <div class='tab-pane active' id='overview'>
-  <div class="span3 well">
-    <table class="table table-hover">
-      <thead><h2>Stats Overview</h2></thead>
-      <tbody>
-        <tr><td><strong>Current</strong></td></tr>
-        <tr><td>Active Boxes: <%= number_with_delimiter(@active) %></td></tr>
-        <tr><td>Inactive Boxes: <%= number_with_delimiter(@inactive) %></td></tr>
-        <tr><td>Trips per Box: ~<%= @avg %></td></tr>
-        <tr><td><strong>Totals</strong></td></tr>
-        <tr><td>ERB Packages: <%= number_with_delimiter(@count) %></td></tr>
-        <tr><td>Unique Packages: <%= @boxes.size %></td></tr>
-        <tr><td>Shipments sent: <%= number_with_delimiter(@trips) %></td></tr>
-        <tr><td>ROI: <%= number_to_currency(@roi, precision: 0) %></td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="span7 well">
-    <table class="table">
-      <thead><h2>Resource Savings</h2></thead>
-      <tr><td><%= image_tag 'res_trees.png', alt: 'trees', class: 'resource_pic' %></td>
-          <td><h1><%= "#{pluralize(number_with_delimiter(@company.trees), 'tree')}" %></h1></td></tr>
-      <tr><td><%= image_tag 'res_water.png', alt: 'trees', class: 'resource_pic' %></td>
-          <td><h1><%= "#{pluralize(number_with_delimiter(@company.water), 'gallon')} of water" %></h1></td></tr>
-      <tr><td><%= image_tag 'res_energy.png', alt: 'trees', class: 'resource_pic' %></td>
-          <td><h1><%= raw "#{number_with_delimiter(@company.electricity)} kW&#8226;h of electricity" %></h1></td></tr>
-    </table>
+  <div class='row'>
+    <div class="col-md-3 col-md-offset-1 well">
+      <table class="table table-hover">
+        <thead><h2>Stats Overview</h2></thead>
+        <tbody>
+          <tr><td><strong>Current</strong></td></tr>
+          <tr><td>Active Boxes: <%= number_with_delimiter(@active) %></td></tr>
+          <tr><td>Inactive Boxes: <%= number_with_delimiter(@inactive) %></td></tr>
+          <tr><td>Trips per Box: ~<%= @avg %></td></tr>
+          <tr><td><strong>Totals</strong></td></tr>
+          <tr><td>ERB Packages: <%= number_with_delimiter(@count) %></td></tr>
+          <tr><td>Unique Packages: <%= @boxes.size %></td></tr>
+          <tr><td>Shipments sent: <%= number_with_delimiter(@trips) %></td></tr>
+          <tr><td>ROI: <%= number_to_currency(@roi, precision: 0) %></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-7">
+      <table class="table">
+        <thead><h2>Resource Savings</h2></thead>
+        <tr><td><%= image_tag 'res_trees.png', alt: 'trees', class: 'resource_pic' %></td>
+            <td><h1><%= "#{pluralize(number_with_delimiter(@company.trees), 'tree')}" %></h1></td></tr>
+        <tr><td><%= image_tag 'res_water.png', alt: 'trees', class: 'resource_pic' %></td>
+            <td><h1><%= "#{pluralize(number_with_delimiter(@company.water), 'gallon')} of water" %></h1></td></tr>
+        <tr><td><%= image_tag 'res_energy.png', alt: 'trees', class: 'resource_pic' %></td>
+            <td><h1><%= raw "#{number_with_delimiter(@company.electricity)} kW&#8226;h of electricity" %></h1></td></tr>
+      </table>
+    </div>
   </div>
 </div>
 

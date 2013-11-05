@@ -18,4 +18,8 @@ class PagesController < ApplicationController
 
   def about
   end
+
+  def testimonials
+    @companies = Company.page(params[:page]).per(20)
+  end
 end

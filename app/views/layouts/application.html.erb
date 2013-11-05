@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title><%= full_title(yield(:title)) %></title>
     <%= favicon_link_tag       'favicon.ico' %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= auto_discovery_link_tag :atom, "/news.atom" %>
     <%= auto_discovery_link_tag :rss, "/news.rss" %>
     <%= render 'layouts/shim' %>
@@ -24,10 +25,8 @@
     <div class='wrapper'>
       <%= render 'layouts/header' %>
       <%= yield :carousel %>
+      <%= render 'layouts/errors' %>
       <div class='content'>
-        <% flash.each do |key, value| %>
-          <%= content_tag(:div, value, class: 'alert alert-#{key}') %>
-        <% end %>
         <%= yield %>
         <%= debug(params) if Rails.env.development? %>
       </div>

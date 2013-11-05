@@ -1,26 +1,25 @@
 <% provide(:title, 'Eco ReBoxing') %>
-<div class="headercontent">
-  <div class="hero-unit">
-    <h1>News</h1>
-    <p>and now for something totally different...</p>
-    <%= link_to image_tag('RSS.png'), posts_url(format: 'atom'), target: '_blank', id: 'rss', title: 'Atom/RSS feed' %>
+<div class="jumbotron">
+  <div class="container">
+    <h1>
+      News 
+      <%= link_to image_tag('RSS.png'), posts_url(format: 'atom'), target: '_blank', id: 'rss', title: 'Atom/RSS feed' %>
+    </h1>
+    <p>ReThink. ReStore. ReUse.</p>
   </div>
-  
-  <div class="row">
-    <div class="span12">
-      <%= render @posts %>
-      <%= paginate @posts %>
-      <% if current_user && current_user.admin? %>
-        <hr>
-        <h3>Admin Actions</h2>
-        <%= link_to 'Update Feeds', update_feed_path, class: 'btn' %>
-        <%= link_to "Post New Entry", new_post_path, class: "btn" %>
-        <h4>Add a feed from another site (needs testing from development, first)</h2>
-        <div><%= render 'add' %></div>
-      <% end %>
-    </div>
+</div>  
 
-  </div>
+<div class="container">
+  <%= render @posts %>
+  <%= paginate @posts %>
+  <% if current_user && current_user.admin? %>
+    <hr>
+    <h3>Admin Actions</h2>
+    <%= link_to 'Update Feeds', update_feed_path, class: 'btn' %>
+    <%= link_to "Post New Entry", new_post_path, class: "btn" %>
+    <h4>Add a feed from another site (needs testing from development, first)</h2>
+    <div><%= render 'add' %></div>
+  <% end %>
 </div>
 
 <script>

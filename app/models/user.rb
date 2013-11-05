@@ -46,6 +46,10 @@ class User < ActiveRecord::Base
     end while User.exists?(column => self[column])
   end
 
+  def first_name
+    self.name.split(' ').first
+  end
+
 private
 
     def create_remember_token

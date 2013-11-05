@@ -2,41 +2,51 @@
 <%= content_for :carousel do %>
 <!-- Carousel
 ================================================== -->
-<div id="myCarouselHome" class="carousel slide">
+<div id="myCarouselHome" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarouselHome" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarouselHome" data-slide-to="1"></li>
+    <li data-target="#myCarouselHome" data-slide-to="2"></li>
+  </ol>
+
   <div class="carousel-inner">
     <div class="item active">
       <%= image_tag 'slide_01.jpg', alt: 'slide 01' %>
-      <div class="container">
-        <div class="carousel-caption">
-          <h1>It's the green box.</h1>
-          <p class="lead">Eco ReBox is the leading manufacturer of green, reusable shipping materials for the packaging industry.</p>
-          <%= link_to 'What People Are Saying', testimonials_path, class: 'btn btn-large btn-primary' %>
-        </div>
+
+      <div class="carousel-caption">
+        <h1>It's the green box.</h1>
+        <p class="lead">Eco ReBox is the leading manufacturer of green, reusable shipping materials for the packaging industry.</p>
+        <%= link_to 'What People Are Saying', testimonials_path, class: 'btn btn-large btn-primary' %>
       </div>
     </div>
     <div class="item">
       <%= image_tag 'slide_02.jpg', alt: 'slide 02' %>
-      <div class="container">
-        <div class="carousel-caption">
-          <h1>Our Method.</h1>
-          <p class="lead">Our patent-pending methodology is a proven method of tracking, shipping, and reclaiming products for reuse and recycling, creating better business to customer relationships and a sustainable shipping ecosystem.</p>
-          <%= link_to 'Learn More', reuse_path, class: 'btn btn-large btn-primary' %>
-        </div>
+
+      <div class="carousel-caption">
+        <h1>Our Method.</h1>
+        <p class="lead">Our patent-pending methodology is a proven method of tracking, shipping, and reclaiming products for reuse and recycling, creating better business to customer relationships and a sustainable shipping ecosystem.</p>
+        <%= link_to 'Learn More', reuse_path, class: 'btn btn-large btn-primary' %>
       </div>
     </div>
     <div class="item">
       <%= image_tag 'slide_03.jpg', alt: 'slide 03' %>
-      <div class="container">
-        <div class="carousel-caption">
-          <h1>Rethink. Restore. Reuse.</h1>
-          <p class="lead">Eco ReBox is the logistics industry leader with forward-thinking packaging, shipping and logistics solutions that influence the sustainability agenda.</p>
-          <%= link_to 'Learn More', about_path, class: 'btn btn-large btn-primary' %>
-        </div>
+
+      <div class="carousel-caption">
+        <h1>Rethink. Restore. Reuse.</h1>
+        <p class="lead">Eco ReBox is the logistics industry leader with forward-thinking packaging, shipping and logistics solutions that influence the sustainability agenda.</p>
+        <%= link_to 'Learn More', about_path, class: 'btn btn-large btn-primary' %>
       </div>
     </div>
   </div>
-  <a class="left carousel-control" href="#myCarouselHome" data-slide="prev">&lsaquo;</a>
-  <a class="right carousel-control" href="#myCarouselHome" data-slide="next">&rsaquo;</a>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#myCarouselHome" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#myCarouselHome" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
 </div><!-- /.carousel -->
 <% end %>
 
@@ -48,8 +58,10 @@
 	<div id="contactus" align="center">
 		<h4><%= link_to 'Contact', contact_path, class: "btn btn-primary btn-lg" %> -or- call <strong>877-REBOX-IT</strong> and speak with one of our packaging experts today!</h4>
 	</div>
-  <hr>
-	<div id="totalimpact">
+
+  <br/>
+  
+	<div class='well well-lg'>
 		<table>
 			<tr>
 				<td width="300" valign="top">
@@ -87,28 +99,27 @@
 	</div>
 
   <br/>
-  <br/>
 
-  <div class="row-fluid">
-    <div class="span4">
+  <div class="row">
+    <div class="col-sm-4 col-xs-12">
       <%= image_tag '140_box.jpg', alt: 'boxes' %>
       <h2>It's the Green Box!</h2>
       <p>Eco ReBox boxes are quite literally, the green box. It's the choice of manufacturers, consumers, and sustainable shipping minded companies.</p>
       <p><%= link_to 'View details', reuse_path, class: 'btn' %></p>
     </div>
-    <div class="span4">
+    <div class="col-sm-4 col-xs-12">
       <%= image_tag '140_solutions.jpg', alt: 'solutions' %>
       <h2>Solutions For Business</h2>
       <p>Eco ReBox develops sustainable shipping solutions including a software service to track and manage shipping products.</p>
       <p><%= link_to 'View details', software_path, class: 'btn' %></p>
     </div>
-    <div class="span4">
+    <div class="col-sm-4 col-xs-12">
       <%= image_tag '140_resources.jpg', alt: 'resources' %>
       <h2>Resource Savings</h2>
       <p>In addition to solutions for shipping, we offer a variety of tools to help track resource savings based on our patent-pending methodology.</p>
       <p><%= link_to 'View details', resources_path, class: 'btn' %></p>
     </div>
-  </div> <!--/.row-fluid -->
+  </div>
 
   <h1>Did you know...</h1>
   <p>352 million metric tons of paper and paperboard are consumed by the world annually?</p>

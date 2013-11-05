@@ -94,7 +94,7 @@ class Box < ActiveRecord::Base
  
   def electricity
     w = self.trips.map{ |t| t.quantity }.sum * self.weight
-    (w * 8.687).round(1)
+    (w * 8.687).round
   end
 
   def self.update_trips

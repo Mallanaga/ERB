@@ -1,35 +1,56 @@
 <div class='tab-pane' id='add_user'>
-  <div class="span3 well">
-    <table class="table table-hover">
-      <thead><h2>Add User</h2></thead>
-      <tbody>
-        <tr><td>Total Users: <%= User.all.size %></td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="span7 well">
-    <%= form_for User.new do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-
-      User is an Admin? <%= f.check_box :admin %>
-
-      <%= f.label :company_id %>
-      <%= f.collection_select :company_id, @companies, :id, :name,
-                                      {include_blank: true, selected: @selected_company}, {} %>
-
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-
-      <%= f.label :password_confirmation, "Confirm Password" %>
-      <%= f.password_field :password_confirmation %>
-      <br/><br/>
-      <%= f.submit "Create User!", class: "btn btn-large btn-primary" %>
-    <% end %>
+  <div class='row'>
+    <div class="col-md-3 col-md-offset-1 well">
+      <table class="table table-hover">
+        <thead><h2>Add User</h2></thead>
+        <tbody>
+          <tr><td>Total Users: <%= User.all.size %></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-7">
+      <%= form_for User.new, html: {class: 'form-horizontal', role: 'form'} do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <div class='form-group'>
+          <%= f.label :name, class: 'col-sm-2 control-label' %>
+          <div class='col-sm-10'>
+            <%= f.text_field :name, class: 'form-control' %>
+            <%= f.check_box :admin %> User is an Admin?
+          </div>
+        </div>
+        <div class='form-group'>
+          <%= f.label :company_id, class: 'col-sm-2 control-label' %>
+          <div class='col-sm-10'>
+            <%= f.collection_select :company_id, @companies, :id, :name,
+                                            {include_blank: true, selected: @selected_company}, {class: 'form-control'} %>
+          </div>
+        </div>
+        <div class='form-group'>                                  
+          <%= f.label :email, class: 'col-sm-2 control-label' %>
+          <div class='col-sm-10'>
+            <%= f.text_field :email, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>
+          <%= f.label :password, class: 'col-sm-2 control-label' %>
+          <div class='col-sm-10'>
+            <%= f.password_field :password, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>
+          <%= f.label :password_confirmation, "Confirm Password", class: 'col-sm-2 control-label' %>
+          <div class='col-sm-10'>
+            <%= f.password_field :password_confirmation, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>
+          <div class='col-sm-offset-2 col-sm-10'>
+            <%= f.submit "Create User!", class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
   </div>
 </div>
 

@@ -1,20 +1,13 @@
 <% provide(:title, 'Testimonials') %>
-<div class="headercontent">
-  <div class="hero-unit">
+<div class="jumbotron">
+  <div class="container">
     <h1>What People Are Saying</h1>
     <p>Here are a few things people are saying about Eco ReBox.</p>
   </div>
-  <div class="row">
-    <div class="span12">
-      <% Company.all.each do |c| %>
-        <div class='post_index'>
-          <h3><strong><%= c.name %></strong></h3>
-          <p><%= raw c.testimonial %></p>
-          <%= link_to "View Case Study", c %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+</div>
+<div class="container">
+  <%= render partial: 'testimonial', collection: @companies %>
+  <%= paginate @companies %>
 </div>
 
 <script type="text/javascript">

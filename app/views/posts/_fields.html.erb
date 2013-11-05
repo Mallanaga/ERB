@@ -1,19 +1,19 @@
 <%= render 'shared/error_messages', object: f.object %>
 
-<div class='field'>
+<div class='form-group'>
   <%= f.label :title %>
-  <%= f.text_field :title, class: 'tf_blog' %>
+  <%= f.text_field :title, class: 'tf_blog form-control' %>
 </div>
-<div class='field'>
+<div class='form-group'>
   <%= f.label :summary, 'Summary (if blank, Content will just be summarized)' %>
-  <%= f.text_field :summary, class: 'tf_blog2' %>
+  <%= f.text_field :summary, class: 'tf_blog2 form-control' %>
 </div>
-<div class='field'>
+<div class='form-group'>
   <%= f.label :content %>
-  <%= f.cktext_area :content, ckeditor: {} %>
+  <%= f.cktext_area :content, ckeditor: {}, class: 'form-control' %>
 </div>
 <br/>
-<div class='field'>
+<div class='form-group'>
   <%= f.label :category_tokens, "Categories" %>
-  <%= f.text_field :category_tokens, data: {load: @post.categories} %>
+  <%= f.text_field :category_tokens, data: {load: @post.categories}, class: 'form-control' %>
 </div>
