@@ -7,6 +7,7 @@ gem 'thin'
 gem 'memcachier'
 gem 'dalli'
 gem 'bcrypt-ruby', '~>3.0.1'
+gem 'sass-rails', '~> 3.2.3'
 gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails', github: 'anjlab/bootstrap-rails'
 gem 'kaminari'
 gem 'kaminari-bootstrap', github: 'mcasimir/kaminari-bootstrap'
@@ -35,7 +36,6 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.2.3'
 end
