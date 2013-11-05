@@ -37,23 +37,26 @@ class UsersController < ApplicationController
     @homes = (@electricity/12000).round(1)
 
     @orders = @company.orders
-    @count = @orders.map{|o| o.order_details.map{|d| d.quantity}.sum}.sum
-
     @boxes = @company.boxes.order('created_at ASC')
+    
+    @count = @boxes.map { |b| b.in }.sum
     @trips = @boxes.map { |b| b.trip_count }.sum
     @inactive = @boxes.map { |b| b.out }.sum
     @active = @count - @inactive
     @avg = @trips / @count if @count > 0
-    @cost = @boxes.map { |b| b.cost*b.in }.sum
-    @paper_cost = @boxes.map { |b| b.cb_cost*b.trip_count }.sum
+
+    @cost = @boxes.map { |b| b.cost }.sum
+    @yearly = (@cost / (Date.today - @since).to_i * 365).round
+
+    @paper_cost = @boxes.map { |b| b.cb_cost }.sum
+    @yearly_cb = (@paper_cost / (Date.today - @since).to_i * 365).round
+    
     @roi = @paper_cost - @cost
     @percent = (100 - @cost/@paper_cost * 100).round
 
-    @yearly = (@cost / (Date.today - @since).to_i * 365).round
     @purchase_array = [[((Date.today-1.year).to_time.to_i.to_s+'000').to_i, @yearly]]
     @purchase_array.append([(Date.today.to_time.to_i.to_s+'000').to_i, @yearly])
-    @yearly_cb = (@paper_cost / (Date.today - @since).to_i * 365).round
-
+    
     @export = @boxes.order(:uid)
     respond_to do |format|
       format.html

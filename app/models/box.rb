@@ -26,6 +26,7 @@ class Box < ActiveRecord::Base
                   
   belongs_to :company
   has_many :trips
+  has_many :order_details
 
   before_save { |box| box.uid = uid.strip }
 
@@ -58,10 +59,12 @@ class Box < ActiveRecord::Base
     ct
   end
 
+  # how many of a particular box has been ordered 
   def in
     OrderDetail.find_all_by_box_id(self.id).map{ |d| d.quantity }.sum
   end
 
+  # how many times a particular box has been shipped
   def out
     self.trips.map{ |t| t.retired }.sum    
   end
@@ -71,11 +74,11 @@ class Box < ActiveRecord::Base
   end
 
   def cost
-    OrderDetail.find_all_by_box_id(self.id).map{ |d| d.box_price }.sum
+    OrderDetail.find_all_by_box_id(self.id).map{ |d| d.box_price * d.quantity }.sum
   end
 
   def cb_cost
-    OrderDetail.find_all_by_box_id(self.id).map{ |d| d.cb_price }.sum
+    OrderDetail.find_all_by_box_id(self.id).map{ |d| d.cb_price * d.box.trip_count }.sum
   end
 
   def date

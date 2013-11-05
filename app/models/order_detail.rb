@@ -17,4 +17,5 @@ class OrderDetail < ActiveRecord::Base
   attr_accessible :box_id, :quantity, :box_price, :cb_price, :mould_fees
 
   belongs_to :order
+  belongs_to :box
 end
