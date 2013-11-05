@@ -1,6 +1,15 @@
 /* VARIABLES ------------------------------ */
 $ecogreen: rgb(184,207,140);
 
+// Border Radius
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+       -o-border-radius: $radius;
+          border-radius: $radius;
+}
+
 /* GLOBAL STYLES ------------------------------ */
 
 html, body {
@@ -178,6 +187,7 @@ footer {
 .tab-content {
   background-color: white;
   padding-top: 20px;
+  @include border-radius( 4px );
 }
 
 .nav-tabs {
@@ -191,7 +201,7 @@ footer {
   }
   > li > a:hover, 
     > li > a:focus {
-    padding-bottom: 6px;
+    padding-bottom: 8px;
   }
 }
 

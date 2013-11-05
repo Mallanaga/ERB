@@ -1,5 +1,34 @@
 <% provide(:title, 'Add company') %>
-<div class='headercontent'>
-  <h1>Add company</h1>
-  <%= render 'new' %>
+<div class="jumbotron">
+  <div class="container">
+    <h1>Add company</h1>
+  </div>
+</div>
+<div class='container'>
+  <%= form_for @company, role: 'form' do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class='form-group'>
+      <%= f.label :name, "Name of Company" %>  
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :website, "Website (include http://)" %>
+      <%= f.text_field :website, class: 'form-control' %>
+    </div>
+    <div class='row'>
+      <div class='col-sm-6'>
+        <div class='form-group'>
+          <%= f.label :about, "About (use HTML)" %>
+          <%= f.text_area :about, class: 'form-control' %>
+        </div>
+      </div>
+      <div class='col-sm-6'>
+        <div class='form-group'>
+          <%= f.label :testimonial, "Testimonial (use HTML)" %>
+          <%= f.text_area :testimonial, class: 'form-control' %>
+        </div>
+      </div>
+    <%= f.submit "Create Company", class: "btn btn-primary" %>
+    <%= f.submit "Cancel", data: { confirm: "All changes will be lost.  Are you sure?" }, class: 'btn' %>  
+  <% end %>
 </div>
