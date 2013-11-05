@@ -6,10 +6,10 @@ gem 'rails', '3.2.12'
 gem 'thin'
 gem 'memcachier'
 gem 'dalli'
-gem 'bcrypt-ruby', '3.0.1'
+gem 'bcrypt-ruby', '~>3.0.1'
 gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails', github: 'anjlab/bootstrap-rails'
 gem 'kaminari'
-gem 'kaminari-bootstrap'
+gem 'kaminari-bootstrap', github: 'mcasimir/kaminari-bootstrap'
 gem 'faker', '1.0.1'
 gem 'rails_autolink', '1.1.0'
 gem 'jquery-rails'
@@ -35,9 +35,9 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails', '3.2.2'
-  gem 'uglifier', '1.2.3'
+  gem 'sass-rails', '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.2'
+  gem 'uglifier', '>= 1.2.3'
 end
 
 group :test do
@@ -58,5 +58,5 @@ end
 
 group :production do
   gem 'pg'
-  gem 'newrelic_rpm', github: 'newrelic/rpm', ref: 'e25d5c30e0'
+  gem 'newrelic_rpm', github: 'newrelic/rpm'
 end
