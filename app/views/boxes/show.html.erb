@@ -9,8 +9,16 @@
   <div class='row'>
     <div class="col-sm-4 col-sm-offset-2">
       <h3>Box properties</h3>
+    </div>
+  </div>
+  <div class='row'>
+    <div class="col-sm-4 col-sm-offset-2">
       <p><%= @box.length %>in x <%= @box.width %>in x <%= @box.height %>in and <%= @box.weight %>lbs</p>
       <h3>Status <small>(editable)</small></h3>
+    </div>
+    <div class="col-sm-4">
+      <p>Comparable cardboard box price: <%= number_to_currency(@cb) %></p>
+      <p>Multiplier (if cardboard box was used multiple times, then how many?): <span class='edit'><%= best_in_place_if (admin? || owner?), @box, :multiplier %></span></p>
     </div>
   </div>
   <div class='row'>
@@ -24,7 +32,7 @@
     </div>
   </div>
   <div class='row'>
-    <div class="col-sm-7 col-sm-offset-2 well">
+    <div class="col-sm-8 col-sm-offset-2 well">
       <h3>Trip History <small>(editable)</small></h3>
       <table class="table table-striped table-bordered trips">
         <thead>

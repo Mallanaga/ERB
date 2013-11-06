@@ -22,7 +22,7 @@ class Box < ActiveRecord::Base
   friendly_id :uid
   
   attr_accessible :company_id, :uid, :length, :width, :height,
-                  :weight, :frequency, :active
+                  :weight, :frequency, :multiplier, :active
                   
   belongs_to :company
   has_many :trips
@@ -78,7 +78,7 @@ class Box < ActiveRecord::Base
   end
 
   def cb_cost
-    OrderDetail.find_all_by_box_id(self.id).map{ |d| d.cb_price * d.box.trip_count }.sum
+    OrderDetail.find_all_by_box_id(self.id).map{ |d| d.cb_price * d.box.trip_count }.sum / self.multiplier
   end
 
   def date

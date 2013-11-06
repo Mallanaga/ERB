@@ -42,6 +42,8 @@ class BoxesController < ApplicationController
 
   def show
     @box = Box.find(params[:id])
+    cb = OrderDetail.find_all_by_box_id(@box.id).map{ |d| d.cb_price }
+    @cb = cb.inject(:+).to_f / cb.size
   end
 
   def track

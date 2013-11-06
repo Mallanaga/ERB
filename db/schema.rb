@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131023233551) do
+ActiveRecord::Schema.define(:version => 20131106203242) do
 
   create_table "boxes", :force => true do |t|
     t.integer  "company_id"
@@ -22,10 +22,11 @@ ActiveRecord::Schema.define(:version => 20131023233551) do
     t.decimal  "weight"
     t.decimal  "cost",       :precision => 6, :scale => 2
     t.decimal  "cb_cost",    :precision => 6, :scale => 2
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
     t.integer  "frequency"
     t.boolean  "active"
+    t.integer  "multiplier",                               :default => 1
   end
 
   add_index "boxes", ["company_id"], :name => "index_boxes_on_company_id"
