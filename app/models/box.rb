@@ -70,7 +70,7 @@ class Box < ActiveRecord::Base
   end
 
   def trip_count
-    self.trips.map{ |t| t.quantity }.sum
+    self.trips.map{ |t| t.quantity }.sum 
   end
 
   def cost
@@ -86,17 +86,17 @@ class Box < ActiveRecord::Base
   end
 
   def trees
-    w = self.trips.map{ |t| t.quantity }.sum * self.weight
+    w = self.trips.map{ |t| t.quantity }.sum * self.weight / self.multiplier
     (w * 0.00133).round(1)
   end
 
   def water
-    w = self.trips.map{ |t| t.quantity }.sum * self.weight
+    w = self.trips.map{ |t| t.quantity }.sum * self.weight / self.multiplier
     (w * 5.3).round
   end
  
   def electricity
-    w = self.trips.map{ |t| t.quantity }.sum * self.weight
+    w = self.trips.map{ |t| t.quantity }.sum * self.weight / self.multiplier
     (w * 8.687).round
   end
 
