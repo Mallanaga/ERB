@@ -57,7 +57,16 @@
 	<div id="contactus" align="center">
 		<h4><%= link_to 'Contact', contact_path, class: "btn btn-primary btn-lg" %> -or- call <strong>877-REBOX-IT</strong> and speak with one of our packaging experts today!</h4>
 	</div>
-
+  <div class='row'>
+    <div class='col-sm-6 col-sm-offset-3'>
+      <%= form_tag 'http://ecorebox.herokuapp.com/track', method: "get", class: 'input-group', target: '_blank', id: 'track_a_box' do %>
+        <%= text_field_tag :uid, '', placeholder: 'Track your Eco ReBox', class: 'form-control' %>
+        <span class='input-group-btn'>
+          <%= submit_tag "Track", class: 'btn btn-default' %>
+        </span>
+      <% end %>
+    </div>
+  </div>
   <br/>
   
 	<div class='well well-lg'>
