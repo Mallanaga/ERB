@@ -251,3 +251,44 @@ input.tf_blog2 {
   display: inline;
   width: 90px;
 }
+
+h1, h2, h3, h4 {
+font-family: 'Oswald', sans-serif;
+text-transform: uppercase;
+}
+#total_impact_view{
+  background-image: url('/assets/total_impact_view.jpg');
+  background-size: cover;
+}
+
+#total_impact_view table{
+  font-family: 'Oswald', sans-serif;
+  color: #FFFFFF;
+}
+
+#did_you_know_view{
+  background-image: url('/assets/did_you_know_view.jpg');
+  background-size: cover;
+}
+
+#did_you_know_text {
+  font-family: 'Oswald', sans-serif;
+  width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+  color: #FFFFFF;
+  font-size: 20px;
+  font-weight: normal;
+  padding: 10px;
+  height: 550px;
+  background-color:rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+#contact_tracking_view{
+  height: 550px;
+  background-image: url('/assets/contact_tracking_view.png');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+}

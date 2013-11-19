@@ -1,0 +1,179 @@
+<html>
+<head>
+<link href="dist/css/bootstrap.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<style>
+
+
+</style>
+</head>
+<body>
+<% provide(:title, 'Reusable packaging Experts') %>
+
+<!-- Carousel
+================================================== -->
+<div id="myCarouselHome" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarouselHome" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarouselHome" data-slide-to="1"></li>
+    <li data-target="#myCarouselHome" data-slide-to="2"></li>
+  </ol>
+
+  <div class="carousel-inner">
+    <div class="item active">
+      <%= image_tag 'slide_01.jpg', alt: 'slide 01' %>
+
+      <div class="carousel-caption">
+        <h1>It's the green box.</h1>
+        <p class="lead">Eco ReBox is the leading manufacturer of green, reusable shipping materials for the packaging industry.</p>
+        <%= link_to 'What People Are Saying', testimonials_path, class: 'btn btn-large btn-primary' %>
+      </div>
+    </div>
+    <div class="item">
+      <%= image_tag 'slide_02.jpg', alt: 'slide 02' %>
+
+      <div class="carousel-caption">
+        <h1>Our Method.</h1>
+        <p class="lead">Our patent-pending methodology is a proven method of tracking, shipping, and reclaiming products for reuse and recycling, creating better business to customer relationships and a sustainable shipping ecosystem.</p>
+        <%= link_to 'Learn More', reuse_path, class: 'btn btn-large btn-primary' %>
+      </div>
+    </div>
+    <div class="item">
+      <%= image_tag 'slide_03.jpg', alt: 'slide 03' %>
+
+      <div class="carousel-caption">
+        <h1>Rethink. Restore. Reuse.</h1>
+        <p class="lead">Eco ReBox is the logistics industry leader with forward-thinking packaging, shipping and logistics solutions that influence the sustainability agenda.</p>
+        <%= link_to 'Learn More', about_path, class: 'btn btn-large btn-primary' %>
+      </div>
+    </div>
+  </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#myCarouselHome" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#myCarouselHome" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div><!-- /.carousel -->
+
+<!-- Marketing messaging and featurettes
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container marketing">
+  <div id="total_impact_view">
+  <p>&nbsp;</p>
+  <table width="1000" align="center">
+        <tr>
+          <td width="430"><iframe width="400" height="225" src="http://www.youtube.com/embed/2znwYZNyOkU" frameborder="0" allowfullscreen></iframe></td>
+          <td valign="top"><h1>Why choose Eco Rebox boxes for your reusable packaging needs?</h1></td>
+        </tr>
+    </table>
+    <p>&nbsp;</p>
+    <table width="1000" align="center">
+      <tr>
+        <td width="300" valign="top">
+          <h1>Total Impact</h1> How have companies using Eco ReBox made a difference in sustainability?
+        </td>
+                    <td width="90" align="left" valign="top">
+                      <div class="topbumper"><%= image_tag 'res_trees.png', alt: 'trees', class: 'tree' %></div>
+                    </td>
+                    <td width="120" valign="top">
+                      <div class="topbumper"><span class="resource"><%= number_with_delimiter(@trees, delimiter: ',') %></span><br>
+                        <strong>trees saved</strong><br>
+                        <span class="resourcecomp">Enough to build more than <%= @houses %> large, single family homes!</span>
+                      </div>
+                    </td>
+                    <td width="80" align="center" valign="top">
+                      <div class="topbumper"><%= image_tag 'res_water.png', alt: 'water', class: 'water' %></div>
+                    </td>
+                    <td width="120" valign="top">
+                      <div class="topbumper"><span class="resource"><%= number_with_delimiter(@water, delimiter: ',') %></span><br>
+                        <strong>gallons of water conserved</strong><br>
+                        <span class="resourcecomp">Enough to fill <%= @pools %> average home swimming pools!</span>
+                      </div>
+                    </td>
+                    <td width="80" align="center" valign="top">
+                      <div class="topbumper"><%= image_tag 'res_energy.png', alt: 'electricity', class: 'power' %></div>
+                    </td>
+                    <td width="120" valign="top">
+                      <div class="topbumper"><span class="resource"><%= number_with_delimiter(@electricity, delimiter: ',') %></span><br>
+                        <strong>kWh saved</strong><br>
+                        <span class="resourcecomp">Enough to power <%= @homes %> American homes in a year!</span>
+                      </div>
+                    </td>
+                </tr>
+    </table>
+  </div>
+
+<div id="did_you_know_view">
+  	<div id="did_you_know_text">
+      <h1>Did You Know?</h1>
+      <p>352 million metric tons of paper and paperboard are consumed by the world annually.</p>
+  	  <p>35% of the nation&rsquo;s municipal solid waste stream comes from paper and paperboard products.</p>
+  	  <p>1,551 billion gallons of waste water are generated annually by U.S. pulp, paper, <br />
+  	    and paperboard manufacturers.</p>
+  	  <p>14.58 million trees are consumed annually in the production of cardboard packaging for <br />
+  	    consumer goods.</p>
+  	  <p>Cardboard is only recyclable when not wet or contaminated with food or oil. </p>
+  	  <h3>Eco Reboxes are non porous.<br />
+  	    Eco Reboxes are strong and durable.<br />
+  	    Eco Reboxes are always recyclable. <br />
+      Eco Reboxes are meant to be reused over and over again.</h3>
+    </div>  
+</div>
+
+<div id="contact_tracking_view">
+<p>&nbsp;</p>
+<table width="800" align="center">
+    <tr>
+        <td align="center"><div id="contactus" align="center">
+                <h4><%= link_to 'Contact', contact_path, class: "btn btn-primary btn-lg" %> -or- call <strong>877-REBOX-IT</strong> and speak with one of our packaging experts today!</h4>
+            </div>
+        </td>
+    </tr>
+    <tr><td align="center"><h1>Durable, Reusable Boxes and Innovative Packaging Design & Solutions by Eco ReBox</h1></td>
+    </tr>
+    <tr><td align="center">
+    	<table width="500" align="center">
+    	  <tr>
+    	<td width="250" valign="top"><h4 align="center">Sign Up For Updates</h4></td>
+        <td width="250" align="right">
+        <input type="text" class="form-control" placeholder="Your Name"><br />
+        <input type="text" class="form-control" placeholder="Enter Your Email Address"><br />
+        <input type="text" class="form-control" placeholder="Please Reenter Your Email Address"><br />
+          <button type="submit" class="btn btn-default">Sign Me Up!</button>
+        </td></tr>
+        </table>
+    </td></tr>
+    <tr><td align="center">
+      <table width="600" border="0" align="center">
+  <tr>
+    <td><%= form_tag 'http://ecorebox.herokuapp.com/track', method: "get", class: 'input-group', target: '_blank', id: 'track_a_box' do %>
+        <%= text_field_tag :uid, '', placeholder: 'Track your Eco ReBox', class: 'form-control' %>
+        <span class='input-group-btn'>
+          <%= submit_tag "Track", class: 'btn btn-default' %>
+        </span>
+      <% end %>
+        </td>
+  </tr>
+</table>
+</td>
+    </tr>
+</table>
+</div>
+</div><!--/.container marketing -->
+<script>
+  $('#myCarouselHome').carousel({
+    interval: 7000
+  });
+  $('.nav-pills li a.first').addClass('active');
+  $(".alert").delay(7000).fadeOut("slow").fadeIn("slow").fadeOut("slow", function() {
+    $(".alert").remove();
+  });
+</script>
+</body>
+</html>

@@ -18,6 +18,7 @@ Erbv2::Application.routes.draw do
   resources :order_details
   resources :trips
   resources :sessions,    only: [:new, :create, :destroy]
+  resources :mailings,    only: [:create]
   resources :password_resets
 
   root                              to: 'pages#home'

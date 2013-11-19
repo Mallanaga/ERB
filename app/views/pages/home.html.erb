@@ -53,87 +53,124 @@
 ================================================== -->
 <!-- Wrap the rest of the page in another container to center all the content. -->
 
-<div class="container marketing">
-	<div id="contactus" align="center">
-		<h4><%= link_to 'Contact', contact_path, class: "btn btn-primary btn-lg" %> -or- call <strong>877-REBOX-IT</strong> and speak with one of our packaging experts today!</h4>
-	</div>
-  <div class='row'>
-    <div class='col-sm-6 col-sm-offset-3'>
-      <%= form_tag 'http://ecorebox.herokuapp.com/track', method: "get", class: 'input-group', target: '_blank', id: 'track_a_box' do %>
-        <%= text_field_tag :uid, '', placeholder: 'Track your Eco ReBox', class: 'form-control' %>
-        <span class='input-group-btn'>
-          <%= submit_tag "Track", class: 'btn btn-default' %>
-        </span>
-      <% end %>
-    </div>
-  </div>
-  <br/>
-  
-	<div class='well well-lg'>
-		<table>
-			<tr>
-				<td width="300" valign="top">
-					<h1>Total Impact</h1> How have companies using Eco ReBox made a difference in sustainability?
-				</td>
-				<td width="90" align="left" valign="top">
-					<div class="topbumper"><%= image_tag 'res_trees.png', alt: 'trees', class: 'tree' %></div>
-				</td>
-				<td width="120" valign="top">
-					<div class="topbumper"><span class="resource"><%= number_with_delimiter(@trees, delimiter: ',') %></span><br>
-					<strong>trees saved</strong><br>
-					<span class="resourcecomp">Enough to build more than <%= @houses %> large, single family homes!</span>
-					</div>
-				</td>
-				<td width="80" align="center" valign="top">
-					<div class="topbumper"><%= image_tag 'res_water.png', alt: 'water', class: 'water' %></div>
-				</td>
-				<td width="120" valign="top">
-					<div class="topbumper"><span class="resource"><%= number_with_delimiter(@water, delimiter: ',') %></span><br>
-					<strong>gallons of water conserved</strong><br>
-					<span class="resourcecomp">Enough to fill <%= @pools %> average home swimming pools!</span>
-					</div>
-				</td>
-				<td width="80" align="center" valign="top">
-					<div class="topbumper"><%= image_tag 'res_energy.png', alt: 'electricity', class: 'power' %></div>
-				</td>
-				<td width="120" valign="top">
-					<div class="topbumper"><span class="resource"><%= number_with_delimiter(@electricity, delimiter: ',') %></span><br>
-					<strong>kWh saved</strong><br>
-					<span class="resourcecomp">Enough to power <%= @homes %> American homes in a year!</span>
-					</div>
-				</td>
-			</tr>
-		</table>
-	</div>
-
-  <br/>
-
-  <div class="row">
-    <div class="col-sm-4 col-xs-12">
-      <%= image_tag '140_box.jpg', alt: 'boxes' %>
-      <h2>It's the Green Box!</h2>
-      <p>Eco ReBox boxes are quite literally, the green box. It's the choice of manufacturers, consumers, and sustainable shipping minded companies.</p>
-      <p><%= link_to 'View details', reuse_path, class: 'btn' %></p>
-    </div>
-    <div class="col-sm-4 col-xs-12">
-      <%= image_tag '140_solutions.jpg', alt: 'solutions' %>
-      <h2>Solutions For Business</h2>
-      <p>Eco ReBox develops sustainable shipping solutions including a software service to track and manage shipping products.</p>
-      <p><%= link_to 'View details', software_path, class: 'btn' %></p>
-    </div>
-    <div class="col-sm-4 col-xs-12">
-      <%= image_tag '140_resources.jpg', alt: 'resources' %>
-      <h2>Resource Savings</h2>
-      <p>In addition to solutions for shipping, we offer a variety of tools to help track resource savings based on our patent-pending methodology.</p>
-      <p><%= link_to 'View details', resources_path, class: 'btn' %></p>
+<div class="marketing">
+	<div id="total_impact_view" class='jumbotron'>
+    <div class='container'>
+      <p>&nbsp;</p>
+      <table width="1000" align="center">
+        <tr>
+          <td width="430"><iframe width="400" height="225" src="http://www.youtube.com/embed/2znwYZNyOkU" frameborder="0" allowfullscreen></iframe></td>
+          <td valign="top"><h1>Why choose Eco Rebox boxes for your reusable packaging needs?</h1></td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+      <table width="1000" align="center">
+        <tr>
+          <td width="300" valign="top">
+            <h1>Total Impact</h1> How have companies using Eco ReBox made a difference in sustainability?
+          </td>
+          <td width="90" align="left" valign="top">
+            <div class="topbumper"><%= image_tag 'res_trees.png', alt: 'trees', class: 'tree' %></div>
+          </td>
+          <td width="120" valign="top">
+            <div class="topbumper"><span class="resource"><%= number_with_delimiter(@trees, delimiter: ',') %></span><br>
+              <strong>trees saved</strong><br>
+              <span class="resourcecomp">Enough to build more than <%= @houses %> large, single family homes!</span>
+            </div>
+          </td>
+          <td width="80" align="center" valign="top">
+            <div class="topbumper"><%= image_tag 'res_water.png', alt: 'water', class: 'water' %></div>
+          </td>
+          <td width="120" valign="top">
+            <div class="topbumper"><span class="resource"><%= number_with_delimiter(@water, delimiter: ',') %></span><br>
+              <strong>gallons of water conserved</strong><br>
+              <span class="resourcecomp">Enough to fill <%= @pools %> average home swimming pools!</span>
+            </div>
+          </td>
+          <td width="80" align="center" valign="top">
+            <div class="topbumper"><%= image_tag 'res_energy.png', alt: 'electricity', class: 'power' %></div>
+          </td>
+          <td width="120" valign="top">
+            <div class="topbumper"><span class="resource"><%= number_with_delimiter(@electricity, delimiter: ',') %></span><br>
+              <strong>kWh saved</strong><br>
+              <span class="resourcecomp">Enough to power <%= @homes %> American homes in a year!</span>
+            </div>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 
-  <h1>Did you know...</h1>
-  <p>352 million metric tons of paper and paperboard are consumed by the world annually?</p>
-  <p>35% of the nation's municipal solid waste stream comes from paper and paperboard products.</p>
-  <p>1,551 billion gallons of waste water are generated annually by U.S. pulp, paper, and paperboard manufacturers.</p>
-  <p>14.58 million trees are consumed annually in the production of cardboard packaging for consumer goods (including flat screen TVs in North America, household appliances in the U.S., and laptops and computers worldwide). </p>
+  <div id="did_you_know_view" class='jumbotron'>
+    <div id="did_you_know_text" class='container'>
+      <h1>Did You Know?</h1>
+      <p>352 million metric tons of paper and paperboard are consumed by the world annually.</p>
+      <p>35% of the nation&rsquo;s municipal solid waste stream comes from paper and paperboard products.</p>
+      <p>1,551 billion gallons of waste water are generated annually by U.S. pulp, paper, <br />
+        and paperboard manufacturers.</p>
+      <p>14.58 million trees are consumed annually in the production of cardboard packaging for <br />
+        consumer goods.</p>
+      <p>Cardboard is only recyclable when not wet or contaminated with food or oil. </p>
+      <h3>Eco Reboxes are non porous.<br />
+        Eco Reboxes are strong and durable.<br />
+        Eco Reboxes are always recyclable. <br />
+      Eco Reboxes are meant to be reused over and over again.</h3>
+    </div>  
+  </div>
+
+  <div id="contact_tracking_view">
+    <p>&nbsp;</p>
+    <table width="800" align="center">
+      <tr><td align="center">
+        <div id="contactus" align="center">
+          <h4><%= link_to 'Contact', contact_path, class: "btn btn-primary btn-lg" %> -or- call <strong>877-REBOX-IT</strong> and speak with one of our packaging experts today!</h4>
+        </div>
+      </td></tr>
+      <tr><td align="center">
+        <h1>Durable, Reusable Boxes and Innovative Packaging Design & Solutions by Eco ReBox</h1>
+      </td></tr>
+      <tr><td align="center">
+        <table width="500" align="center">
+          <tr>
+            <td width="250" valign="top">
+              <h4 align="center">Sign Up For Updates</h4>
+            </td>
+            <td width="250" align="right">
+              <%= form_for(Mailing.new) do |f| %>
+                <%= render 'shared/error_messages', object: f.object %>
+                <div class='form-group'>
+                  <%= f.text_field :name, class: 'form-control', placeholder: 'Your Name' %>
+                </div>
+                <div class='form-group'>
+                  <%= f.text_field :email, class: 'form-control', placeholder: 'Enter Your Email Address' %>
+                </div>
+                <div class='form-group'>
+                  <%= text_field_tag :email_confirm, nil, class: 'form-control', placeholder: 'Confirm Email Address' %>
+                </div>
+                <div class='form-group'>
+                  <%= f.submit 'Sign Me Up!', class: 'btn btn-default' %>
+                </div>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      </td></tr>
+      <tr><td align="center">
+        <table width="600" border="0" align="center">
+          <tr>
+            <td>
+              <%= form_tag 'http://ecorebox.herokuapp.com/track', method: "get", class: 'input-group', target: '_blank', id: 'track_a_box' do %>
+                <%= text_field_tag :uid, '', placeholder: 'Track your Eco ReBox', class: 'form-control' %>
+                <span class='input-group-btn'>
+                  <%= submit_tag "Track", class: 'btn btn-default' %>
+                </span>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      </td></tr>
+    </table>
+  </div>
 </div> <!--/.container marketing -->
 
 <script>
