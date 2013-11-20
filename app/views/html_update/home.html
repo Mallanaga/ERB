@@ -3,8 +3,93 @@
 <link href="dist/css/bootstrap.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 <style>
+h1, h2, h3, h4 {
+font-family: 'Oswald', sans-serif;
+text-transform:uppercase;
+}
+#total_impact_view{
+	height: 550px;
+	background-image: url(total_impact_view.jpg);
+}
+
+#tiv_container{
+	margin: auto;
+	width: 900px;
+	font-family: 'Oswald', sans-serif;
+	color: #FFFFFF;
+}
+
+#tiv_youtube {
+	width: 430px;
+	float: left;
+}
+#tiv_header {
+	height: 225px;
+	text-align: left;
+	vertical-align: top;
+}
 
 
+#did_you_know_view{
+	height: 550px;
+	background-image: url(did_you_know_view.jpg);
+}
+
+#did_you_know_text {
+	font-family: 'Oswald', sans-serif;
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+	color: #FFFFFF;
+	font-size: 20px;
+	font-weight: normal;
+	padding: 10px;
+	height: 550px;
+	background-color:rgba(0,0,0,0.5);
+	text-align: center;
+}
+
+#contact_tracking_view{
+	height: 550px;
+	background-image: url(contact_tracking_view.png);
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center bottom;
+}
+#ctv_container{
+	width: 900px;
+	margin: auto;
+}
+#ctv_contact {
+	margin-top: 10px;
+}
+#ctv_header {
+	text-align: center;
+	width: 800px;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-bottom: 20px;
+	margin-left: auto;
+}
+#ctv_signup_box {
+	width: 600px;
+	margin: auto;
+}
+#ctv_signup {
+	float: left;
+	width: 290px;
+	text-align: center;
+}
+#ctv_signup_form {
+	width: 290px;
+	float: left;
+}
+#ctv_tracking {
+	text-align: center;
+	vertical-align: bottom;
+	width: 900px;
+	float: left;
+}
 </style>
 </head>
 <body>
@@ -65,14 +150,18 @@
 
 <div class="container marketing">
   <div id="total_impact_view">
-  <p>&nbsp;</p>
-  <table width="1000" align="center">
-        <tr>
-          <td width="430"><iframe width="400" height="225" src="http://www.youtube.com/embed/2znwYZNyOkU" frameborder="0" allowfullscreen></iframe></td>
-          <td valign="top"><h1>Why choose Eco Rebox boxes for your reusable packaging needs?</h1></td>
-        </tr>
-    </table>
-    <p>&nbsp;</p>
+  	<div id="tiv_container">
+	<div id="tiv_youtube"><iframe width="400" height="225" src="http://www.youtube.com/embed/2znwYZNyOkU" frameborder="0" allowfullscreen></iframe></div>
+    <div id="tiv_header"><h1>Why choose Eco Rebox boxes for your reusable packaging needs?</h1></div>  
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    </div>
+
     <table width="1000" align="center">
       <tr>
         <td width="300" valign="top">
@@ -127,43 +216,30 @@
 </div>
 
 <div id="contact_tracking_view">
-<p>&nbsp;</p>
-<table width="800" align="center">
-    <tr>
-        <td align="center"><div id="contactus" align="center">
-                <h4><%= link_to 'Contact', contact_path, class: "btn btn-primary btn-lg" %> -or- call <strong>877-REBOX-IT</strong> and speak with one of our packaging experts today!</h4>
-            </div>
-        </td>
-    </tr>
-    <tr><td align="center"><h1>Durable, Reusable Boxes and Innovative Packaging Design & Solutions by Eco ReBox</h1></td>
-    </tr>
-    <tr><td align="center">
-    	<table width="500" align="center">
-    	  <tr>
-    	<td width="250" valign="top"><h4 align="center">Sign Up For Updates</h4></td>
-        <td width="250" align="right">
-        <input type="text" class="form-control" placeholder="Your Name"><br />
-        <input type="text" class="form-control" placeholder="Enter Your Email Address"><br />
-        <input type="text" class="form-control" placeholder="Please Reenter Your Email Address"><br />
-          <button type="submit" class="btn btn-default">Sign Me Up!</button>
-        </td></tr>
-        </table>
-    </td></tr>
-    <tr><td align="center">
-      <table width="600" border="0" align="center">
-  <tr>
-    <td><%= form_tag 'http://ecorebox.herokuapp.com/track', method: "get", class: 'input-group', target: '_blank', id: 'track_a_box' do %>
-        <%= text_field_tag :uid, '', placeholder: 'Track your Eco ReBox', class: 'form-control' %>
-        <span class='input-group-btn'>
-          <%= submit_tag "Track", class: 'btn btn-default' %>
-        </span>
-      <% end %>
-        </td>
-  </tr>
-</table>
-</td>
-    </tr>
-</table>
+
+<div id="ctv_container">
+	<div id="ctv_contact">
+    	<div id="contactus" align="center">
+        	<h4><%= link_to 'Contact', contact_path, class: "btn btn-primary btn-lg" %> -or- call <strong>877-REBOX-IT</strong> and speak with one of our packaging experts today!</h4>
+        </div>
+    </div>
+    <div id="ctv_header"><h1>Durable, Reusable Boxes and Innovative Packaging Design & Solutions by Eco ReBox</h1></div>
+    <div id="ctv_signup_box">
+        <div id="ctv_signup"><h4>Sign Up For Updates</h4></div>
+        <div id="ctv_signup_form">        
+            <input type="text" class="form-control" placeholder="Your Name"><br />
+            <input type="text" class="form-control" placeholder="Enter Your Email Address"><br />
+            <input type="text" class="form-control" placeholder="Please Reenter Your Email Address"><br />
+            <button type="submit" class="btn btn-default">Sign Me Up!</button>
+        </div>
+    </div>
+    <div id="ctv_tracking"><%= form_tag 'http://ecorebox.herokuapp.com/track', method: "get", class: 'input-group', target: '_blank', id: 'track_a_box' do %>
+            <%= text_field_tag :uid, '', placeholder: 'Track your Eco ReBox', class: 'form-control' %>
+            <span class='input-group-btn'>
+              <%= submit_tag "Track", class: 'btn btn-default' %>
+            </span>
+    <% end %></div>
+</div>
 </div>
 </div><!--/.container marketing -->
 <script>
