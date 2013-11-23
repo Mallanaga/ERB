@@ -120,8 +120,7 @@
         <h1>Durable, Reusable Boxes and Innovative Packaging Design &amp; Solutions by Eco ReBox</h1>
       </div>
     </div>
-
-    <br/><br/>
+	<br/>
     <%= form_for Mailing.new, html: {class: 'form-horizontal', role: 'form'} do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <div class='form-group'>
@@ -150,7 +149,7 @@
     <div class='row'>
       <div class='col-sm-4 col-sm-offset-4'>     
         <%= form_tag track_box_path, class: 'input-group', id: 'track_a_box' do %>
-          <%= text_field_tag :uid, nil, placeholder: 'Track your Eco ReBox', class: 'form-control' %>
+          <%= text_field_tag :uid, nil, placeholder: 'Track Your Eco ReBox', class: 'form-control' %>
           <span class='input-group-btn'>
             <%= submit_tag "Track", class: 'btn btn-default' %>
           </span>

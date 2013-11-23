@@ -1,0 +1,17 @@
+<h3>Sign Up For Updates</h3>
+	<%= form_for Mailing.new, html: {class: 'form-horizontal', role: 'form'} do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class='form-group'>
+      <%= f.text_field :name, class: 'form-control', placeholder: 'Your Name' %>
+      <%= f.text_field :email, class: 'form-control', placeholder: 'Enter Your Email Address' %>
+			<%= text_field_tag :email_confirm, nil, class: 'form-control', placeholder: 'Confirm Email Address' %>
+			<%= f.submit 'Sign Me Up!', class: 'btn btn-default' %>
+	</div>
+	<% end %>
+
+<h3>Instagram</h3>
+	<iframe src="http://www.intagme.com/in/?u=ZWNvcmVib3h8aW58MTIwfDJ8Mnx8eWVzfDV8dW5kZWZpbmVk" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:270px; height: 270px" ></iframe>
+
+<h3>Facebook</h3>
+  <div class="fb-like-box" data-href="http://www.facebook.com/ecoreboxllc" data-width="235" data-height="340" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+

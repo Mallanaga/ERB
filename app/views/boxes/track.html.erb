@@ -1,11 +1,11 @@
 <div class='container'>
   <div id='tracker'>
     <% if @result == "404" %>
-      <div class='row'>
-        <container><div class='col-sm-4 col-sm-offset-4'></container>
-          <p>That box doesn't seem to exist... try again!</p>    
+      <div id="contact_tracking_view" class='container'>
+        <h2>Nothing matches our records, please search again.</h2>    
+        <div class='col-sm-4 col-sm-offset-4 bottom'>     
           <%= form_tag track_box_path, class: 'input-group', id: 'track_a_box' do %>
-            <%= text_field_tag :uid, nil, placeholder: 'Track your Eco ReBox', class: 'form-control' %>
+            <%= text_field_tag :uid, nil, placeholder: 'Track Your Eco ReBox', class: 'form-control' %>
             <span class='input-group-btn'>
               <%= submit_tag "Track", class: 'btn btn-default' %>
             </span>
