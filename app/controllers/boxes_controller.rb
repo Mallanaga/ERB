@@ -1,5 +1,6 @@
 class BoxesController < ApplicationController
   respond_to :html, :json
+  require 'open-uri'
 
   def create
     @box = Box.new(params[:box])
@@ -47,11 +48,9 @@ class BoxesController < ApplicationController
   end
 
   def track
-    @box = Box.find(params[:uid].upcase)
-    redirect_to @box
-  rescue ActiveRecord::RecordNotFound
-    flash[:error] = "Could not locate box #{params[:uid]}..."
-    redirect_to root_path 
+    @page = "http://ecorebox.herokuapp.com/boxes/#{params[:uid].upcase}"
+    uri = URI.parse("#{@page}")
+    @result = Net::HTTP.start(uri.host, uri.port) { |http| http.get(uri.path) }.code
   end
 
   def update

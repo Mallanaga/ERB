@@ -292,3 +292,18 @@ text-transform: uppercase;
   background-repeat: no-repeat;
   background-position: center bottom;
 }
+
+#tracker {
+  width: 100%;
+  height: 700px;
+  overflow: hidden;
+  position: relative;
+  #tracker-iframe {
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    width: 1280px;
+    height: 1200px;
+  }
+}
+

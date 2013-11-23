@@ -35,10 +35,10 @@ Erbv2::Application.routes.draw do
   match '/signup',                  to: 'users#new'
   match '/signin',                  to: 'sessions#new'
   match '/signout',                 to: 'sessions#destroy', via: :delete
-  match '/track',                   to: 'boxes#track', as: :track
   match '/resources',               to: 'pages#resources'
   match '/savings',                 to: 'pages#cost-savings'
   match '/update-feed',             to: 'posts#feed', as: :update_feed
+  match '/track',                   to: 'boxes#track', as: :track_box
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
