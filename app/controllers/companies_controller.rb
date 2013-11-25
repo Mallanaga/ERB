@@ -14,6 +14,20 @@ class CompaniesController < ApplicationController
   def edit  
   end
 
+  def erb
+    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
+    headers['Access-Control-Request-Method'] = '*'
+    headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    @trees = Box.all.map{|b| b.trees}.sum
+    @water = Box.all.map{|b| b.water}.sum
+    @electricity = Box.all.map{|b| b.electricity}.sum
+    respond_to do |format|
+      format.html
+      format.json {render json: {trees: @trees, water: @water, electricity: @electricity}}
+    end
+  end
+
   def index
     @companies = Company.page(params[:page]).per(10)
   end

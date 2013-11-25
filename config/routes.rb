@@ -39,6 +39,7 @@ Erbv2::Application.routes.draw do
   match '/savings',                 to: 'pages#cost-savings'
   match '/update-feed',             to: 'posts#feed', as: :update_feed
   match '/track',                   to: 'boxes#track', as: :track_box
+  match '/erb',                     to: 'companies#erb'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

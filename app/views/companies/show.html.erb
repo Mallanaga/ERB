@@ -9,7 +9,7 @@
   <h3>Case Study</h3>
     <p><%= raw @company.about %></p>
   <h3>Total Resources Saved</h3>
-  <p><%= @company.name %> has <%= pluralize(@box_count, 'box') %> from Eco ReBox.  They've been shipped <%= pluralize(number_with_delimiter(@trips), 'time') %>.</p>
+  <p><%= @company.name %> has <%= pluralize(@current, 'box') %> from Eco ReBox.  They've been shipped <%= pluralize(number_with_delimiter(@trips), 'time') %>!</p>
   <p><%= raw "Their boxes have saved #{pluralize(number_with_delimiter(@company.trees), 'tree')}, #{pluralize(number_with_delimiter(@company.water), 'gallon')} of water, and #{number_with_delimiter(@company.electricity)} kW&#8226;h of electricity since they started using Eco ReBox products in #{@company.acquired.strftime('%B of %Y')}." %></p>
 </div>
 
