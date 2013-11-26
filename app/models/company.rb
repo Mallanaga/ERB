@@ -14,6 +14,9 @@
 #
 
 class Company < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name
+
   attr_accessible :name, :website, :acquired, :about, :testimonial
 
   has_many :boxes

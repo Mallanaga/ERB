@@ -1,16 +1,17 @@
 <% provide(:title, @category) %>
-<div class="headercontent">
-  <div class="hero-unit">
-    <h1><%= @category.capitalize %></h1>
-    <p></p>
+<div class="jumbotron">
+  <div class="container">
+    <h1>
+      News 
+      <%= link_to image_tag('RSS.png'), posts_url(format: 'atom'), target: '_blank', id: 'rss', title: 'Atom/RSS feed' %>
+    </h1>
+    <p>ReThink. ReStore. ReUse.</p>
   </div>
-  
-  <div class="row">
-    <div class="span12">
-      <%= render @posts %>
-      <%= paginate @posts %>
-    </div>
-  </div>
+</div>  
+
+<div class="container">
+  <%= render @posts %>
+  <%= paginate @posts %>
 </div>
 
 <script>

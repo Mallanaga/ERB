@@ -1,12 +1,12 @@
-<div style="background-color:rgba(255,255,255,0.5);">
-<h3>Sign Up For Updates</h3>
-<%= form_for Mailing.new, html: {role: 'form'} do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <%= f.text_field :name, class: 'form-control', placeholder: 'Your Name' %><br/>
-  <%= f.text_field :email, class: 'form-control', placeholder: 'Enter Your Email Address' %><br/>
-	<%= text_field_tag :email_confirm, nil, class: 'form-control', placeholder: 'Confirm Email Address' %><br/>
-	<%= f.submit 'Sign Me Up!', class: 'btn btn-default' %>
-<% end %>
+<div class="well">
+  <h3>Sign Up For Updates</h3>
+  <%= form_for Mailing.new, html: {role: 'form'} do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <%= f.text_field :name, class: 'form-control', placeholder: 'Your Name' %><br/>
+    <%= f.text_field :email, class: 'form-control', placeholder: 'Enter Your Email Address' %><br/>
+  	<%= text_field_tag :email_confirm, nil, class: 'form-control', placeholder: 'Confirm Email Address' %><br/>
+  	<%= f.submit 'Sign Me Up!', class: 'btn btn-default' %>
+  <% end %>
 </div>
 
 <h3>Instagram</h3>
