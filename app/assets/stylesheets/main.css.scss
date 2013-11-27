@@ -123,13 +123,25 @@ footer {
       }
     }
   }
-  .navbar-header {
-    position: relative;
-    top: -16px;
-  }
   .mainlogo {
     position: relative;
     top: 16px;
+  }
+}
+.navbar-header {
+  width: 100%;
+  .navbar-toggle {
+    border-color: $ecogreen;
+    .icon-bar {
+      display: block;
+      width: 22px;
+      height: 2px;
+      border-radius: 1px;
+      background-color: $ecogreen;
+    }
+  }
+  .navbar-toggle:hover {
+    background-color: lightgrey;
   }
 }
 

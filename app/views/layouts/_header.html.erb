@@ -8,58 +8,59 @@
         <span class="icon-bar"></span>
       </button>
       <%= link_to image_tag("erb_logo.png", alt: "Eco Rebox"), root_path, class: "mainlogo navbar-brand" %>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-navbar-collapse1">
-      <ul class="nav nav-pills pull-right">
-        <li><%= link_to 'Home', root_path, class: 'first' %></li>
-        <li><%= link_to 'News', posts_path, class: 'blog' %></li>
-        <li class="dropdown second">
-          <a href="about" class="dropdown-toggle" data-toggle="dropdown">
-            About <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><%= link_to 'Company Profile', about_path %></li>
-            <li><%= link_to 'Our Customers', companies_path %></li>
-            <li><%= link_to 'What People Are Saying', testimonials_path %></li>
-          </ul>
-        </li>
-        <li class="dropdown third">
-          <a href="logistics" class="dropdown-toggle" data-toggle="dropdown">
-            Solutions <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><%= link_to 'Software', software_path %></li>
-            <li><%= link_to 'Sustainability', rethink_path %></li>
-            <li><%= link_to 'Logistics & Methodology', restore_path %></li>
-          </ul>
-        </li>
-        <li class="dropdown fourth">
-          <a href="products" class="dropdown-toggle" data-toggle="dropdown">
-            Products <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><%= link_to 'Reusable Boxes', reuse_path %></li>
-            <li><%= link_to 'Shipping Containers', shipping_path %></li>
-          </ul>
-        </li>
-        <li><%= link_to "Contact", contact_path, class: 'fifth' %></li>
-        <% if signed_in? %>
-        <li class="dropdown sixth">
-          <a href="user" class="dropdown-toggle" data-toggle="dropdown">
-            My Account <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><%= link_to "Dashboard", current_user %></li>
-            <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-            <li class="divider"></li>
-            <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
-          </ul>
-        </li> 
-        <% else %>  
-        <li><a href="#signinModal" role="button" data-toggle="modal">Sign in</a></li>
-        <% end %> 
-      </ul>
-    </div> <!--/.navbar-header -->
+    
+      <div class="collapse navbar-collapse" id="bs-navbar-collapse1">
+        <ul class="nav nav-pills pull-right">
+          <li><%= link_to 'Home', root_path, class: 'first' %></li>
+          <li><%= link_to 'News', posts_path, class: 'blog' %></li>
+          <li class="dropdown second">
+            <a href="about" class="dropdown-toggle" data-toggle="dropdown">
+              About <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Company Profile', about_path %></li>
+              <li><%= link_to 'Our Customers', companies_path %></li>
+              <li><%= link_to 'What People Are Saying', testimonials_path %></li>
+            </ul>
+          </li>
+          <li class="dropdown third">
+            <a href="logistics" class="dropdown-toggle" data-toggle="dropdown">
+              Solutions <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Software', software_path %></li>
+              <li><%= link_to 'Sustainability', rethink_path %></li>
+              <li><%= link_to 'Logistics & Methodology', restore_path %></li>
+            </ul>
+          </li>
+          <li class="dropdown fourth">
+            <a href="products" class="dropdown-toggle" data-toggle="dropdown">
+              Products <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Reusable Boxes', reuse_path %></li>
+              <li><%= link_to 'Shipping Containers', shipping_path %></li>
+            </ul>
+          </li>
+          <li><%= link_to "Contact", contact_path, class: 'fifth' %></li>
+          <% if signed_in? %>
+          <li class="dropdown sixth">
+            <a href="user" class="dropdown-toggle" data-toggle="dropdown">
+              My Account <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Dashboard", current_user %></li>
+              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+            </ul>
+          </li> 
+          <% else %>  
+          <li><a href="#signinModal" role="button" data-toggle="modal">Sign in</a></li>
+          <% end %> 
+        </ul>
+      </div>  
+    </div> <!--/#bs-navbar-collapse1 -->
   </div> <!--/.container -->
 </nav>
 
