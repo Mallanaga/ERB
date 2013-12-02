@@ -2,6 +2,42 @@ class BoxesController < ApplicationController
   respond_to :html, :json
   require 'open-uri'
 
+  def calc
+    b = params[:boxes].to_i
+    s = params[:shipments].to_i
+    case params[:size].to_i
+      when 1
+        sa = 148
+        cb = 0.25
+        erb = 1.25
+      when 2
+        sa = 1152
+        cb = 1
+        erb = 5
+      when 3
+        sa = 2240
+        cb = 2
+        erb = 10
+      when 4
+        sa = 5232
+        cb = 4.5
+        erb = 22.5
+    end
+    
+    # ERB box quantity
+    erb_q = b/7*s
+
+    # cardboard box quantity
+    cb_q = b*52
+
+    # cb cost - erb cost
+    @savings = (cb_q*cb) - (erb_q*erb)
+
+    respond_to do |format|
+      format.js {@savings}
+    end
+  end
+
   def create
     @box = Box.new(params[:box])
     if @box.save
