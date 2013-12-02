@@ -18,7 +18,7 @@
 
 class Post < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :title
+  friendly_id :title, use: :slugged
 
   attr_accessible :user_id, :feed_id, :title, :summary, :url, :content, :author,
                   :category_tokens, :published_at, :guid
