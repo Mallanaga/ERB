@@ -5,4 +5,13 @@ class Mailing < ActiveRecord::Base
   validates :email, presence: true, 
                     format: { with: VALID_EMAIL_REGEX }, 
                     uniqueness: { case_sensitive: false }
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |m|
+        csv << m.attributes.values_at(*column_names)
+      end
+    end
+  end
 end

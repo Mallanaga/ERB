@@ -1,0 +1,11 @@
+<% provide(:title, 'Mailing List') %>
+<div class="jumbotron">
+  <div class="container">
+    <h1>Signed up for Newsletter</h1>
+    <%= link_to "Export CSV", mailings_path(format: 'csv'), class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<div class="container">
+  <%= render @mailings %>
+</div>
