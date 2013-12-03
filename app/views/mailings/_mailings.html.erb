@@ -1,0 +1,11 @@
+<div class='tab-pane' id='subscription_list'>
+  <div class='row'>
+    <div class="col-md-3 col-md-offset-1 well">
+      <h2>Subscriptions</h2>
+      <%= link_to "Export CSV", mailings_path(format: 'csv'), class: 'btn btn-primary' %>
+    </div>
+    <div class="col-md-8">
+      <%= render @mailings %>
+    </div>
+  </div>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131202190134) do
+ActiveRecord::Schema.define(:version => 20131203000657) do
 
   create_table "boxes", :force => true do |t|
     t.integer  "company_id"
@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(:version => 20131202190134) do
     t.datetime "password_reset_sent_at"
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
+    t.boolean  "subscribe",              :default => true
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

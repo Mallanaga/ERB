@@ -56,6 +56,8 @@ class UsersController < ApplicationController
 
     @purchase_array = [[((Date.today-1.year).to_time.to_i.to_s+'000').to_i, @yearly]]
     @purchase_array.append([(Date.today.to_time.to_i.to_s+'000').to_i, @yearly])
+
+    @mailings = Mailing.all
     
     @export = @boxes.order(:uid)
     respond_to do |format|

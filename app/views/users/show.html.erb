@@ -31,6 +31,7 @@
     <% if current_user.admin? %>
       <li><a href="#company_info">Company Info</a></li>
       <li><a href="#add_user">Add User</a></li>
+      <li><a href="#subscription_list">Subscriptions</a></li>
     <% end %>
   </ul>
   <div class='tab-content'>
@@ -42,9 +43,11 @@
     <% if current_user.admin? %>
       <%= render 'companies/edit' %>
       <%= render 'new' %>
+      <%= render 'mailings/mailings' %>
     <% end %>
   </div>
 </div>
+
 <script>
   $('#myTab a').click(function (e) {
     e.preventDefault();

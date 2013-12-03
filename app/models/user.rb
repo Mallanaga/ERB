@@ -16,7 +16,7 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :company_id, :admin,
+  attr_accessible :name, :email, :company_id, :admin, :subscribe,
                   :password, :password_confirmation
   has_secure_password
 
@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
 
   before_save { |user| user.email = email.downcase.strip }
   before_save :create_remember_token
+  after_save :add_mailings
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :password, presence: true, length: { minimum: 6 }, on: :create
@@ -54,5 +55,13 @@ private
 
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
+    end
+
+    def add_mailings
+      if self.subscribe?
+        Mailing.create(email: self.email, name: self.name)
+      else
+        Mailing.where(email: self.email)[0].delete
+      end
     end
 end
