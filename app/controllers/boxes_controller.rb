@@ -3,13 +3,15 @@ class BoxesController < ApplicationController
   require 'open-uri'
 
   def calc
-    b = params[:boxes].to_i
-    s = params[:shipments].to_i
+    b = params[:boxes].to_i #boxes shipped per week
+    s = params[:shipments].to_i #turn time
+    l = 52/10 #life cycle of a box (10 trips)
+    ss = 1.1 #safety stock (10%)
     case params[:size].to_i
       when 1
-        sa = 148
-        cb = 0.25
-        erb = 1.25
+        sa = 148 #surface area of box
+        cb = 0.25 #cost of cardboard
+        erb = 1.25 #cost of Eco ReBox
       when 2
         sa = 1152
         cb = 1
@@ -25,7 +27,7 @@ class BoxesController < ApplicationController
     end
     
     # ERB box quantity
-    erb_q = b/7*s
+    erb_q = (b/7*s*l*ss).ceil
 
     # cardboard box quantity
     cb_q = b*52
