@@ -4,10 +4,9 @@ class BoxesController < ApplicationController
 
   def calc
     boxes_per_week = params[:boxes].to_i #boxes shipped per week
-    turn_time = params[:shipments].to_i #turn time in days
-    shipments_per_year = 365/turn_time
+    # turn_time = params[:shipments].to_i #turn time in days
+    shipments_per_year = 365
     life_of_box = 10 #life cycle of a box (10 trips)
-    cycle = shipments_per_year > life_of_box ? (shipments_per_year/life_of_box).ceil : 1
     ss = 1.1 #safety stock (10%)
     case params[:size].to_i
       when 1
@@ -29,7 +28,7 @@ class BoxesController < ApplicationController
     end
     
     # ERB box quantity
-    erb_q = (boxes_per_week/7*turn_time*cycle*ss).ceil
+    erb_q = (boxes_per_week/7*shipments_per_year/life_of_box*ss).ceil
 
     # cardboard box quantity
     cb_q = boxes_per_week*52
