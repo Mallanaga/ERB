@@ -41,7 +41,6 @@ Erbv2::Application.routes.draw do
   match '/track',                   to: 'boxes#track', as: :track_box
   match '/erb',                     to: 'companies#erb'
   match '/calc',                    to: 'boxes#calc'
-  match '/:topic_id/new', path: 'publish', via: [:get, :post]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
