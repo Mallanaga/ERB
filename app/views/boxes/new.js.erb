@@ -1,0 +1,14 @@
+var count = 1;
+count += 1;
+$('#order_form tr.total')
+  .before($('<tr>').attr('class', 'row'+count)
+    .append($('<td>').text('new box'))
+    .append($('<td>'))
+    .append($('<td>'))
+    .append($('<td>'))
+    .append($('<td>'))
+    .append($('<td>').text('$$$'))
+  )
+  .before($('<tr>').attr('class', 'box'+count)
+    .append($('<td>').attr('colspan', '6').html('&#8594;'))
+  );

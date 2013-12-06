@@ -5,6 +5,9 @@
         <thead><h2>Public Snippet</h2></thead>
         <tbody>
           <tr><td>Copy and paste this code into the html file that you would like to display your resource savings on.</td></tr>
+          <% if admin? %>
+            <tr><td><%= link_to 'Comany Snippet', erb_path, class: 'btn btn-primary' %></td></tr>
+          <% end %>
         </tbody>
       </table>
     </div>

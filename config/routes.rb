@@ -41,6 +41,7 @@ Erbv2::Application.routes.draw do
   match '/track',                   to: 'boxes#track', as: :track_box
   match '/erb',                     to: 'companies#erb'
   match '/calc',                    to: 'boxes#calc'
+  match '/box-detail',              to: 'boxes#detail', as: :box_detail
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

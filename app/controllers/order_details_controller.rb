@@ -1,5 +1,6 @@
 class OrderDetailsController < ApplicationController
   before_filter :check_for_cancel, :only => [:create, :update]
+  respond_to :js
 
   def create
   end
@@ -12,6 +13,7 @@ class OrderDetailsController < ApplicationController
 
   def new
     @detail = OrderDetail.new
+    respond_with(@detail)
   end
 
   def show

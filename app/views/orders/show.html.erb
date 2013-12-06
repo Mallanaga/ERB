@@ -8,9 +8,10 @@
 <div class='container'>
   <div class='row'>
     <div class="col-sm-10 col-sm-offset-1 well">
-      <p>Invoice # <span class='edit'><%= best_in_place_if (admin?), @order, :invoice %></span></p>
-      <p>Ordered on: <%= @order.ordered_on.to_formatted_s :long_ordinal %></p>
-      <p>Delivered on: <%= @order.delivered_on.to_formatted_s :long_ordinal %></p>
+      <p class='pull-right'><b>Paid:</b> <span class='edit'><%= best_in_place_if admin?, @order, :paid, type: :checkbox %></span></p>
+      <p><b>Invoice #</b> <span class='edit'><%= best_in_place_if admin?, @order, :invoice %></span></p>
+      <p><b>Ordered on:</b> <%= @order.ordered_on.to_formatted_s :long_ordinal %></p>
+      <p><b>Delivered on:</b> <%= @order.delivered_on.to_formatted_s :long_ordinal %></p>
 
       <table class="table table-striped table-bordered">
         <h3>Details</h3>

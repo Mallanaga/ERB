@@ -1,5 +1,5 @@
 class BoxesController < ApplicationController
-  respond_to :html, :json
+  respond_to :html, :json, :js
   require 'open-uri'
 
   def calc
@@ -7,7 +7,7 @@ class BoxesController < ApplicationController
     # turn_time = params[:shipments].to_i #turn time in days
     shipments_per_year = 365
     life_of_box = 10 #life cycle of a box (10 trips)
-    ss = 1.1 #safety stock (10%)
+    # ss = 1.1 #safety stock (10%)
     case params[:size].to_i
       when 1
         sa = 148 #surface area of box
@@ -28,17 +28,15 @@ class BoxesController < ApplicationController
     end
     
     # ERB box quantity
-    erb_q = (boxes_per_week/7*shipments_per_year/life_of_box*ss).ceil
+    @erb_q = (boxes_per_week/7*shipments_per_year/life_of_box).ceil
 
     # cardboard box quantity
-    cb_q = boxes_per_week*52
+    @cb_q = boxes_per_week*52
 
     # cb cost - erb cost
-    @savings = (cb_q*cb) - (erb_q*erb)
+    @savings = (@cb_q*cb) - (@erb_q*erb)
 
-    respond_to do |format|
-      format.js {@savings}
-    end
+    respond_with(@savings, @erb_q, @cb_q)
   end
 
   def create
@@ -50,6 +48,11 @@ class BoxesController < ApplicationController
     else
       render 'boxes/new'
     end
+  end
+
+  def detail
+    @box = Box.find(params[:box_id])
+    respond_with(@box)
   end
 
   def import
@@ -77,7 +80,8 @@ class BoxesController < ApplicationController
     @box = Box.new
     @companies = Company.all
     company_id = !params['/add'].nil? ? params['/add'][:company_id] : 1
-    @selected_company = company_id.to_i  
+    @selected_company = company_id.to_i 
+    respond_with(@box)
   end
 
   def show
