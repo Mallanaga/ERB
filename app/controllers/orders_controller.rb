@@ -3,27 +3,10 @@ class OrdersController < ApplicationController
   respond_to :html, :json
 
   def create
-    @order = Order.new(params[:order])
-    @boxes = params[:boxes]
+    @order = Order.create(params[:order])
     if @order.save
-      @boxes.each do |b|
-        @box = Box.where(company_id: @order.company_id,
-                         uid: b.uid,
-                         frequency: b.frequency,
-                         active: b.active,
-                         length: b.length,
-                         width: b.width,
-                         height: b.height,
-                         weight: b.weight).first_or_create
-        @box.trips.build(month: Date.today.strftime('%Y-%m-01'), quantity: @box.frequency, retired: 0).save
-        @order.order_details.build(box_id: @box.id,
-                                   quantity: b.quantity,
-                                   box_price: b.box_price,
-                                   cb_price: b.cb_price,
-                                   mould_fees: b.mould_fees).save
-      end
       flash[:success] = "Order #{@order.invoice} added!"
-      redirect_to current_user
+      redirect_to current_user      
     else
       render 'boxes/new'
     end
@@ -37,6 +20,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @details = @order.order_details.build
     @boxes = Company.find(params[:company_id]).boxes
     @b = @boxes.first
   end

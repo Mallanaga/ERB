@@ -12,8 +12,11 @@ class OrderDetailsController < ApplicationController
   end
 
   def new
-    @detail = OrderDetail.new
-    respond_with(@detail)
+    @order = Order.new
+    @details = @order.order_details.build
+    @boxes = Company.find(params[:company_id]).boxes
+    @b = @boxes.first
+    respond_with(@detail, @boxes)
   end
 
   def show

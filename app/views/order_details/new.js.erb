@@ -1,14 +1,3 @@
 var count = 1;
 count += 1;
-$('#order_form tr.total')
-  .before($('<tr>').attr('class', 'row'+count)
-    .append($('<td>').html("<%= j render form_tag box_detail_path, method: 'get', role: 'form', remote: true do %><td><%= select_tag :box_id, options_for_select(@boxes.map{ |b| [b.uid, b.id] }), include_blank: true, onchange: "this.form.submit()", class: 'form-control' %></td><% end %> %>"))
-    .append($('<td>'))
-    .append($('<td>'))
-    .append($('<td>'))
-    .append($('<td>'))
-    .append($('<td>').text('$$$'))
-  )
-  .before($('<tr>').attr('class', 'box'+count)
-    .append($('<td>').attr('colspan', '6').html('&#8594;'))
-  );
+$('#order_form tr.total').before("<%= j render partial: 'order_details/details' %>")
