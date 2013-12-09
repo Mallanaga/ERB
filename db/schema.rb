@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131203000657) do
+ActiveRecord::Schema.define(:version => 20131209185240) do
 
   create_table "boxes", :force => true do |t|
     t.integer  "company_id"
@@ -89,21 +89,21 @@ ActiveRecord::Schema.define(:version => 20131203000657) do
   create_table "order_details", :force => true do |t|
     t.integer  "order_id"
     t.integer  "box_id"
-    t.integer  "quantity"
-    t.decimal  "box_price",  :precision => 8, :scale => 2
-    t.decimal  "cb_price",   :precision => 8, :scale => 2
-    t.decimal  "mould_fees", :precision => 8, :scale => 2
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.integer  "quantity",                                 :default => 0
+    t.decimal  "box_price",  :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "cb_price",   :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "mould_fees", :precision => 8, :scale => 2, :default => 0.0
+    t.datetime "created_at",                                                :null => false
+    t.datetime "updated_at",                                                :null => false
   end
 
   create_table "orders", :force => true do |t|
     t.integer  "company_id"
-    t.date     "ordered_on"
-    t.date     "delivered_on"
+    t.date     "ordered_on",   :default => '2013-12-09'
+    t.date     "delivered_on", :default => '2013-12-16'
     t.boolean  "paid"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.string   "invoice"
     t.decimal  "tax"
   end

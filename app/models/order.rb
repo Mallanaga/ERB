@@ -19,6 +19,12 @@ class Order < ActiveRecord::Base
 
   accepts_nested_attributes_for :order_details
 
+  def self.build
+    order = self.new
+    order.order_details.build
+    order
+  end
+
   def cost
     self.order_details.map{ |d| d.quantity * d.box_price + d.mould_fees }.sum
   end

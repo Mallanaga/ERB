@@ -4,9 +4,7 @@ Erbv2::Application.routes.draw do
 
   resources :users
   resources :companies do
-    member do
-      get 'snippet'
-    end
+    member { get :snippet }
   end
   resources :posts, path: :news, defaults: { format: 'html' }
   resources :feeds
@@ -14,8 +12,9 @@ Erbv2::Application.routes.draw do
   resources :boxes do
     collection { post :import }
   end
-  resources :orders
-  resources :order_details
+  resources :orders do
+    collection { get :add_detail }
+  end
   resources :trips
   resources :sessions,    only: [:new, :create, :destroy]
   resources :mailings,    only: [:create, :index]

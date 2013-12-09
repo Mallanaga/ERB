@@ -1,15 +1,23 @@
 class OrdersController < ApplicationController
   before_filter :check_for_cancel, :only => [:create, :update]
-  respond_to :html, :json
+  respond_to :html, :json, :js
 
   def create
-    @order = Order.create(params[:order])
+    @order = Order.new(params[:order])
     if @order.save
       flash[:success] = "Order #{@order.invoice} added!"
       redirect_to current_user      
     else
       render 'boxes/new'
     end
+  end
+
+  def add_detail
+    @order = Order.build
+    @boxes = Company.find(params[:company_id]).boxes
+    @b = @boxes.first
+    @ci = Time.now.to_i
+    respond_with(@order, @boxes, @b, @ci)
   end
 
   def edit  
