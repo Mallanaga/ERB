@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131209185240) do
+ActiveRecord::Schema.define(:version => 20131210202506) do
 
   create_table "boxes", :force => true do |t|
     t.integer  "company_id"
@@ -91,10 +91,10 @@ ActiveRecord::Schema.define(:version => 20131209185240) do
     t.integer  "box_id"
     t.integer  "quantity",                                 :default => 0
     t.decimal  "box_price",  :precision => 8, :scale => 2, :default => 0.0
-    t.decimal  "cb_price",   :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "cb_price",   :precision => 8, :scale => 2, :default => 0.01
     t.decimal  "mould_fees", :precision => 8, :scale => 2, :default => 0.0
-    t.datetime "created_at",                                                :null => false
-    t.datetime "updated_at",                                                :null => false
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
   end
 
   create_table "orders", :force => true do |t|

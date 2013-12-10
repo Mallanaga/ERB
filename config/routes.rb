@@ -3,7 +3,7 @@ Erbv2::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
   resources :users
-  resources :companies do
+  resources :companies, path: 'our-customers' do
     member { get :snippet }
   end
   resources :posts, path: :news, defaults: { format: 'html' }
@@ -24,13 +24,13 @@ Erbv2::Application.routes.draw do
   match '/company-profile',         to: 'pages#company-profile', as: :about
   match '/contact',                 to: 'pages#contact'
   match '/what-people-are-saying',  to: 'pages#testimonials', as: :testimonials
-  match '/reuse',                   to: 'pages#reusable-boxes'
-  match '/restore',                 to: 'pages#methodology'
-  match '/rethink',                 to: 'pages#reclamation'
+  match '/reusable-boxes',          to: 'pages#reusable-boxes', as: :reuse
+  match '/methodology',             to: 'pages#methodology', as: :restore
+  match '/reclamation',             to: 'pages#reclamation', as: :rethink
   match '/privacy',                 to: 'pages#privacy'
   match '/software',                to: 'pages#software'
   match '/use',                     to: 'pages#terms-of-use'
-  match '/shipping',                to: 'pages#shipping-containers'
+  match '/shipping-containers',     to: 'pages#shipping-containers', as: :shipping
   match '/signup',                  to: 'users#new'
   match '/signin',                  to: 'sessions#new'
   match '/signout',                 to: 'sessions#destroy', via: :delete
