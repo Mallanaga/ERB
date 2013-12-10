@@ -4,7 +4,8 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(params[:order])
-    @boxes = Company.find(params[:order][:company_id]).boxes
+    @company = Company.find(params[:order][:company_id])
+    @boxes = @company.boxes
     if @order.save
       flash[:success] = "Order #{@order.invoice} added!"
       redirect_to user_path(current_user, company_id: params[:order][:company_id])     
@@ -29,9 +30,9 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @company = Company.find(params[:company_id])
     @details = @order.order_details.build
-    @boxes = Company.find(params[:company_id]).boxes
-    @b = @boxes.first
+    @boxes = @company.boxes
   end
 
   def show
