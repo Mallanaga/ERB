@@ -41,18 +41,14 @@ class BoxesController < ApplicationController
 
   def create
     @box = Box.new(params[:box])
+    @company = Company.find(params[:box][:company_id])
     if @box.save
       @box.trips.build(month: Date.today.strftime('%Y-%m-01'), quantity: @box.frequency, retired: 0).save
       flash[:success] = "Box #{@box.uid} added!"
-      redirect_to user_path(current_user, company_id: params[:box][:company_id]) 
+      redirect_to user_path(current_user, company_id: @company.id) 
     else
       render 'boxes/new'
     end
-  end
-
-  def detail
-    @box = Box.find(params[:box_id])
-    respond_with(@box)
   end
 
   def import
@@ -78,10 +74,7 @@ class BoxesController < ApplicationController
 
   def new
     @box = Box.new
-    @companies = Company.all
-    company_id = !params['/add'].nil? ? params['/add'][:company_id] : 1
-    @selected_company = company_id.to_i 
-    respond_with(@box)
+    @company = Company.find(params[:company_id])
   end
 
   def show

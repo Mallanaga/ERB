@@ -11,7 +11,7 @@
           <tr><td>Average Trips: <%= @avg %></td></tr>
         </tbody>
       </table>
-      <%= link_to "Add Box", new_box_path, class: "btn btn-success" if admin? %>
+      <%= link_to "Add Box", new_box_path(company_id: @company.id), class: "btn btn-success" if admin? %>
       <hr>
       <%= link_to "Export CSV", user_path(format: "csv", company_id: @company.id), class: 'btn btn-info btn-sm' %>
       <% if admin? %> 

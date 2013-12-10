@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @companies = Company.all
     if @user.save
       flash[:success] = "User created."
-      redirect_to root_path
+      redirect_to user_path(current_user, company_id: @user.company.id)
     else
       render 'users/new'
     end
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     @cost = @boxes.map { |b| b.cost }.sum
     @yearly = (@cost / (Date.today - @since).to_i * 365).round
 
-    @paper_cost = @company.boxes.any? ? @boxes.map { |b| b.cb_cost }.sum : 1
+    @paper_cost = @company.orders.any? ? @boxes.map { |b| b.cb_cost }.sum : 0.01
     @yearly_cb = (@paper_cost / (Date.today - @since).to_i * 365).round
     
     @roi = @paper_cost - @cost

@@ -30,7 +30,9 @@ class Box < ActiveRecord::Base
 
   before_save { |box| box.uid = uid.strip }
 
-  validates :uid, presence: true, length: { maximum: 20 }
+  validates :uid, presence: true, 
+                  length: { maximum: 20 }, 
+                  uniqueness: { case_sensitive: false }
   validates :company_id, presence: true
   validates :length, presence: true
   validates :width, presence: true
