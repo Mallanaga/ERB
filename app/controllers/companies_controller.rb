@@ -4,7 +4,7 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(params[:company])
     if @company.save
-      redirect_to current_user
+      redirect_to user_path(current_user, company_id: @company.id)
       flash[:success] = "#{@company.name} added as a Client"
     else
       render 'companies/new'
@@ -70,9 +70,9 @@ class CompaniesController < ApplicationController
                                   about: params[:company][:about],
                                   testimonial: params[:company][:testimonial])
       flash[:success] = "Company updated"
-      redirect_to current_user
+      redirect_to user_path(current_user, company_id: @company.id)
     else
-      redirect_to current_user
+      redirect_to user_path(current_user, company_id: @company.id)
     end
   end
 
@@ -80,7 +80,7 @@ class CompaniesController < ApplicationController
 
     def check_for_cancel
       if params[:commit] == "Cancel"
-        redirect_to root_url
+        redirect_to current_user
       end
     end
 end

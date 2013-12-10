@@ -8,7 +8,7 @@
           <tr><td>Orders: <%= @orders.size %></td></tr>
         </tbody>
       </table>
-      <%= link_to 'Add Order', new_order_url(company_id: @company.id), class: 'btn btn-primary' if admin? %>
+      <%= link_to 'Add Order', new_order_url(company_id: @company.id), class: 'btn btn-success' if admin? %>
     </div>
     <div class="col-md-7">
       <table class="table table-striped table-bordered">

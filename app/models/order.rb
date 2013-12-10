@@ -22,6 +22,8 @@ class Order < ActiveRecord::Base
   has_many :order_details
 
   accepts_nested_attributes_for :order_details, allow_destroy: true
+  
+  validates :invoice, presence: true, length: { maximum: 20 }
 
   def self.build
     order = self.new

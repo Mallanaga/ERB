@@ -4,11 +4,12 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(params[:order])
+    @boxes = Company.find(params[:order][:company_id]).boxes
     if @order.save
       flash[:success] = "Order #{@order.invoice} added!"
-      redirect_to current_user      
+      redirect_to user_path(current_user, company_id: params[:order][:company_id])     
     else
-      render 'boxes/new'
+      render 'orders/new'
     end
   end
 
