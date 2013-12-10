@@ -1,0 +1,64 @@
+<% provide(:title, 'Add Box') %>
+<div class="jumbotron">
+  <div class="container">
+    <h1>Add box</h1>
+  </div>
+</div>
+<div class='container'>
+  <div class='row'>
+    <%= form_for @box, html:{class: 'form-horizontal', role: 'form'} do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class='col-sm-6'>
+        <div class='form-group'>  
+          <%= f.label :company_id, class: 'col-sm-6 control-label' %>
+          <div class='col-sm-6'>
+            <%= f.collection_select :company_id, Company.all, :id, :name, {include_blank: true}, {class: 'form-control'} %>
+          </div>
+        </div>
+        <div class='form-group'>
+          <%= f.label :uid, 'Box ID', class: 'col-sm-6 control-label' %>
+          <div class='col-sm-6'>
+            <%= f.text_field :uid, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>
+          <%= f.label :frequency, 'Shipments per month', class: 'col-sm-6 control-label' %>
+          <div class='col-sm-6'>
+            <%= f.text_field :frequency, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>
+          <div class='col-sm-offset-8'>
+            <%= f.submit 'Add Box', class: "btn btn-large btn-primary" %>
+          </div>
+        </div>
+      </div>
+      <div class='col-sm-6'>
+        <div class='form-group'>
+          <%= f.label :length, class: 'col-sm-2 control-label' %>
+          <div class='col-sm-6'>
+            <%= f.text_field :length, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>
+          <%= f.label :width, class: 'col-sm-2 control-label' %>
+          <div class='col-sm-6'>
+            <%= f.text_field :width, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>
+          <%= f.label :height, class: 'col-sm-2 control-label' %>
+          <div class='col-sm-6'>
+            <%= f.text_field :height, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>
+          <%= f.label :weight, class: 'col-sm-2 control-label' %>
+          <div class='col-sm-6'>
+            <%= f.text_field :weight, class: 'form-control' %>
+          </div>
+        </div>
+      </div>        
+    <% end %>
+  </div>
+</div>
