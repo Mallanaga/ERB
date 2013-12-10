@@ -1,6 +1,6 @@
 <div class="well">
 	<h3>Quick calculator</h3>
-	<small>Using Eco ReBox for your packaging needs can help you save money. Here's a quick estimate of how.</small>
+	<small>Using Eco ReBox for your packaging needs can help you save money. Here's a quick estimate of how much we can save you each year.</small>
   <br/><br/>
   <%= form_tag calc_path, role: 'form', remote: true do %>
     <div class="form-group">
@@ -12,11 +12,6 @@
       <%= label_tag :size, 'Approximate Box Size' %>
       <%= select_tag :size, options_for_select([['SM box for a mobile phone', 1], ['MED box for a tablet or laptop', 2], ['LG box for a home office printer', 3], ['XL box for a big flat panel TV', 4]]), class: 'form-control input-sm' %>
       <span class='help-block'><small>Sizes are approximate and for demonstration only. Boxes may have any application.</small></span>
-    </div>
-    <div class="form-group">
-      <%= label_tag :shipments, 'Turnaround Time' %>
-      <%= text_field_tag :shipments, nil, class: 'form-control input-sm', placeholder: 'Turnaround in days' %>
-      <span class='help-block'><small>How long does it take to receive a package back from a customer? Ex. <em>14</em> for two weeks</small></span>
     </div>
     <%= submit_tag 'Calculate Savings', class: 'btn btn-default' %>
   <% end %>

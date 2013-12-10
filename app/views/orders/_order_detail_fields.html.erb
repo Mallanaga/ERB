@@ -1,0 +1,14 @@
+<tr class='row0'>
+  <td>
+    <%= f.collection_select :box_id, @boxes, :id, :uid, {},
+                                 {class: 'form-control'} %>
+    <%= f.hidden_field :_destroy %>
+    <%= link_to "", '#', class: "remove_fields glyphicon glyphicon-remove", title: 'Remove' %>
+  </td>
+  <td><%= f.text_field :quantity, class: 'form-control total', onkeyup: "this.value=this.value.replace(/[^0-9]/g,'')" %></td>
+  <td><%= f.text_field :box_price, class: 'form-control total', onkeyup: "this.value=this.value.replace(/[^0-9.]/g,'')" %></td>
+  <td><%= f.text_field :cb_price, class: 'form-control', onkeyup: "this.value=this.value.replace(/[^0-9.]/g,'')" %></td>
+  <td><%= f.text_field :mould_fees, class: 'form-control total', onkeyup: "this.value=this.value.replace(/[^0-9.]/g,'')" %></td>
+  <td><span class='line_total'>$$$</span></td>
+</tr>
+

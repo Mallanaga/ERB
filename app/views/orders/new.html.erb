@@ -43,15 +43,16 @@
           </tr>
         </thead>
         <tbody>
-          <%= render partial: 'details', locals: { f: f } %>
-
+          <%= f.fields_for :order_details do |builder| %>
+            <%= render 'order_detail_fields', f: builder %>
+          <% end %>
           <tr class='total'>
-            <td><%= link_to 'add line', add_detail_orders_path(company_id: params[:company_id]), class: 'btn btn-default', remote: true %></td>
-            <td><%= link_to 'new box', new_box_path, class: 'btn btn-default', remote: true %></td>
+            <td><%= link_to_add_fields 'add line', f, :order_details %></td>
+            <td></td>
             <td></td>
             <td style='text-align:right;font-weight:bold;'>tax</td>
-            <td><%= text_field_tag :tax, nil, placeholder: '7.5%', class: 'form-control' %></td>
-            <td><strong><%= number_to_currency(1) %></strong></td>
+            <td><%= f.text_field :tax, placeholder: '7.5%', class: 'form-control total' %></td>
+            <td><strong><span id='order_total'>$$$</span></strong></td>
           </tr>
         </tbody>
       </table>

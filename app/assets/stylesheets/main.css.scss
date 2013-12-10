@@ -203,21 +203,11 @@ footer {
 .tab-content {
   background-color: white;
   padding-top: 20px;
-  @include border-radius( 4px );
 }
 
 .nav-tabs {
-  margin-bottom: -1px;
-  border: none;
-  > .active > a, 
-    > .active > a:hover, 
-    > .active > a:focus {
-    border: none;
-    padding-bottom: 8px;
-  }
-  > li > a:hover, 
-    > li > a:focus {
-    padding-bottom: 8px;
+  li {
+    left: -1px;
   }
 }
 

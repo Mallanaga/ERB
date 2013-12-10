@@ -13,11 +13,15 @@
 #
 
 class Order < ActiveRecord::Base
-  attr_accessible :company_id, :ordered_on, :delivered_on, :paid, :invoice, :order_details_attributes
+  extend FriendlyId
+  friendly_id :invoice
+
+  attr_accessible :company_id, :ordered_on, :delivered_on, :paid, :invoice, :tax, 
+                  :order_details_attributes
 
   has_many :order_details
 
-  accepts_nested_attributes_for :order_details
+  accepts_nested_attributes_for :order_details, allow_destroy: true
 
   def self.build
     order = self.new

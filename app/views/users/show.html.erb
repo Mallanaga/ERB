@@ -23,15 +23,22 @@
 </div>      
 <div class='container'>
   <ul class="nav nav-tabs" id='myTab'>
-    <li class='active'><a href="#overview">Resource Savings</a></li>
-    <li><a href="#roi">Cost Savings</a></li>
-    <li><a href="#boxes">Boxes</a></li>
-    <li><a href="#orders">Orders</a></li>
-    <li><a href="#snippet">Snippet</a></li>
-    <% if current_user.admin? %>
-      <li><a href="#company_info">Company Info</a></li>
-      <li><a href="#add_user">Add User</a></li>
-      <li><a href="#subscription_list">Subscriptions</a></li>
+    <li class='active'><a href="#overview" data-toggle="tab">Resource Savings</a></li>
+    <li><a href="#roi" data-toggle="tab">Cost Savings</a></li>
+    <li><a href="#boxes" data-toggle="tab">Boxes</a></li>
+    <li><a href="#orders" data-toggle="tab">Orders</a></li>
+    <li><a href="#snippet" data-toggle="tab">Snippet</a></li>
+    <% if admin? %>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          Admin <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#company_info" data-toggle="tab">Company Info</a></li>
+          <li><a href="#add_user" data-toggle="tab">Add User</a></li>
+          <li><a href="#subscription_list" data-toggle="tab">Subscriptions</a></li>
+        </ul>
+      </li>
     <% end %>
   </ul>
   <div class='tab-content'>
@@ -40,7 +47,7 @@
     <%= render 'manage_boxes' %>
     <%= render 'orders' %>
     <%= render 'snippet' %>
-    <% if current_user.admin? %>
+    <% if admin? %>
       <%= render 'companies/edit' %>
       <%= render 'new' %>
       <%= render 'mailings/mailings' %>
@@ -49,10 +56,5 @@
 </div>
 
 <script>
-  $('#myTab a').click(function (e) {
-    e.preventDefault();
-    $(this).tab('show');
-  });
-
   $('.dropdown.sixth').addClass('active');
 </script>
