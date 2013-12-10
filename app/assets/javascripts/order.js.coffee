@@ -16,7 +16,7 @@ jQuery ->
     m = parseFloat($(this).closest('tr.row0').children('td').eq(4).children().val())
     t = if parseFloat($('#order_tax').val()) then parseFloat($('#order_tax').val())/100+1 else 1
     total = 0
-    $(this).closest('tr.row0').children('td').last().children().html(q*b+m)
-    $('.line_total').each ->
+    $(this).closest('tr.row0').children('td').last().children().html((q*b+m).toFixed(2))
+    $('.line_total:visible').each ->
       total += parseFloat($(this).html())
     $('span#order_total').html('$' + (total*t).toFixed(2))

@@ -4,11 +4,17 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(params[:company])
     if @company.save
-      redirect_to root_path
-      flash[:success] = "Company created."
+      redirect_to current_user
+      flash[:success] = "#{@company.name} added as a Client"
     else
       render 'companies/new'
     end
+  end
+
+  def destroy
+    Company.find(params[:id]).destroy
+    flash[:success] = "Company deleted!"
+    redirect_to current_user
   end
 
   def edit  

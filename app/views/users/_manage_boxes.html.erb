@@ -10,7 +10,7 @@
           <tr><td>Total Trips: <%= number_with_delimiter(@trips) %></td></tr>
           <tr><td>Average Trips: <%= @avg %></td></tr>
           <% if current_user.admin? %>
-          <tr><td><%= link_to "Export CSV", user_path(format: "csv", company_id: @company.id), class: 'btn' %></td></tr>
+          <tr><td><%= link_to "Export CSV", user_path(format: "csv", company_id: @company.id), class: 'btn btn-info btn-sm' %></td></tr>
           <% end %>
         </tbody>
       </table>

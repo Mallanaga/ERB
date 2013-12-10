@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     @selected_company = company_id.to_i
     @companies = Company.all
     @company = current_user.admin? ? Company.find(company_id) : @user.company
-    @since = @company.acquired
+    @since = @company.orders.any? ? @company.acquired : Date.today-7.day
     
     @trees = @company.trees
     @houses = (@trees/53).floor
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     @cost = @boxes.map { |b| b.cost }.sum
     @yearly = (@cost / (Date.today - @since).to_i * 365).round
 
-    @paper_cost = @boxes.map { |b| b.cb_cost }.sum
+    @paper_cost = @company.boxes.any? ? @boxes.map { |b| b.cb_cost }.sum : 1
     @yearly_cb = (@paper_cost / (Date.today - @since).to_i * 365).round
     
     @roi = @paper_cost - @cost

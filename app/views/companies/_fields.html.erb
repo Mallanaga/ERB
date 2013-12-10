@@ -12,8 +12,12 @@
   </div>
   <div>
     <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-    <%= button_tag "Reset", type: :reset, class: "btn" %>
-    <%= link_to "Add Company", new_company_path, class: "btn" %>
+    <%= button_tag "Reset", type: :reset, class: "btn btn-default btn-sm" %>
+  </div>
+  <hr>
+  <div>
+    <%= link_to "Add Company", new_company_path, class: "btn btn-success" %>
+    <%= link_to "Remove Company", @company, method: :delete, data: { confirm: "You're sure you want to DELETE this company '#{@company.name}'?" }, class: 'btn btn-danger btn-sm' %>
   </div>
 </div>
 <div class='col-md-7'>

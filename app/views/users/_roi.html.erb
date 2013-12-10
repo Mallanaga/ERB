@@ -9,7 +9,7 @@
           <tr><td>ERB Costs: <%= number_to_currency(@yearly, precision: 0) %></td></tr>
           <tr><td>Cardboard Costs: <%= number_to_currency(@yearly_cb, precision: 0) %></td></tr>
           <tr><td><strong>Totals</strong></td></tr>
-          <tr><td>Member since: <%= @company.acquired.strftime('%B %Y') %></td></tr>
+          <tr><td>Member since: <%= @since.strftime('%B %Y') %></td></tr>
           <tr><td>ERB Cost: <%= number_to_currency(@cost, precision: 0) %></td></tr>
           <tr><td>Cardboard Cost: <%= number_to_currency(@paper_cost, precision: 0) %></td></tr>
           <tr><td>Total Cost: <%= number_to_currency(@roi, precision: 0) %></td></tr>
