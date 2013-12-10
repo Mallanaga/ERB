@@ -77,6 +77,8 @@ class BoxesController < ApplicationController
     @company = Company.find(params[:company_id])
   end
 
+
+
   def show
     @box = Box.find(params[:id])
     cb = OrderDetail.find_all_by_box_id(@box.id).map{ |d| d.cb_price }

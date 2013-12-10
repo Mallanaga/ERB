@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131210202506) do
+ActiveRecord::Schema.define(:version => 20131210224512) do
 
   create_table "boxes", :force => true do |t|
     t.integer  "company_id"
@@ -125,6 +125,21 @@ ActiveRecord::Schema.define(:version => 20131210202506) do
 
   add_index "posts", ["published_at"], :name => "index_posts_on_published_at"
   add_index "posts", ["slug"], :name => "index_posts_on_slug"
+
+  create_table "quotes", :force => true do |t|
+    t.string   "name"
+    t.string   "company"
+    t.string   "email"
+    t.string   "phone"
+    t.text     "message"
+    t.string   "type_box"
+    t.decimal  "length"
+    t.decimal  "width"
+    t.decimal  "height"
+    t.integer  "quantity"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "tags", :force => true do |t|
     t.integer  "post_id"

@@ -19,4 +19,10 @@ class UserMailer < ActionMailer::Base
     mail to:          user.email, 
          subject:     "Eco ReBox password reset"
   end
+
+  def quote(quote)
+    @quote = quote
+    mail to:          'support@ecorebox.com', 
+         subject:     "Quote for #{@quote.company}"
+  end
 end

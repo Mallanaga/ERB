@@ -12,6 +12,7 @@ Erbv2::Application.routes.draw do
   resources :boxes do
     collection { post :import }
   end
+  resources :quotes
   resources :orders do
     collection { get :add_detail }
   end
@@ -26,7 +27,7 @@ Erbv2::Application.routes.draw do
   match '/what-people-are-saying',  to: 'pages#testimonials', as: :testimonials
   match '/reusable-boxes',          to: 'pages#reusable-boxes', as: :reuse
   match '/methodology',             to: 'pages#methodology', as: :restore
-  match '/reclamation',             to: 'pages#reclamation', as: :rethink
+  match '/sustainability',          to: 'pages#reclamation', as: :rethink
   match '/privacy',                 to: 'pages#privacy'
   match '/software',                to: 'pages#software'
   match '/use',                     to: 'pages#terms-of-use'

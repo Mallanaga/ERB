@@ -316,3 +316,9 @@ xmp {
   white-space: -o-pre-wrap;    /* Opera 7 */
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
+
+.get_quote {
+  textarea {
+    resize: vertical;
+  }
+}

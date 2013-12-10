@@ -1,0 +1,13 @@
+New Quote incoming from <%= @quote.name %> over at <%= @quote.company %>! Give them a call at <%= @quote.phone %> or email <%= mail_to @quote.email %>.
+
+<% if !@quote.message.blank? %>
+  <%= @quote.name %> had this to say concerning their quote:
+  <%= @quote.message %>
+<% end %>
+
+Their box needs...
+Type: <%= @quote.type_box %>
+Length: <%= @quote.length %>
+Width: <%= @quote.width %>
+Height: <%= @quote.height %>
+Quantity: <%= @quote.quantity %>

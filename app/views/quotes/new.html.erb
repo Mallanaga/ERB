@@ -1,0 +1,85 @@
+<% provide(:title, 'Quote') %>
+<div class="jumbotron">
+  <div class="container">
+    <h1>Quote from Eco ReBox</h1>
+    <p>Please fill out the following to receive a price quote on our packaging</p>
+  </div>
+</div>
+<div class='container get_quote'>
+  <div class="row well">
+    <%= form_for @quote, html:{class: 'form-horizontal', role: 'form'} do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="col-sm-6">
+        <h2 class='col-sm-offset-4'>Company Information</h2>
+        <div class='form-group'>  
+          <%= f.label :name, class: 'col-sm-4 control-label' %>
+          <div class='col-sm-8'>
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>  
+          <%= f.label :company, class: 'col-sm-4 control-label' %>
+          <div class='col-sm-8'>
+            <%= f.text_field :company, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>  
+          <%= f.label :email, class: 'col-sm-4 control-label' %>
+          <div class='col-sm-8'>
+            <%= f.text_field :email, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>  
+          <%= f.label :phone, class: 'col-sm-4 control-label' %>
+          <div class='col-sm-8'>
+            <%= f.text_field :phone, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>  
+          <%= f.label :message, class: 'col-sm-4 control-label' %>
+          <div class='col-sm-8'>
+            <%= f.text_area :message, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <h2 class='col-sm-offset-3'>Packaging Information</h2>
+        <div class='form-group'>  
+          <%= f.label :type_box, class: 'col-sm-3 control-label' %>
+          <div class='col-sm-4'>
+            <%= f.text_field :type_box, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>  
+          <%= f.label :length, class: 'col-sm-3 control-label' %>
+          <div class='col-sm-4'>
+            <%= f.text_field :length, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>  
+          <%= f.label :width, class: 'col-sm-3 control-label' %>
+          <div class='col-sm-4'>
+            <%= f.text_field :width, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>  
+          <%= f.label :height, class: 'col-sm-3 control-label' %>
+          <div class='col-sm-4'>
+            <%= f.text_field :height, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>  
+          <%= f.label :quantity, class: 'col-sm-3 control-label' %>
+          <div class='col-sm-4'>
+            <%= f.text_field :quantity, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>  
+          <div class='col-sm-4 col-sm-offset-3'>
+            <%= f.submit 'Submit Quote', class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
