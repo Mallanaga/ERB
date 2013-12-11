@@ -12,7 +12,7 @@ Erbv2::Application.routes.draw do
   resources :boxes do
     collection { post :import }
   end
-  resources :quotes
+  resources :quotes,      only: [:create]
   resources :orders do
     collection { get :add_detail }
   end

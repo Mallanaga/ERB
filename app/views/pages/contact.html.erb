@@ -42,8 +42,14 @@
           <%= f.label :email, class: 'col-sm-4 control-label' %>
           <div class='col-sm-8'>
             <%= f.text_field :email, class: 'form-control' %>
+            <div class="checkbox">
+              <label>
+                <%= check_box_tag :subscribe, true, true %> Subscribe to Updates
+              </label>
+            </div>
           </div>
         </div>
+        
         <div class='form-group'>  
           <%= f.label :phone, class: 'col-sm-4 control-label' %>
           <div class='col-sm-8'>
