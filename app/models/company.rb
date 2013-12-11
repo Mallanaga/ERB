@@ -17,7 +17,7 @@ class Company < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  attr_accessible :name, :website, :acquired, :about, :testimonial
+  attr_accessible :name, :website, :acquired, :about, :testimonial, :slug
 
   has_many :boxes
   has_many :users

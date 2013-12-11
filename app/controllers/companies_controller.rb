@@ -44,6 +44,7 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id])
+    @since = @company.orders.any? ? @company.acquired : Date.today-7.day
     @box_count = @company.boxes.count
     @current = @company.orders.map{|o| o.order_details.map{|d| d.quantity}.sum}.sum
     @trips = @company.boxes.map { |b| b.trip_count }.sum
