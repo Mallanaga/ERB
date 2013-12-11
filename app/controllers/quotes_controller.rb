@@ -6,11 +6,8 @@ class QuotesController < ApplicationController
       flash[:success] = "We'll be in touch, #{@quote.name}!"
       redirect_to root_url 
     else
-      render 'quotes/new'
+      render 'pages/contact'
     end
   end
-
-  def new
-    @quote = Quote.new
-  end
+  
 end

@@ -5,19 +5,24 @@
   </head>
   <body>
     <p>
-      New Quote incoming from <%= @quote.name %> over at <%= @quote.company %>! Give them a call at <%= @quote.phone %> or email <%= mail_to @quote.email %>.
+      Incoming Information Requestion from <%= @quote.name %> over at <%= @quote.company %>! 
+	</p>
+	Name: <%= @quote.name %><br>
+	Company: <%= @quote.company %><br>
+	Email: <%= mail_to @quote.email %><br>
+	Phone: <%= @quote.phone %>
     </p>
     <% if !@quote.message.blank? %>
-      <p><%= @quote.name %> had this to say concerning their quote:</p>
+      <pMessage: </p>
       <p><em><%= @quote.message %></em></p>
     <% end %>
     <ul>
       Their box needs...
-      <li>Type: <%= @quote.type_box %> in</li>
+      <li>Current Packaging: <%= @quote.type_box %> in</li>
       <li>Length: <strong><%= @quote.length %> in</strong></li>
       <li>Width: <strong><%= @quote.width %> in</strong></li>
       <li>Height: <strong><%= @quote.height %> in</strong></li>
-      <li>Quantity: <strong><%= @quote.quantity %></strong></li>
+      <li>Number shipped per year: <strong><%= @quote.quantity %></strong></li>
     </ul>
   </body>
 </html>

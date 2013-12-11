@@ -14,6 +14,7 @@ class PagesController < ApplicationController
   end
 
   def contact
+    @quote = Quote.new
   end
 
   def about
