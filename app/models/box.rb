@@ -33,13 +33,7 @@ class Box < ActiveRecord::Base
   validates :uid, presence: true, 
                   length: { maximum: 20 }, 
                   uniqueness: { case_sensitive: false }
-  validates :company_id, presence: true
-  validates :length, presence: true
-  validates :width, presence: true
-  validates :height, presence: true
-  validates :weight, presence: true
-  validates :frequency, presence: true
-  
+  validates :company_id, :length, :width, :height, :weight, :frequency, presence: true
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|

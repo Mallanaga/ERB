@@ -19,10 +19,10 @@ private
   def data
     boxes.map do |box|
       trips = box.trip_count
-      count = box.in
+      count = box.in > 0 ? box.in : 1
       retired = box.out
       [
-        link_to(box.uid, box, target: '_blank'),
+        link_to(box.uid, box),
         count - retired,
         retired,
         trips / count

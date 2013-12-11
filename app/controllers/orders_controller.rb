@@ -1,12 +1,19 @@
 class OrdersController < ApplicationController
   before_filter :check_for_cancel, :only => [:create, :update]
   respond_to :html, :json, :js
-
+    
   def create
     @order = Order.new(params[:order])
     @company = Company.find(params[:order][:company_id])
+    @details = @order.order_details
     @boxes = @company.boxes
     if @order.save
+      p = 1-@order.delivered_on.day.to_f/31
+      @details.each do |d|
+        order_box = d.box
+        q = (order_box.frequency*p).ceil
+        order_box.trips.build(month: @order.delivered_on.strftime('%Y-%m-01'), quantity: q, retired: 0).save
+      end
       flash[:success] = "Order #{@order.invoice} added!"
       redirect_to user_path(current_user, company_id: params[:order][:company_id])     
     else
@@ -14,15 +21,13 @@ class OrdersController < ApplicationController
     end
   end
 
-  def add_detail
-    @order = Order.build
-    @boxes = Company.find(params[:company_id]).boxes
-    @b = @boxes.first
-    @ci = Time.now.to_i
-    respond_with(@order, @boxes, @b, @ci)
+  def destroy
+    Order.find(params[:id]).destroy
+    flash[:success] = "Order destroyed"
+    redirect_to current_user
   end
 
-  def edit  
+  def edit
   end
 
   def index

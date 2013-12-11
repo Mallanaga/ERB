@@ -43,7 +43,6 @@ class BoxesController < ApplicationController
     @box = Box.new(params[:box])
     @company = Company.find(params[:box][:company_id])
     if @box.save
-      @box.trips.build(month: Date.today.strftime('%Y-%m-01'), quantity: @box.frequency, retired: 0).save
       flash[:success] = "Box #{@box.uid} added!"
       redirect_to user_path(current_user, company_id: @company.id) 
     else

@@ -13,9 +13,7 @@ Erbv2::Application.routes.draw do
     collection { post :import }
   end
   resources :quotes,      only: [:create]
-  resources :orders do
-    collection { get :add_detail }
-  end
+  resources :orders
   resources :trips
   resources :sessions,    only: [:new, :create, :destroy]
   resources :mailings,    only: [:create, :index]
