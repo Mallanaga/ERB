@@ -17,7 +17,7 @@ class Company < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  attr_accessible :name, :website, :acquired, :about, :testimonial, :slug
+  attr_accessible :name, :website, :acquired, :about, :testimonial
 
   has_many :boxes
   has_many :users
@@ -25,6 +25,10 @@ class Company < ActiveRecord::Base
 
   validates :name, presence: true
   validates :about, presence: true
+
+  def should_generate_new_friendly_id?
+    slug.blank? || title_changed?
+  end
 
   def acquired
     Order.order('ordered_on asc').find_all_by_company_id(self.id).first.ordered_on.to_date
