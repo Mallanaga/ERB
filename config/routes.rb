@@ -25,7 +25,7 @@ Erbv2::Application.routes.draw do
   match '/what-people-are-saying',  to: 'pages#testimonials', as: :testimonials
   match '/reusable-boxes',          to: 'pages#reusable-boxes', as: :reuse
   match '/methodology',             to: 'pages#methodology', as: :restore
-  match '/sustainability',          to: 'pages#reclamation', as: :rethink
+  match '/sustainability',          to: 'pages#sustainability', as: :rethink
   match '/privacy',                 to: 'pages#privacy'
   match '/software',                to: 'pages#software'
   match '/use',                     to: 'pages#terms-of-use'
