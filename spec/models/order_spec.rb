@@ -4,12 +4,13 @@
 #
 #  id           :integer          not null, primary key
 #  company_id   :integer
-#  ordered_on   :date
-#  delivered_on :date
+#  ordered_on   :date             default(Mon, 09 Dec 2013)
+#  delivered_on :date             default(Mon, 16 Dec 2013)
 #  paid         :boolean
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  invoice      :string(255)
+#  tax          :decimal(, )
 #
 
 require 'spec_helper'

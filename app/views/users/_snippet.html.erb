@@ -37,7 +37,7 @@
           }
 
           // this requires the file and executes a callback with the parsed result once available
-          fetchJSONFile('http://www.ecorebox.com/companies/<%= @company.id %>/snippet.json', function(data){
+          fetchJSONFile('http://www.ecorebox.com/our-customers/<%= @company.id %>/snippet.json', function(data){
             // resource savings
             var trees = numberWithCommas(data['trees']);
             var water = numberWithCommas(data['water']);

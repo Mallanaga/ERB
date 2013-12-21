@@ -12,11 +12,11 @@ Erbv2::Application.routes.draw do
   resources :boxes do
     collection { post :import }
   end
-  resources :quotes,      only: [:create]
+  resources :quotes, only: [:create]
   resources :orders
   resources :trips
-  resources :sessions,    only: [:new, :create, :destroy]
-  resources :mailings,    only: [:create, :index]
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :mailings, only: [:create, :index]
   resources :password_resets
 
   root                              to: 'pages#home'

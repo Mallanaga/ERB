@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
         order_box.trips.build(month: @order.delivered_on.strftime('%Y-%m-01'), quantity: q, retired: 0).save
       end
       flash[:success] = "Order #{@order.invoice} added!"
-      redirect_to user_path(current_user, company_id: params[:order][:company_id])     
+      redirect_to user_path(current_user, company_id: @order.company_id)
     else
       render 'orders/new'
     end
@@ -42,6 +42,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @tax = @order.tax.blank? ? 'none' : "#{@order.tax}%"
     @details = @order.order_details
   end
   

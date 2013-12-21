@@ -15,8 +15,8 @@
   <% if current_user && current_user.admin? %>
     <hr>
     <h3>Admin Actions</h3>
-    <%= link_to 'Update Feeds', update_feed_path, class: 'btn' %>
-    <%= link_to "Post New Entry", new_post_path, class: "btn" %>
+    <%= link_to 'Update Feeds', update_feed_path, class: 'btn btn-primary' %>
+    <%= link_to "Post New Entry", new_post_path, class: 'btn btn-success' %>
     <h4>Add a feed from another site (needs testing from development, first)</h4>
     <div><%= render 'add' %></div>
   <% end %>

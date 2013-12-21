@@ -15,6 +15,7 @@
 #  updated_at :datetime         not null
 #  frequency  :integer
 #  active     :boolean
+#  multiplier :integer          default(1)
 #
 
 require 'spec_helper'

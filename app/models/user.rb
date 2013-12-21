@@ -13,6 +13,7 @@
 #  password_reset_sent_at :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  subscribe              :boolean          default(TRUE)
 #
 
 class User < ActiveRecord::Base

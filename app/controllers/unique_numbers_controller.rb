@@ -1,0 +1,2 @@
+class UniqueNumbersController < ApplicationController
+end

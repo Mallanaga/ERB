@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131210224512) do
+ActiveRecord::Schema.define(:version => 20131220223439) do
 
   create_table "boxes", :force => true do |t|
     t.integer  "company_id"
@@ -20,13 +20,14 @@ ActiveRecord::Schema.define(:version => 20131210224512) do
     t.decimal  "width"
     t.decimal  "height"
     t.decimal  "weight"
-    t.decimal  "cost",       :precision => 6, :scale => 2
-    t.decimal  "cb_cost",    :precision => 6, :scale => 2
-    t.datetime "created_at",                                              :null => false
-    t.datetime "updated_at",                                              :null => false
+    t.decimal  "cost",            :precision => 6, :scale => 2
+    t.decimal  "cb_cost",         :precision => 6, :scale => 2
+    t.datetime "created_at",                                                   :null => false
+    t.datetime "updated_at",                                                   :null => false
     t.integer  "frequency"
     t.boolean  "active"
-    t.integer  "multiplier",                               :default => 1
+    t.integer  "multiplier",                                    :default => 1
+    t.integer  "locations_count",                               :default => 0
   end
 
   add_index "boxes", ["company_id"], :name => "index_boxes_on_company_id"
@@ -79,6 +80,19 @@ ActiveRecord::Schema.define(:version => 20131210224512) do
     t.datetime "updated_at",       :null => false
   end
 
+  create_table "locations", :force => true do |t|
+    t.integer  "unique_number_id"
+    t.string   "postal_code"
+    t.string   "tracking_number"
+    t.float    "lat"
+    t.float    "lng"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "locations", ["lat", "lng"], :name => "index_locations_on_lat_and_lng"
+  add_index "locations", ["unique_number_id"], :name => "index_locations_on_unique_number_id"
+
   create_table "mailings", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -105,7 +119,7 @@ ActiveRecord::Schema.define(:version => 20131210224512) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "invoice"
-    t.decimal  "tax"
+    t.decimal  "tax",          :default => 0.0
   end
 
   create_table "posts", :force => true do |t|
@@ -156,6 +170,17 @@ ActiveRecord::Schema.define(:version => 20131210224512) do
     t.datetime "updated_at",                :null => false
     t.integer  "retired",    :default => 0
   end
+
+  create_table "unique_numbers", :force => true do |t|
+    t.integer  "box_id"
+    t.string   "uin"
+    t.boolean  "active"
+    t.integer  "locations_count", :default => 0
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "unique_numbers", ["uin"], :name => "index_unique_numbers_on_uin", :unique => true
 
   create_table "users", :force => true do |t|
     t.integer  "company_id"

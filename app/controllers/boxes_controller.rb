@@ -3,7 +3,7 @@ class BoxesController < ApplicationController
   require 'open-uri'
 
   def calc
-    boxes_per_week = params[:boxes].to_i #boxes shipped per week
+    boxes_per_week = params[:boxes].to_f #boxes shipped per week
     # turn_time = params[:shipments].to_i #turn time in days
     shipments_per_year = 365
     life_of_box = 10 #life cycle of a box (10 trips)

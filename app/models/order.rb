@@ -4,12 +4,13 @@
 #
 #  id           :integer          not null, primary key
 #  company_id   :integer
-#  ordered_on   :date
-#  delivered_on :date
+#  ordered_on   :date             default(Mon, 09 Dec 2013)
+#  delivered_on :date             default(Mon, 16 Dec 2013)
 #  paid         :boolean
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  invoice      :string(255)
+#  tax          :decimal(, )
 #
 
 class Order < ActiveRecord::Base
@@ -27,14 +28,8 @@ class Order < ActiveRecord::Base
                       length: { maximum: 20 }, 
                       uniqueness: { case_sensitive: false }
 
-  def self.build
-    order = self.new
-    order.order_details.build
-    order
-  end
-
   def cost
-    self.order_details.map{ |d| d.quantity * d.box_price + d.mould_fees }.sum
+    (self.order_details.map{ |d| d.quantity * d.box_price + d.mould_fees }.sum) * (self.tax/100+1)
   end
 
 end

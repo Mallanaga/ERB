@@ -196,6 +196,7 @@ footer {
 .topbumper {
 	margin-top: 10px;
 	line-height: normal;
+  text-align: center;
 }
 
 
@@ -320,5 +321,6 @@ xmp {
 .get_quote {
   textarea {
     resize: vertical;
+    height: 128px;
   }
 }

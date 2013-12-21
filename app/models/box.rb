@@ -15,6 +15,7 @@
 #  updated_at :datetime         not null
 #  frequency  :integer
 #  active     :boolean
+#  multiplier :integer          default(1)
 #
 
 class Box < ActiveRecord::Base
@@ -22,10 +23,11 @@ class Box < ActiveRecord::Base
   friendly_id :uid
   
   attr_accessible :company_id, :uid, :length, :width, :height,
-                  :weight, :frequency, :multiplier, :active
+                  :weight, :frequency, :multiplier, :active, :locations_count
                   
   belongs_to :company
   has_many :trips
+  has_many :unique_numbers
   has_many :order_details
 
   before_save { |box| box.uid = uid.strip }

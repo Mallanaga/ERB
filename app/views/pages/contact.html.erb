@@ -19,7 +19,11 @@
 		  <p>If you're an end user or consumer using Eco ReBox products, please contact the Consumer Support Department at <%= mail_to "consumersupport@ecorebox.com" %>.</p>
 		  <h4>Retail Support</h4>
 		  <p>
-			Our support group can help with retail support questions. If you're a retailer using our products, or a retail manager that would like support on tracking, scanning, or registering your Eco ReBox product, please contact <%= mail_to "retailsupport@ecorebox.com" %>.
+			Our support staff can help with retail support questions. If you're a retailer using our products, or a retail manager that would like support on tracking, scanning, or registering your Eco ReBox product, please contact <%= mail_to "retailsupport@ecorebox.com" %>.
+		  </p>
+		  	  <h4>Resale and Distribution</h4>
+		  <p>
+			Eco ReBox is currently looking for resellers or distributors to distribute Eco ReBox products like ecoreboxes. Please contact Robert Hamm for reseller or distribution opportunities. Call 877-REBOX-IT or email  <%= mail_to "robert.hamm@ecorebox.com" %>.
 		  </p>
 				<h3>Information Request Form</h3>
 				<br/>
@@ -29,73 +33,74 @@
 					<div class='form-group'>  
 					  <%= f.label :name, class: 'col-sm-2 control-label' %>
 					  <div class='col-sm-8'>
-						<%= f.text_field :name, class: 'form-control' %>
+							<%= f.text_field :name, class: 'form-control' %>
 					  </div>
 					</div>
 					<div class='form-group'>  
 					  <%= f.label :company, class: 'col-sm-2 control-label' %>
 					  <div class='col-sm-8'>
-						<%= f.text_field :company, class: 'form-control' %>
+							<%= f.text_field :company, class: 'form-control' %>
 					  </div>
 					</div>
 					<div class='form-group'>  
 					  <%= f.label :email, class: 'col-sm-2 control-label' %>
 					  <div class='col-sm-8'>
-						<%= f.text_field :email, class: 'form-control' %>
-						<div class="checkbox">
-						  <label>
-							<%= check_box_tag :subscribe, true, true %> Subscribe to Updates
-						  </label>
-						</div>
+							<%= f.text_field :email, class: 'form-control' %>
+							<div class="checkbox">
+							  <label>
+								<%= check_box_tag :subscribe, true, true %> Subscribe to Updates
+							  </label>
+							</div>
 					  </div>
 					</div>
 					<div class='form-group'>  
 					  <%= f.label :phone, class: 'col-sm-2 control-label' %>
 					  <div class='col-sm-8'>
-						<%= f.text_field :phone, class: 'form-control' %>
+							<%= f.text_field :phone, class: 'form-control' %>
 					  </div>
 					</div>
 					<div class='form-group'>  
 					  <%= f.label :message, class: 'col-sm-2 control-label' %>
 					  <div class='col-sm-8'>
-						<%= f.text_area :message, class: 'form-control' %>
+							<%= f.text_area :message, class: 'form-control' %>
 					  </div>
 					</div>
 					<br/>
 					<h4 class='col-sm-offset-2'>Packaging Information</h4>
 					<div class='form-group'>  
-					  <%= f.label :type_box, class: 'col-sm-2 control-label' %>
+					  <%= f.label :type_box, 'Type of Box', class: 'col-sm-2 control-label' %>
 					  <div class='col-sm-4'>
-						<%= f.text_field :type_box, class: 'form-control' %>
+							<%= f.text_field :type_box, class: 'form-control' %> 
+							<span class='help-block'>For example: <em>Single-walled cardboard</em></span>
 					  </div>
 					</div>
 					<div class='form-group'>  
 					  <%= f.label :length, class: 'col-sm-2 control-label' %>
 					  <div class='col-sm-4'>
-						<%= f.text_field :length, class: 'form-control' %>
+							<%= f.text_field :length, class: 'form-control' %>
 					  </div>
 					</div>
 					<div class='form-group'>  
 					  <%= f.label :width, class: 'col-sm-2 control-label' %>
 					  <div class='col-sm-4'>
-						<%= f.text_field :width, class: 'form-control' %>
+							<%= f.text_field :width, class: 'form-control' %>
 					  </div>
 					</div>
 					<div class='form-group'>  
 					  <%= f.label :height, class: 'col-sm-2 control-label' %>
 					  <div class='col-sm-4'>
-						<%= f.text_field :height, class: 'form-control' %>
+							<%= f.text_field :height, class: 'form-control' %>
 					  </div>
 					</div>
 					<div class='form-group'>  
 					  <%= f.label :quantity, class: 'col-sm-2 control-label' %>
 					  <div class='col-sm-4'>
-						<%= f.text_field :quantity, class: 'form-control' %>
+							<%= f.text_field :quantity, class: 'form-control' %>
 					  </div>
 					</div>
 					<div class='form-group'>  
 					  <div class='col-sm-4 col-sm-offset-2'>
-						<%= f.submit 'Submit Information Request', class: 'btn btn-primary' %>
+							<%= f.submit 'Submit Information Request', class: 'btn btn-primary' %>
 					  </div>
 					</div>
 
