@@ -20,7 +20,6 @@ gem 'rails_autolink', '1.1.0'
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 
 gem 'friendly_id', '~> 4.0.9'
-gem 'rake'
 gem 'best_in_place'
 
 # posts and images inside of posts for uploading to amazon s3
