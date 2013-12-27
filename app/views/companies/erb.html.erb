@@ -3,7 +3,7 @@
     <xmp>
       <div id='erb_widget_container'></div>
       <script type="text/javascript">
-        // JSON parser
+        <!--// JSON parser-->
         function fetchJSONFile(path, callback) {
           var httpRequest = new XMLHttpRequest();
           httpRequest.onreadystatechange = function() {
@@ -17,21 +17,21 @@
           httpRequest.open('GET', path);
           httpRequest.send(); 
         }
-        // formatting helper
+        <!--// formatting helper-->
         function numberWithCommas(x) {
           var parts = x.toString().split(".");
           parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
           return parts.join(".");
         }
 
-        // this requires the file and executes a callback with the parsed result once available
+        <!--// this requires the file and executes a callback with the parsed result once available-->
         fetchJSONFile('http://www.ecorebox.com/erb.json', function(data){
-          // resource savings
+          <!--// resource savings
           var trees = numberWithCommas(data['trees']);
           var water = numberWithCommas(data['water']);
           var energy = numberWithCommas(data['electricity']);
 
-          // this builds all the divs
+          <!--// this builds all the divs-->
           var widget = document.createElement("div");
           widget.id = 'erb_widget';
           widget.style.width = "200px";
@@ -84,7 +84,7 @@
 
           document.getElementById('erb_widget_container').appendChild(widget);
 
-          // this appends each of the children divs to the main widget
+          <!--// this appends each of the children divs to the main widget-->
           document.getElementById('erb_widget').appendChild(logo);
           document.getElementById('erb_widget').appendChild(txt);
           document.getElementById('erb_widget').appendChild(cs_trees);

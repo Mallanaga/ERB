@@ -1,7 +1,6 @@
 /* VARIABLES ------------------------------ */
 $ecogreen: rgb(184,207,140);
 
-// Border Radius
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
      -moz-border-radius: $radius;
@@ -95,10 +94,9 @@ footer {
 }
 
 /* CUSTOMIZE THE NAVBAR ------------------ */
-/* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-collapse {
   margin-top: 20px;
-  margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+  margin-bottom: -90px;
   .nav-pills {
     .active > a, .nav-pills > .active > a:hover, .nav-pills > .active > a:focus  {
       color: white;
@@ -311,11 +309,11 @@ text-transform: uppercase;
 }
 
 xmp {
-  white-space: pre-wrap;       /* css-3 */
-  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-  white-space: -pre-wrap;      /* Opera 4-6 */
-  white-space: -o-pre-wrap;    /* Opera 7 */
-  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -webkit-pre-wrap; 
+  white-space: -o-pre-wrap;  
+  word-wrap: break-word;    
 }
 
 .get_quote {
