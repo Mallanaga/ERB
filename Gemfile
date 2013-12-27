@@ -10,6 +10,7 @@ gem 'dalli'
 gem 'bcrypt-ruby', '~> 3.0.1'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'rake'
 
 gem 'sass-rails'
 gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails', github: 'anjlab/bootstrap-rails'

@@ -265,6 +265,7 @@ DEPENDENCIES
   pg
   rails (~> 3.2.16)
   rails_autolink
+  rake
   rspec-rails
   sass-rails
   sqlite3
