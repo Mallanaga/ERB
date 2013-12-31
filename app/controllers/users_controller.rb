@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
     @orders = @company.orders
     @boxes = @company.boxes.order('created_at ASC')
-    
+
     @count = @boxes.map { |b| b.in }.sum
     @trips = @boxes.map { |b| b.trip_count }.sum
     @inactive = @boxes.map { |b| b.out }.sum
@@ -58,12 +58,6 @@ class UsersController < ApplicationController
     @purchase_array.append([(Date.today.to_time.to_i.to_s+'000').to_i, @yearly])
 
     @mailings = Mailing.all
-    
-    @export = @boxes.order(:uid)
-    respond_to do |format|
-      format.html
-      format.csv { send_data @export.to_csv }
-    end
   end
 
   def edit

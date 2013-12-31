@@ -7,23 +7,53 @@
 </div>
 <div class='container'>
   <div class='row'>
-    <div class="col-sm-4 col-sm-offset-2">
+    <div class="col-sm-4 col-sm-offset-1">
       <h3>Box properties</h3>
       <p><%= @box.length %>in x <%= @box.width %>in x <%= @box.height %>in and <%= @box.weight %>lbs</p>
       <p>Comparable cardboard box price: <%= number_to_currency(@cb) %></p>
       <p><%= @box.in %> total purchased</p>
       <p><%= @box.in - @box.out %> currently in rotation</p>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 col-sm-offset-2">
       <h3>Status <small>(editable)</small></h3>
-      <p>Box ID: <%= best_in_place_if (admin? || owner?), @box, :uid %></p>
+      <p>Box ID: <span class='edit'><%= best_in_place_if (admin? || owner?), @box, :uid %></span></p>
       <p>Multiplier (if cardboard box was used multiple times, then how many?): <span class='edit'><%= best_in_place_if (admin? || owner?), @box, :multiplier %></span></p>
       <p class='wide'>Active? <span class='edit'><%= best_in_place_if (admin? || owner?), @box, :active, type: :checkbox %></span></p>
       <p class='wide'>Shipments per month: <span class='edit'><%= best_in_place_if (admin? || owner?), @box, :frequency %></span></p>
     </div>
   </div>
+
   <div class='row'>
-    <div class="col-sm-8 col-sm-offset-2 well">
+    <div class="col-sm-6 col-xs-12 well">
+      <h3>Unique Numbers</h3>
+      <table id="companyBoxList" class="table table-striped table-bordered" data-source="<%= box_unique_numbers_url(format: "json", box_id: @box.id) %>">
+        <thead>
+          <tr>
+            <th>UIN</th>
+            <th>Active</th>
+            <th>Trips</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <br/>
+      <% if admin? %>
+        <h4>Add Unique Identifying Numbers</h4>
+        <%= form_for [@box, @new_uin], html: {class: 'form-inline', role: 'form'} do |f| %>
+          <div class='form-group'>
+            <%= label_tag :start, nil, class: 'sr-only' %>
+            <%= text_field_tag :start, nil, placeholder: 'Starting UIN', class: 'form-control' %>
+          </div>
+          <div class='form-group'>
+            <%= label_tag :quantity, nil, class: 'sr-only' %>
+            <%= text_field_tag :quantity, nil, placeholder: 'quantity', class: 'form-control', style: 'width:75px' %>
+          </div>
+          <%= f.submit 'Add UINs', class: 'btn btn-success' %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-sm-6 col-xs-12 well">
       <h3>Trip History <small>(editable)</small></h3>
       <table class="table table-striped table-bordered trips">
         <thead>
@@ -34,13 +64,13 @@
           </tr>
         </thead>
         <tbody>
-          <%- @box.trips.order('month desc').each do |t| %>
+          <% @box.trips.order('month desc').each do |t| %>
             <tr>
               <td><%= t.month.strftime('%B %Y') %></td>
               <td class='edit'><%= best_in_place_if (admin? || owner?), t, :quantity %></td>
               <td class='edit'><%= best_in_place_if (admin? || owner?), t, :retired %></td>
             </tr>
-          <%- end %>
+          <% end %>
         </tbody>
       </table>
     </div>

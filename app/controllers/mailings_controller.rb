@@ -20,7 +20,7 @@ class MailingsController < ApplicationController
     @mailings = Mailing.order(:id)
     respond_to do |format|
       format.html
-      format.csv { send_data @mailings.to_csv }
+      format.csv { send_data @mailings.to_csv, filename: "ERB_Mailing_List.csv" }
     end
   end
 

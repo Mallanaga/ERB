@@ -61,13 +61,11 @@ class BoxesController < ApplicationController
   end
 
   def index
-    @title = "Eco Reboxes"
-    @export = Box.order(:uid)
-    @boxes = Box.page(params[:page]).per(100)
+    @company = Company.find(params[:company_id])
+    @export = @company.boxes.order(:uid)
     respond_to do |format|
       format.html
-      format.csv { send_data @export.to_csv }
-      format.json { render json: BoxesDatatable.new(view_context) }
+      format.csv { send_data @export.to_csv, filename: "#{@company.name} Eco ReBoxes.csv" }
     end
   end
 
@@ -76,18 +74,15 @@ class BoxesController < ApplicationController
     @company = Company.find(params[:company_id])
   end
 
-
-
   def show
     @box = Box.find(params[:id])
     cb = OrderDetail.find_all_by_box_id(@box.id).map{ |d| d.cb_price }
     @cb = cb.inject(:+).to_f / cb.size
+    @new_uin = @box.unique_numbers.build
   end
 
   def track
-    @page = "http://ecorebox.herokuapp.com/boxes/#{params[:uid].upcase}"
-    uri = URI.parse("#{@page}")
-    @result = Net::HTTP.start(uri.host, uri.port) { |http| http.get(uri.path) }.code
+    @uin = UniqueNumber.where(uin: params[:uin].upcase)[0]
   end
 
   def update

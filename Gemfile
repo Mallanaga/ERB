@@ -22,6 +22,8 @@ gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 
 gem 'friendly_id', '~> 4.0.9'
 gem 'best_in_place'
+gem 'gmaps4rails', '~> 2.1.1'
+gem 'geocoder'
 
 # posts and images inside of posts for uploading to amazon s3
 gem 'ckeditor', '~> 4.0.6'

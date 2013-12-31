@@ -8,7 +8,7 @@ class BoxesDatatable
   def as_json(options = {})
     {
       sEcho: params[:sEcho].to_i,
-      iTotalRecords: Box.count,
+      iTotalRecords: boxes.total_count,
       iTotalDisplayRecords: boxes.total_count,
       aaData: data
     }
@@ -17,15 +17,11 @@ class BoxesDatatable
 private
 
   def data
-    boxes.map do |box|
-      trips = box.trip_count
-      count = box.in > 0 ? box.in : 1
-      retired = box.out
+    boxes.map do |b|
       [
-        link_to(box.uid, box),
-        count - retired,
-        retired,
-        trips / count
+        link_to(b.uin, [b.box, b], target: '_blank'),
+        b.active,
+        b.locations.size
       ]
     end
   end
@@ -35,16 +31,13 @@ private
   end
 
   def fetch_boxes
-    company_id = params[:company_id]
-    user = User.find(params[:user_id])
-    current_user = User.find(params[:current_user_id])
-    company = current_user.admin? ? Company.find(company_id) : user.company
-    boxes = company.boxes.order("#{sort_column} #{sort_direction}").page(page).per(per_page)
+    box = Box.find(params[:box_id])
+    boxes = box.unique_numbers.order("#{sort_column} #{sort_direction}").page(page).per(per_page)
     if params[:sSearch].present?
       if Rails.env.production?
-        boxes = boxes.where("uid ILIKE :search", search: "%#{params[:sSearch]}%")
+        boxes = boxes.where("uin ILIKE :search", search: "%#{params[:sSearch]}%")
       else
-        boxes = boxes.where("uid LIKE :search", search: "%#{params[:sSearch]}%")
+        boxes = boxes.where("uin LIKE :search", search: "%#{params[:sSearch]}%")
       end
     end
     boxes
@@ -59,7 +52,7 @@ private
   end
 
   def sort_column
-    columns = %w[uid]
+    columns = %w[uin]
     columns[params[:iSortCol_0].to_i]
   end
 

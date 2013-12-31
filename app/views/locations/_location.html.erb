@@ -1,6 +1,5 @@
-<li>
-  <strong class='uid'><%= location.box.uid %></strong> | 
-                      <%= location.postal_code %> | 
-                      <%= link_to "#{location.tracking_number}", "http://wwwapps.ups.com/WebTracking/track?track=yes&trackNums=#{location.tracking_number}", target: '_blank' %>
-
-</li>
+<tr>
+  <td><%= location.unique_number.uin %></td>
+  <td><%= location.postal_code %></td>
+  <td><%= link_to "#{location.tracking_number}", "http://wwwapps.ups.com/WebTracking/track?track=yes&trackNums=#{location.tracking_number}", target: '_blank' %></td>
+</tr>

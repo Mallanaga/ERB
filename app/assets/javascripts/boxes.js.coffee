@@ -5,4 +5,4 @@ jQuery ->
     bProcessing: true
     bServerSide: true
     sAjaxSource: $('#companyBoxList').data('source')
-    aoColumnDefs: [ { 'bSortable': false, 'aTargets': [ 0,1,2,3 ] } ]  
+    aoColumnDefs: [ { 'bSortable': false, 'aTargets': [ 0,1,2 ] } ]  

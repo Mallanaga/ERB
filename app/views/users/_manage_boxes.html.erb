@@ -13,36 +13,57 @@
       </table>
       <%= link_to "Add Box", new_box_path(company_id: @company.id), class: "btn btn-success" if admin? %>
       <hr>
-      <%= link_to "Export CSV", user_path(format: "csv", company_id: @company.id), class: 'btn btn-info btn-sm' %>
+      <h4>Export Company Box List</h4>
+      <%= link_to "Export CSV", boxes_path(format: "csv", company_id: @company.id), class: 'btn btn-info' %>
       <% if admin? %> 
-        <br/><br/>     
-        <%= form_tag import_boxes_path, multipart: true do %>
-          <%= file_field_tag :file %>
-          <%= submit_tag "Import CSV" %>
+        <hr>
+        <h4>Import Unique Trips</h4>
+        <%= form_tag import_locations_path, multipart: true do %>
+          <div class="fileinput fileinput-new" data-provides="fileinput">
+            <span class="btn btn-default btn-file">
+              <span class="fileinput-new">
+                Select file
+              </span>
+              <span class="fileinput-exists">
+                Change
+              </span>
+              <%= file_field_tag :file %>
+            </span>
+            <span class="fileinput-filename"></span>
+            <a class="close fileinput-exists" data-dismiss="fileinput" href="#" style="float: none">
+              &times;
+            </a>
+          </div>
+          <br/>
+          <%= submit_tag 'Import Trips', class: 'btn btn-warning' %>
         <% end %>
       <% end %>
     </div>
     <div class="col-md-7">
-      <table id="companyBoxList" class="table table-striped table-bordered" data-source="<%= boxes_url(format: "json", user_id: @user.id, current_user_id: current_user.id, company_id: @company.id) %>">
+      <table class="table table-striped table-bordered">
         <thead>
           <tr>
-            <th>UID</th>
+            <th>name</th>
             <th>Active</th>
             <th>Retired</th>
             <th>Avg Trips</th>
           </tr>
         </thead>
         <tbody>
+          <% @boxes.order('uid desc').each do |b| %>
+            <% trips = b.trip_count %>
+            <% count = b.in > 0 ? b.in : 1 %>
+            <% retired = b.out %>
+            <tr>
+              <td><%= link_to b.uid, b %></td>
+              <td><%= count - retired %></td>
+              <td><%= retired %></td>
+              <td><%= trips / count %></td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
   </div>
 </div>
 
-<% if params[:page] %>
-  <script>
-    $(document).ready(function () {
-      $('#myTab a[href="#boxes"]').tab('show');
-    })
-  </script>
-<% end %>

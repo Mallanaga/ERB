@@ -5,6 +5,7 @@ class Location < ActiveRecord::Base
 
   after_create :increment_box_counter
   after_destroy :decrement_box_counter
+  before_save :update_latlng
 
   def self.import(file)
     #number of locations updated
@@ -46,6 +47,12 @@ private
 
   def decrement_box_counter
     Box.decrement_counter(:locations_count, unique_number.box_id)
+  end
+
+  def update_latlng
+    latLng = Geocoder.coordinates(self.postal_code)
+    self.lat = latLng[0]
+    self.lng = latLng[1]
   end
 
 end

@@ -10,9 +10,11 @@
   <div class='row well'>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="col-sm-10 col-sm-offset-1">
-      <%= link_to 'Cancel', user_path(current_user, company_id: @company.id), class: 'pull-right btn btn-default btn-sm' %>
-      <%= f.submit "Add Order", class: 'pull-right btn btn-primary' %>
-      <%= f.hidden_field :company_id, value: @company.id %>
+      <div class='pull-right'>
+        <%= f.submit "Add Order", class: 'btn btn-primary' %>
+        <%= link_to 'Cancel', user_path(current_user, company_id: @company.id), class: 'btn btn-default btn-sm' %>
+        <%= f.hidden_field :company_id, value: @company.id %>
+      </div>
       <div class="form-group">
         <%= f.label :invoice, 'Invoice #', class: 'col-sm-2 control-label' %>
         <div class='col-sm-4'>

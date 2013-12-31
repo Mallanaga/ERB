@@ -11,6 +11,9 @@ Erbv2::Application.routes.draw do
   resources :categories
   resources :boxes do
     collection { post :import }
+    resources :unique_numbers, path: 'uin' do
+      resources :locations
+    end
   end
   resources :quotes, only: [:create]
   resources :orders
@@ -40,6 +43,7 @@ Erbv2::Application.routes.draw do
   match '/erb',                     to: 'companies#erb'
   match '/calc',                    to: 'boxes#calc'
   match '/box-detail',              to: 'boxes#detail', as: :box_detail
+  match '/import-locations',        to: 'locations#import', as: :import_locations
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
