@@ -83,6 +83,7 @@ class BoxesController < ApplicationController
 
   def track
     @uin = UniqueNumber.where(uin: params[:uin].upcase)[0]
+    redirect_to [@uin.box, @uin] if @uin
   end
 
   def update

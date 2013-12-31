@@ -1,20 +1,10 @@
 <div class='container'>
   <div id='tracker'>
-    <% if @uin %>
-      <div id="contact_tracking_view" class='container'>
-        <%= @uin.uin %>
-        <h2>Track another?</h2>
-        <div class='col-sm-4 col-sm-offset-4 bottom'>     
-          <%= render 'boxes/track' %>
-        </div>
+    <div id="contact_tracking_view" class='container'>
+      <h2>Nothing matches our records, please search again.</h2>
+      <div class='col-sm-4 col-sm-offset-4 bottom'>     
+        <%= render 'boxes/track' %>
       </div>
-    <% else %>
-      <div id="contact_tracking_view" class='container'>
-        <h2>Nothing matches our records, please search again.</h2>
-        <div class='col-sm-4 col-sm-offset-4 bottom'>     
-          <%= render 'boxes/track' %>
-        </div>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
