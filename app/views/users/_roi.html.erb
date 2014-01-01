@@ -42,7 +42,7 @@
               mode: "time",
               timeformat: "%m/%Y",
               minTickSize: [1, "month"],
-              min: (new Date(<%= (Date.today-1.year).year %>, <%= (Date.today-1.year-1.month).month %>, <%= (Date.today-1.year).day %>)).getTime(),
+              min: (new Date(<%= (Date.today-1.year).year %>, <%= (Date.today-1.year).month %>, <%= (Date.today-1.year).day %>)).getTime(),
               max: (new Date()).getTime()
             },
             grid: {
@@ -53,9 +53,7 @@
             }
           });
         });
-
       </script>
-
     </div>
   </div>
 </div>

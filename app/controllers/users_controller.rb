@@ -58,6 +58,7 @@ class UsersController < ApplicationController
     @purchase_array.append([(Date.today.to_time.to_i.to_s+'000').to_i, @yearly])
 
     @mailings = Mailing.all
+
   end
 
   def edit

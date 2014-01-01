@@ -15,7 +15,6 @@
 //= require jquery_ujs
 //= require jquery.purr
 //= require best_in_place
-//= require jquery.flot.min.js
 //= require jquery.tokeninput
 // Loads all Bootstrap javascripts
 //= require twitter/bootstrap

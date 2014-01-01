@@ -67,3 +67,10 @@
   </div>
 </div>
 
+<% if params[:page] %>
+  <script>
+    $(document).ready(function () {
+      $('#myTab a[href="#boxes"]').tab('show');
+    })
+  </script>
+<% end %>
