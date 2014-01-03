@@ -17,7 +17,7 @@
       </table>
     </div>
     <div class="col-md-7">
-      <strong>Yearly costs</strong>
+      <strong>Cost Savings by switching to Eco ReBox</strong>
       <br/><br/>
       <div id="placeholder" style="width:575px;height:300px;"></div>
       <p id='plotV'></p>
@@ -25,11 +25,11 @@
       <script type="text/javascript">
         $(function () {
           var erb = <%= @purchase_array %>;
-          var cb = [[<%= (Date.today-1.year).to_time.to_i %>000, 0],
-                    [<%= Date.today.to_time.to_i %>000, <%= @yearly_cb %>]]
+          var cb = [[<%= @since.to_time.to_i %>000, 0],
+                    [<%= Date.today.to_time.to_i %>000, <%= @paper_cost %>]]
           $.plot($("#placeholder"), 
-            [ { data: erb, label: "Eco ReBox Cost", lines: {steps: true}, color: "#b8d18f" }, 
-              { data: cb, label: "Cardboard Cost", color: "#d18f8f" } ], {
+            [ { data: erb, label: "Eco ReBox Cost", lines: {steps: true}, color: "#ccc" }, 
+              { data: cb, label: "Savings over Cardboard", color: "#b8d18f" } ], {
             yaxis: {
               tickFormatter: function (v, axis) { 
                 return '$' + v
@@ -42,7 +42,7 @@
               mode: "time",
               timeformat: "%m/%Y",
               minTickSize: [1, "month"],
-              min: (new Date(<%= (Date.today-1.year).year %>, <%= (Date.today-1.year).month %>, <%= (Date.today-1.year).day %>)).getTime(),
+              min: (new Date(<%= @since.strftime('%Y,%m,%d') %>)).getTime(),
               max: (new Date()).getTime()
             },
             grid: {

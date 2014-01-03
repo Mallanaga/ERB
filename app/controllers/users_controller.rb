@@ -54,8 +54,13 @@ class UsersController < ApplicationController
     @roi = @paper_cost - @cost
     @percent = (100 - @cost/@paper_cost * 100).round
 
-    @purchase_array = [[((Date.today-1.year).to_time.to_i.to_s+'000').to_i, @yearly]]
-    @purchase_array.append([(Date.today.to_time.to_i.to_s+'000').to_i, @yearly])
+    @purchase_array = []
+    total = 0
+    @company.orders.order('ordered_on ASC').each do |o|
+      total += o.cost.to_f
+      @purchase_array.append([(o.ordered_on.to_time.to_i.to_s+'000').to_i, total])
+    end
+    @purchase_array.append([(Date.today.to_time.to_i.to_s+'000').to_i, total])
 
     @mailings = Mailing.all
 
