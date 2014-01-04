@@ -7,4 +7,7 @@ class UniqueNumber < ActiveRecord::Base
   belongs_to :box
   has_many :locations
 
+  validates :uin, presence: true, 
+                  uniqueness: { case_sensitive: false }
+
 end

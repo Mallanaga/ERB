@@ -1,10 +1,13 @@
 class UniqueNumbersController < ApplicationController
   respond_to :html, :js, :json
+
   def create
     @box = Box.find(params[:box_id])
     start = params[:start].scan(/\d/).join('').to_i
     params[:quantity].to_i.downto(1) do
-      UniqueNumber.create(uin: 'ERB' + "%07d" % start, box_id: @box.id, active: true)
+      UniqueNumber.where(uin: 'ERB' + "%07d" % start, 
+                         box_id: @box.id, 
+                         active: true).first_or_create
       start += 1
     end
     redirect_to @box
