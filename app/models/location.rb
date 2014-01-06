@@ -14,22 +14,27 @@ class Location < ActiveRecord::Base
     CSV.foreach(file.path, headers: true) do |row|
       #Eco ReBox uid number
       erb = row['ShipToAddress3'].to_s.split('-')[0] || 
-            row['Ship To Address Line 3'].to_s.split('-')[0]
+            row['Ship To Address Line 3'].to_s.split('-')[0] ||
+            row['uin']
       erb = UniqueNumber.where(uin: erb)
       #tracking number
       tn = row['PackageTrackingNumber'] || 
-           row['Tracking Number']
-      tn_exists = self.where(tracking_number: tn)
+           row['Tracking Number'] ||
+           row['tracking_number']
+      tn_exists = Location.where(tracking_number: tn)
       #postal code
       pc = row['ShipToPostalCode'] || 
-           row['Ship To Postal Code']
+           row['Ship To Postal Code'] ||
+           row['postal_code']
       
-      if !tn_exists && erb
-        loc = self.create! unique_number_id: erb.id, 
+      if tn_exists.empty? && erb
+        loc = Location.create! unique_number_id: erb[0].id, 
                            postal_code: pc,
-                           tracking_number: tn
+                           tracking_number: tn,
+                           lat: row['lat'],
+                           lng: row['lng']
         ct += 1
-        puts "Box #{erb.uin} traveled to #{pc}!"
+        puts "Box #{erb[0].uin} traveled to #{pc}!"
       elsif tn_exists
         puts "Tracking number already exists, skipping"
       else
@@ -50,9 +55,11 @@ private
   end
 
   def update_latlng
-    latLng = Geocoder.coordinates(self.postal_code)
-    self.lat = latLng[0]
-    self.lng = latLng[1]
+    if self.lat.blank?
+      latLng = Geocoder.coordinates(self.postal_code)
+      self.lat = latLng[0]
+      self.lng = latLng[1]
+    end
   end
 
 end
