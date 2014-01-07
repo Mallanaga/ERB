@@ -17,6 +17,7 @@ Erbv2::Application.routes.draw do
   end
   resources :quotes, only: [:create]
   resources :orders
+  resources :order_details
   resources :trips
   resources :sessions, only: [:new, :create, :destroy]
   resources :mailings, only: [:create, :index]

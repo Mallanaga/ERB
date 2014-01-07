@@ -42,7 +42,6 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @tax = @order.tax == 0 ? 'none' : "#{@order.tax}%"
     @details = @order.order_details
   end
   

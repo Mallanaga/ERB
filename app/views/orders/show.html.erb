@@ -26,17 +26,17 @@
         </thead>
         <tbody>
           <%- @details.each do |d| %>
-            <tr>
+            <tr id='detail_<%= d.id %>'>
               <td><%= link_to Box.find(d.box_id).uid, Box.find(d.box_id), target: '_blank' %></td>
-              <td><%= number_with_delimiter(d.quantity) %></td>
-              <td><%= number_to_currency(d.box_price) %></td>
-              <td><%= number_to_currency(d.mould_fees) %></td>
-              <td><%= number_to_currency((d.quantity * d.box_price + d.mould_fees), precision: 2) %></td>
+              <td><%= best_in_place_if admin?, d, number_with_delimiter(:quantity) %></td>
+              <td>$<%= best_in_place_if admin?, d, :box_price %></td>
+              <td>$<%= best_in_place_if admin?, d, :mould_fees %></td>
+              <td class='total'><%= number_to_currency((d.quantity * d.box_price + d.mould_fees), precision: 2) %></td>
             </tr>
           <%- end %>
             <tr>
               <td></td><td></td><td></td>
-              <td>Tax: <%= @tax %></td> 
+              <td>Tax: <%= best_in_place_if admin?, @order, :tax %></td> 
               <td><strong><%= number_to_currency(@order.cost, precision: 2) %></strong></td>
             </tr>
         </tbody>
