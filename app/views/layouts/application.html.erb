@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title><%= full_title(yield(:title)) %></title>
-    <%= favicon_link_tag       'favicon.ico' %>
-    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <% set_meta_tags title: full_title(yield(:title)) %>
+    <% set_meta_tags viewport: 'width=device-width, initial-scale=1.0' %>
+    <% set_meta_tags keywords: %w[reusable green box plastic packaging] %>
+    <% set_meta_tags description: 'Eco ReBox supplies reusable plastic boxes to companies wanting to save the environment, and money.' %>
+    <% set_meta_tags canonical: request.host_with_port %>
+    <%= display_meta_tags %>
     <%= csrf_meta_tags %>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <%= favicon_link_tag 'favicon.ico' %>
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+
     <%= auto_discovery_link_tag :atom, "/news.atom" %>
     <%= auto_discovery_link_tag :rss, "/news.rss" %>
     <%= render 'layouts/shim' %>
@@ -29,13 +35,15 @@
   </head>
   <body>
   <div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1450913535135699";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
+	<script>
+    (function(d, s, id) {
+  	  var js, fjs = d.getElementsByTagName(s)[0];
+  	  if (d.getElementById(id)) return;
+  	  js = d.createElement(s); js.id = id;
+  	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1450913535135699";
+  	  fjs.parentNode.insertBefore(js, fjs);
+  	}(document, 'script', 'facebook-jssdk'));
+  </script>
     <div class='wrapper'>
       <%= render 'layouts/header' %>
       <%= render 'layouts/errors' %>

@@ -24,6 +24,7 @@ gem 'friendly_id', '~> 4.0.9'
 gem 'best_in_place'
 gem 'gmaps4rails', '~> 2.1.1'
 gem 'geocoder'
+gem 'meta-tags', require: 'meta_tags'
 
 # posts and images inside of posts for uploading to amazon s3
 gem 'ckeditor', '~> 4.0.6'

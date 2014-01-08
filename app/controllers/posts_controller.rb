@@ -66,6 +66,19 @@ class PostsController < ApplicationController
     @categories = @post.categories
     @user = @post.user ? @post.user.name : @post.author
     @published = @post.published_at ? @post.published_at : @post.created_at
+    set_meta_tags og: {
+      title: @post.title,
+      type: 'article',
+      url: post_url(@post),
+      image: Nokogiri::HTML(@post.content).css('img').map{ |i| i['src']},
+      article: {
+        published_time: @published.to_datetime,
+        modified_time: @post.updated_at.to_datetime,
+        author: @user,
+        section: 'News',
+        tag: @categories.map(&:name)
+      }
+    }
   end
 
   def update
