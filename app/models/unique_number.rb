@@ -5,7 +5,7 @@ class UniqueNumber < ActiveRecord::Base
   attr_accessible :uin, :active, :box_id, :locations_count
 
   belongs_to :box
-  has_many :locations
+  has_many :locations, dependent: :destroy
 
   validates :uin, presence: true, 
                   uniqueness: { case_sensitive: false }
