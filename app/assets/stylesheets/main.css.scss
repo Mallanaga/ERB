@@ -264,7 +264,14 @@ text-transform: uppercase;
 #total_impact_view{
   background-image: url('/assets/total_impact_view.jpg');
   background-size: cover;
-  color: #FFFFFF;
+  .container {
+    padding: 20px;
+    margin: 0px auto;
+    color: #FFFFFF;
+    font-size: 20px;
+    background-color:rgba(0,0,0,0.8);
+    text-align: center;
+  }
 }
 
 #total_impact_view table{
@@ -275,11 +282,12 @@ text-transform: uppercase;
   background-image: url('/assets/did_you_know_view.jpg');
   background-size: cover;
   .container {
-  margin: 0px auto;
-  color: #FFFFFF;
-  font-size: 20px;
-  background-color:rgba(0,0,0,0.5);
-  text-align: center;
+    padding: 20px;
+    margin: 0px auto;
+    color: #FFFFFF;
+    font-size: 20px;
+    background-color:rgba(0,0,0,0.8);
+    text-align: center;
   }
 }
 
