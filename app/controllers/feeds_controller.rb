@@ -2,7 +2,7 @@ class FeedsController < ApplicationController
   before_filter :signed_in_user, only: [:create, :destroy]
 
   def create
-    f = Feedzirra::Feed.fetch_and_parse(params[:feed_url])
+    f = Feedjira::Feed.fetch_and_parse(params[:feed_url])
     @feed = Feed.create!(
       url:                  f.url,
       feed_url:             f.feed_url,

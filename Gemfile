@@ -33,7 +33,7 @@ gem 'mini_magick', github: 'minimagick/minimagick', ref: '6d0f8f953112cce6324a52
 gem 'unf'
 gem 'fog', '~> 1.18.0'
 gem 'nokogiri', '~> 1.6.0'
-gem 'feedzirra', github: 'pauldix/feedzirra'
+gem 'feedjira'
 
 
 group :development, :test do
