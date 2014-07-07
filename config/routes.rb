@@ -1,5 +1,5 @@
 Erbv2::Application.routes.draw do
-  
+
   mount Ckeditor::Engine => '/ckeditor'
 
   resources :users
@@ -34,6 +34,7 @@ Erbv2::Application.routes.draw do
   match '/software',                to: 'pages#software'
   match '/use',                     to: 'pages#terms-of-use'
   match '/shipping-containers',     to: 'pages#shipping-containers', as: :shipping
+  match '/tape',                    to: 'pages#tape'
   match '/signup',                  to: 'users#new'
   match '/signin',                  to: 'sessions#new'
   match '/signout',                 to: 'sessions#destroy', via: :delete
