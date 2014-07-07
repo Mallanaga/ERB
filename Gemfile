@@ -13,6 +13,7 @@ gem 'jquery-ui-rails'
 gem 'rake'
 
 gem 'sass-rails'
+gem 'sass', '3.2.16'
 gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails', github: 'anjlab/bootstrap-rails'
 gem 'kaminari'
 gem 'kaminari-bootstrap', github: 'mcasimir/kaminari-bootstrap'

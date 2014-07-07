@@ -8,17 +8,18 @@
 <div class="container">
   <div class="row">
 		<div class="col-sm-9 col-xs-12">
-			  <%= image_tag 'cpp-boxes.jpg', alt: 'boxes', class: 'pull-left pad-right' %>
-			  <h3>Corrugated Plastic Boxes</h3>
-			  <p>
-				Eco ReBox is an innovative, environmentally sustainable, reusable, self-contained shipping system which  will transform the shipping and packaging infrastructure for a wide array of industries. By moving away from disposable, non-recyclable materials to a zero-waste solution, companies will use substantially less packaging materials, reduce negative environmental effects, and realize tremendous cost savings.
-			  </p>
-			  <p>
-				Eco ReBox's reusable packaging solutions are applicable to all consumer or business products currently  packaged in a standard or custom sized container or box. These boxes work for open and closed loop systems. Why use a container or box just once when you can re-use Eco ReBox products while simultaneously increasing profits?
-			  </p>
-			  <p>
-				Eco ReBox offers manufacturers its resuable, self-contained shipping system through custom moving and shipping boxes in various standard and custom sizes.
-			  </p>
+		  <%= image_tag 'cpp-boxes.jpg', alt: 'boxes', class: 'pull-left pad-right' %>
+		  <h3>Corrugated Plastic Boxes</h3>
+		  <p>
+			  Eco ReBox is an innovative, environmentally sustainable, reusable, self-contained shipping system which  will transform the shipping and packaging infrastructure for a wide array of industries. By moving away from disposable, non-recyclable materials to a zero-waste solution, companies will use substantially less packaging materials, reduce negative environmental effects, and realize tremendous cost savings.
+		  </p>
+		  <p>
+			  Eco ReBox's reusable packaging solutions are applicable to all consumer or business products currently  packaged in a standard or custom sized container or box. These boxes work for open and closed loop systems. Why use a container or box just once when you can re-use Eco ReBox products while simultaneously increasing profits?
+		  </p>
+		  <p>
+			  Eco ReBox offers manufacturers its resuable, self-contained shipping system through custom moving and shipping boxes in various standard and custom sizes.
+		  </p>
+      <h4><%= link_to 'Contact us for pricing', contact_path, class: "btn btn-primary btn-lg" %></h4>
 		</div>
 		<div class="col-sm-3 col-xs-12">
 			<%= render 'sidebar' %>
@@ -30,4 +31,4 @@
 
 <script type="text/javascript">
   $('.dropdown.fourth').addClass('active');
-</script>     
+</script>

@@ -22,14 +22,6 @@ GIT
     mini_magick (3.6.0)
       subexec (~> 0.2.1)
 
-GIT
-  remote: git://github.com/rweng/jquery-datatables-rails.git
-  revision: 788a7b24caf8fe58a5493aa3f6a065879a9f752a
-  specs:
-    jquery-datatables-rails (1.12.2)
-      jquery-rails
-      sass-rails
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -131,6 +123,9 @@ GEM
     hike (1.2.3)
     i18n (0.6.9)
     journey (1.0.4)
+    jquery-datatables-rails (2.1.10.0.2)
+      jquery-rails
+      sass-rails
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -209,7 +204,7 @@ GEM
       rspec-mocks (~> 2.14.0)
     ruby-hmac (0.4.0)
     rubyzip (1.1.2)
-    sass (3.3.4)
+    sass (3.2.16)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -273,7 +268,7 @@ DEPENDENCIES
   friendly_id (~> 4.0.9)
   geocoder
   gmaps4rails (~> 2.1.1)
-  jquery-datatables-rails!
+  jquery-datatables-rails (~> 2.1.10.0.2)
   jquery-rails
   jquery-ui-rails
   kaminari
@@ -289,6 +284,7 @@ DEPENDENCIES
   rails_autolink
   rake
   rspec-rails
+  sass (= 3.2.16)
   sass-rails
   sqlite3
   thin
