@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3' 
-  
+ruby '1.9.3'
+
 gem 'rails', '~> 3.2.16'
 
 gem 'thin'
@@ -18,7 +18,7 @@ gem 'kaminari'
 gem 'kaminari-bootstrap', github: 'mcasimir/kaminari-bootstrap'
 
 gem 'rails_autolink'
-gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+gem 'jquery-datatables-rails', '~> 2.1.10.0.2'
 
 gem 'friendly_id', '~> 4.0.9'
 gem 'best_in_place'

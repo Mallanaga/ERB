@@ -10,6 +10,6 @@
  *
  *= require_self
  *= require token-input-facebook
- *= require dataTables/jquery.dataTables.bootstrap
+ *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
  *= require_tree .
  */
