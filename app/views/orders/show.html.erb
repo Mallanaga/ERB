@@ -20,6 +20,7 @@
             <th>Box</th>
             <th>Quantity</th>
             <th>Box Price</th>
+            <th>CB Price</th>
             <th>Mould Fees</th>
             <th>Totals</th>
           </tr>
@@ -36,7 +37,7 @@
             </tr>
           <%- end %>
             <tr>
-              <td></td><td></td><td></td>
+              <td colspan="4"></td>
               <td>Tax: <%= best_in_place_if admin?, @order, :tax %></td>
               <td><strong><%= number_to_currency(@order.cost, precision: 2) %></strong></td>
             </tr>

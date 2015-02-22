@@ -114,7 +114,7 @@ class Box < ActiveRecord::Base
   end
 
   def update_trips(month)
-    self.trips.build(month: month.strftime('%Y-%m-01'), quantity: box.frequency, retired: 0).save
+    self.trips.build(month: month.strftime('%Y-%m-01'), quantity: self.frequency, retired: 0).save
   end
 
   private

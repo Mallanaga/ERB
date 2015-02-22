@@ -70,7 +70,7 @@
                 <%= t.month.strftime('%B %Y') %>
                 <% if admin? %>
                   <span class='actions'>
-                    <%= link_to '', t, method: :delete, data: { confirm: "You're sure you want to DELETE #{t.month.strftime('%B %Y')}'s trips?" }, class: 'glyphicon glyphicon-remove', title: 'Delete Month' %>
+                    <%= link_to '', t, method: :delete, data: { confirm: "You're sure you want to DELETE #{t.month.strftime('%B %Y')}'s trips?" }, class: 'glyphicon glyphicon-remove remove action', title: 'Delete Month' %>
                   </span>
                 <% end %>
               </td>
