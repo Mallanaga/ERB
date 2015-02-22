@@ -118,7 +118,7 @@ class Box < ActiveRecord::Base
     if !self.trips.map{|t| t.month.strftime('%Y-%m-01')}.include?(m)
       self.trips.build(month: m, quantity: self.frequency, retired: 0).save
     else
-      self.errors = 'Month already exists'
+      self.errors.add "#{month.strftime('%B %Y')xs} already exists"
     end
   end
 
