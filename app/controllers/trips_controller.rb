@@ -3,9 +3,21 @@ class TripsController < ApplicationController
   respond_to :html, :json
 
   def create
+    @box = Box.find(params[:box_id])
+    month = Date.new(params[:date][:year].to_i, params[:date][:month].to_i)
+    @box.update_trips(month)
+    redirect_to @box
   end
 
-  def edit  
+  def destroy
+    @trip = Trip.find(params[:id])
+    @box = @trip.box
+    @trip.destroy
+    flash[:success] = "Month of Trips removed"
+    redirect_to @box
+  end
+
+  def edit
   end
 
   def index
@@ -17,7 +29,7 @@ class TripsController < ApplicationController
 
   def show
   end
-  
+
   def update
     @trip = Trip.find(params[:id])
     @trip.update_attributes(params[:trip])

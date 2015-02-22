@@ -4,7 +4,7 @@
     <h1>Invoice <%= @order.invoice %></h1>
     <p>ReThink. ReStore. ReUse.</p>
   </div>
-</div> 
+</div>
 <div class='container'>
   <div class='row'>
     <div class="col-sm-10 col-sm-offset-1 well">
@@ -30,18 +30,19 @@
               <td><%= link_to Box.find(d.box_id).uid, Box.find(d.box_id), target: '_blank' %></td>
               <td><%= best_in_place_if admin?, d, number_with_delimiter(:quantity) %></td>
               <td>$<%= best_in_place_if admin?, d, :box_price %></td>
+              <td>$<%= best_in_place_if admin?, d, :cb_price %></td>
               <td>$<%= best_in_place_if admin?, d, :mould_fees %></td>
               <td class='total'><%= number_to_currency((d.quantity * d.box_price + d.mould_fees), precision: 2) %></td>
             </tr>
           <%- end %>
             <tr>
               <td></td><td></td><td></td>
-              <td>Tax: <%= best_in_place_if admin?, @order, :tax %></td> 
+              <td>Tax: <%= best_in_place_if admin?, @order, :tax %></td>
               <td><strong><%= number_to_currency(@order.cost, precision: 2) %></strong></td>
             </tr>
         </tbody>
       </table>
       <%= link_to "Delete Invoice", @order, method: :delete, data: { confirm: "You're sure you want to DELETE this invoice '#{@order.invoice}'?" }, class: 'btn btn-danger btn-sm' %>
-    </div> 
+    </div>
   </div>
 </div>

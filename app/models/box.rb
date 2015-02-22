@@ -21,10 +21,10 @@
 class Box < ActiveRecord::Base
   extend FriendlyId
   friendly_id :uid
-  
+
   attr_accessible :company_id, :uid, :length, :width, :height,
                   :weight, :frequency, :multiplier, :active, :locations_count
-                  
+
   belongs_to :company
   has_many :trips
   has_many :unique_numbers
@@ -32,8 +32,8 @@ class Box < ActiveRecord::Base
 
   before_save { |box| box.uid = uid.strip }
 
-  validates :uid, presence: true, 
-                  length: { maximum: 20 }, 
+  validates :uid, presence: true,
+                  length: { maximum: 20 },
                   uniqueness: { case_sensitive: false }
   validates :company_id, :length, :width, :height, :weight, :frequency, presence: true
 
@@ -64,18 +64,18 @@ class Box < ActiveRecord::Base
     ct
   end
 
-  # how many of a particular box has been ordered 
+  # how many of a particular box has been ordered
   def in
     OrderDetail.find_all_by_box_id(self.id).map{ |d| d.quantity }.sum
   end
 
   # how many times a particular box has been shipped
   def out
-    self.trips.map{ |t| t.retired }.sum    
+    self.trips.map{ |t| t.retired }.sum
   end
 
   def trip_count
-    self.trips.map{ |t| t.quantity }.sum 
+    self.trips.map{ |t| t.quantity }.sum
   end
 
   def cost
@@ -99,20 +99,24 @@ class Box < ActiveRecord::Base
     w = self.trips.map{ |t| t.quantity }.sum * self.weight / self.multiplier
     (w * 5.3).round
   end
- 
+
   def electricity
     w = self.trips.map{ |t| t.quantity }.sum * self.weight / self.multiplier
     (w * 8.687).round
   end
 
   def self.update_trips
-    Box.where(active: true).each do |box| 
+    Box.where(active: true).each do |box|
       if !box.trips.map{|t| t.month.strftime('%Y-%m-01')}.include?(Date.today.strftime('%Y-%m-01'))
         box.trips.build(month: (Date.today+3.days).strftime('%Y-%m-01'), quantity: box.frequency, retired: 5).save
       end
     end
   end
 
+  def update_trips(month)
+    self.trips.build(month: month.strftime('%Y-%m-01'), quantity: box.frequency, retired: 0).save
+  end
+
   private
-  
+
 end

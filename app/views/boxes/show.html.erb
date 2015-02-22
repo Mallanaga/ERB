@@ -66,13 +66,36 @@
         <tbody>
           <% @box.trips.order('month desc').each do |t| %>
             <tr>
-              <td><%= t.month.strftime('%B %Y') %></td>
+              <td>
+                <%= t.month.strftime('%B %Y') %>
+                <% if admin? %>
+                  <span class='actions'>
+                    <%= link_to '', t, method: :delete, data: { confirm: "You're sure you want to DELETE #{t.month.strftime('%B %Y')}'s trips?" }, class: 'glyphicon glyphicon-remove', title: 'Delete Month' %>
+                  </span>
+                <% end %>
+              </td>
               <td class='edit'><%= best_in_place_if (admin? || owner?), t, :quantity %></td>
               <td class='edit'><%= best_in_place_if (admin? || owner?), t, :retired %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
+      <% if admin? %>
+        <%= form_for Trip.new, html: {class: 'form-inline', role: 'form'} do |f| %>
+          <div class='form-group'>
+            <%= label_tag :month, nil, class: 'sr-only' %>
+            <%= select_month Date.today, {}, class: 'form-control' %>
+          </div>
+          <div class='form-group'>
+            <%= label_tag :year, nil, class: 'sr-only' %>
+            <%= select_year Date.today, {start_year: 2010, end_year: Date.today.year}, class: 'form-control' %>
+          </div>
+          <%= hidden_field_tag :box_id, @box.id %>
+          <div class='form-group'>
+            <%= f.submit 'Add Month', class: 'btn btn-success' %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

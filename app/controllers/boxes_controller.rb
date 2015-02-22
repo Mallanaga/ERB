@@ -26,7 +26,7 @@ class BoxesController < ApplicationController
         cb = 4.5
         erb = 22.5
     end
-    
+
     # ERB box quantity
     @erb_q = (boxes_per_week/7*shipments_per_year/life_of_box).ceil
 
@@ -44,7 +44,7 @@ class BoxesController < ApplicationController
     @company = Company.find(params[:box][:company_id])
     if @box.save
       flash[:success] = "Box #{@box.uid} added!"
-      redirect_to user_path(current_user, company_id: @company.id) 
+      redirect_to user_path(current_user, company_id: @company.id)
     else
       render 'boxes/new'
     end
@@ -79,6 +79,8 @@ class BoxesController < ApplicationController
     cb = OrderDetail.find_all_by_box_id(@box.id).map{ |d| d.cb_price }
     @cb = cb.inject(:+).to_f / cb.size
     @new_uin = @box.unique_numbers.build
+    @m = [*1..12]
+    @y = [*2010..Date.today.year]
   end
 
   def track
