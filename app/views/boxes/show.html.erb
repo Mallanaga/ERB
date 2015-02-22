@@ -9,7 +9,7 @@
   <div class='row'>
     <div class="col-sm-4 col-sm-offset-1">
       <h3>Box properties</h3>
-      <p><%= @box.length %>in x <%= @box.width %>in x <%= @box.height %>in and <%= @box.weight %>lbs</p>
+      <p><%= best_in_place_if admin?, @box, :length %>in x <%= best_in_place_if admin?, @box, :width %>in x <%= best_in_place_if admin?, @box, :height %>in and <%= best_in_place_if admin?, @box, :weight %>lbs</p>
       <p>Comparable cardboard box price: <%= number_to_currency(@cb) %></p>
       <p><%= @box.in %> total purchased</p>
       <p><%= @box.in - @box.out %> currently in rotation</p>
@@ -81,6 +81,7 @@
         </tbody>
       </table>
       <% if admin? %>
+        <h4>Manually add a Month</h4>
         <%= form_for Trip.new, html: {class: 'form-inline', role: 'form'} do |f| %>
           <div class='form-group'>
             <%= label_tag :month, nil, class: 'sr-only' %>

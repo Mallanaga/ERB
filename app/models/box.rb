@@ -114,7 +114,12 @@ class Box < ActiveRecord::Base
   end
 
   def update_trips(month)
-    self.trips.build(month: month.strftime('%Y-%m-01'), quantity: self.frequency, retired: 0).save
+    m = month.strftime('%Y-%m-01')
+    if !self.trips.map{|t| t.month.strftime('%Y-%m-01')}.include?(m)
+      self.trips.build(month: m, quantity: self.frequency, retired: 0).save
+    else
+      self.errors = 'Month already exists'
+    end
   end
 
   private
