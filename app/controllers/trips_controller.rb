@@ -18,9 +18,11 @@ class TripsController < ApplicationController
   end
 
   def edit
+
   end
 
   def index
+
   end
 
   def new
@@ -28,6 +30,7 @@ class TripsController < ApplicationController
   end
 
   def show
+
   end
 
   def update
