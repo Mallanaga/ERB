@@ -20,6 +20,7 @@
       <p>Multiplier (if cardboard box was used multiple times, then how many?): <span class='edit'><%= best_in_place_if (admin? || owner?), @box, :multiplier %></span></p>
       <p class='wide'>Active? <span class='edit'><%= best_in_place_if (admin? || owner?), @box, :active, type: :checkbox %></span></p>
       <p class='wide'>Shipments per month: <span class='edit'><%= best_in_place_if (admin? || owner?), @box, :frequency %></span></p>
+      <p class='wide'>Retired per month: <span class='edit'><%= best_in_place_if (admin? || owner?), @box, :retire %></span></p>
     </div>
   </div>
 

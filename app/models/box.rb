@@ -23,7 +23,7 @@ class Box < ActiveRecord::Base
   friendly_id :uid
 
   attr_accessible :company_id, :uid, :length, :width, :height,
-                  :weight, :frequency, :multiplier, :active, :locations_count
+                  :weight, :frequency, :retire, :multiplier, :active, :locations_count
 
   belongs_to :company
   has_many :trips
@@ -108,7 +108,7 @@ class Box < ActiveRecord::Base
   def self.update_trips
     Box.where(active: true).each do |box|
       if !box.trips.map{|t| t.month.strftime('%Y-%m-01')}.include?(Date.today.strftime('%Y-%m-01'))
-        box.trips.build(month: (Date.today+3.days).strftime('%Y-%m-01'), quantity: box.frequency, retired: 5).save
+        box.trips.build(month: (Date.today+3.days).strftime('%Y-%m-01'), quantity: box.frequency, retired: box.retire).save
       end
     end
   end
@@ -116,7 +116,7 @@ class Box < ActiveRecord::Base
   def update_trips(month)
     m = month.strftime('%Y-%m-01')
     if !self.trips.map{|t| t.month.strftime('%Y-%m-01')}.include?(m)
-      self.trips.build(month: m, quantity: self.frequency, retired: 0).save
+      self.trips.build(month: m, quantity: self.frequency, retired: self.retire).save
     else
       self.errors.add :trips, "#{month.strftime('%B %Y')} already exists"
     end
