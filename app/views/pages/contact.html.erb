@@ -11,7 +11,6 @@
 		  <h3>Eco ReBox, LLC.</h3>
 		  3241 Cabrillo Mesa Drive <br/>
 		  San Diego, California 92123<br/><br/>
-		  Toll-Free: 877-REBOX-IT<br/>
 		  International: +1 (858) 571-3638
 		  </p>
 		  <h3>Email Contacts</h3>
@@ -23,26 +22,26 @@
 		  </p>
 		  	  <h4>Resale and Distribution</h4>
 		  <p>
-			Eco ReBox is currently looking for resellers or distributors to distribute Eco ReBox products like ecoreboxes. Please contact Robert Hamm for reseller or distribution opportunities. Call 877-REBOX-IT or email  <%= mail_to "robert.hamm@ecorebox.com" %>.
+			Eco ReBox is currently looking for resellers or distributors to distribute Eco ReBox products like ecoreboxes. Please contact Robert Hamm for reseller or distribution opportunities. Call (858) 571-3638 or email  <%= mail_to "robert.hamm@ecorebox.com" %>.
 		  </p>
 				<h3>Information Request Form</h3>
 				<br/>
 				<%= form_for @quote, html:{class: 'form-horizontal', role: 'form'} do |f| %>
 				  <%= render 'shared/error_messages', object: f.object %>
 				  <h4 class='col-sm-offset-2'>Company Information</h4>
-					<div class='form-group'>  
+					<div class='form-group'>
 					  <%= f.label :name, class: 'col-sm-2 control-label' %>
 					  <div class='col-sm-8'>
 							<%= f.text_field :name, class: 'form-control' %>
 					  </div>
 					</div>
-					<div class='form-group'>  
+					<div class='form-group'>
 					  <%= f.label :company, class: 'col-sm-2 control-label' %>
 					  <div class='col-sm-8'>
 							<%= f.text_field :company, class: 'form-control' %>
 					  </div>
 					</div>
-					<div class='form-group'>  
+					<div class='form-group'>
 					  <%= f.label :email, class: 'col-sm-2 control-label' %>
 					  <div class='col-sm-8'>
 							<%= f.text_field :email, class: 'form-control' %>
@@ -53,13 +52,13 @@
 							</div>
 					  </div>
 					</div>
-					<div class='form-group'>  
+					<div class='form-group'>
 					  <%= f.label :phone, class: 'col-sm-2 control-label' %>
 					  <div class='col-sm-8'>
 							<%= f.text_field :phone, class: 'form-control' %>
 					  </div>
 					</div>
-					<div class='form-group'>  
+					<div class='form-group'>
 					  <%= f.label :message, class: 'col-sm-2 control-label' %>
 					  <div class='col-sm-8'>
 							<%= f.text_area :message, class: 'form-control' %>
@@ -67,38 +66,38 @@
 					</div>
 					<br/>
 					<h4 class='col-sm-offset-2'>Packaging Information</h4>
-					<div class='form-group'>  
+					<div class='form-group'>
 					  <%= f.label :type_box, 'Type of Box', class: 'col-sm-2 control-label' %>
 					  <div class='col-sm-4'>
-							<%= f.text_field :type_box, class: 'form-control' %> 
+							<%= f.text_field :type_box, class: 'form-control' %>
 							<span class='help-block'>For example: <em>Single-walled cardboard</em></span>
 					  </div>
 					</div>
-					<div class='form-group'>  
+					<div class='form-group'>
 					  <%= f.label :length, class: 'col-sm-2 control-label' %>
 					  <div class='col-sm-4'>
 							<%= f.text_field :length, class: 'form-control' %>
 					  </div>
 					</div>
-					<div class='form-group'>  
+					<div class='form-group'>
 					  <%= f.label :width, class: 'col-sm-2 control-label' %>
 					  <div class='col-sm-4'>
 							<%= f.text_field :width, class: 'form-control' %>
 					  </div>
 					</div>
-					<div class='form-group'>  
+					<div class='form-group'>
 					  <%= f.label :height, class: 'col-sm-2 control-label' %>
 					  <div class='col-sm-4'>
 							<%= f.text_field :height, class: 'form-control' %>
 					  </div>
 					</div>
-					<div class='form-group'>  
+					<div class='form-group'>
 					  <%= f.label :quantity, class: 'col-sm-2 control-label' %>
 					  <div class='col-sm-4'>
 							<%= f.text_field :quantity, class: 'form-control' %>
 					  </div>
 					</div>
-					<div class='form-group'>  
+					<div class='form-group'>
 					  <div class='col-sm-4 col-sm-offset-2'>
 							<%= f.submit 'Submit Information Request', class: 'btn btn-primary' %>
 					  </div>
@@ -115,4 +114,4 @@
 
 <script type="text/javascript">
   $('.nav-pills li a.fifth').addClass('active');
-</script>    
+</script>

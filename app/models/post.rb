@@ -42,7 +42,7 @@ class Post < ActiveRecord::Base
     feed = Feedjira::Feed.fetch_and_parse(feed_url)
     add_entries(feed.entries, feed_id)
   end
-  
+
   def self.update_from_feed_continuously(feed_url, delay_interval = 15.minutes)
     feed = Feedjira::Feed.fetch_and_parse(feed_url)
     add_entries(feed.entries)
@@ -52,9 +52,9 @@ class Post < ActiveRecord::Base
       add_entries(feed.new_entries) if feed.updated?
     end
   end
-  
+
   private
-  
+
     def self.add_entries(entries, feed_id)
       entries.each do |entry|
         unless exists? guid: entry.id
